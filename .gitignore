@@ -1,0 +1,6 @@
+# Ignore giant raw render source files not used by the website
+public/images/*Copy of*
+public/images/*.tif
+public/images/*.tiff
+public/images/Starting at .jpg
+public/images/starting-at.jpg
