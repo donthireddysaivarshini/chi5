@@ -10,12 +10,13 @@ interface InteriorGallerySectionProps {
 }
 
 const INTERIOR_IMAGES = [
-  { src: '/images/Living room.webp', title: 'Elegant Formal Living Lounge' },
-  { src: '/images/Dining area.webp', title: 'Open-Plan Dining & Entertaining Zone' },
-  { src: '/images/Kitchen.webp', title: 'Modular Kitchen with Premium Fittings' },
-  { src: '/images/Master bedroom.webp', title: 'Master Bedroom Penthouse Suite' },
-  { src: '/images/Bedroom detail.webp', title: 'Bespoke Fitting & Storage Details' },
-  { src: '/images/bedroom 1.webp', title: 'Smart 2nd Bedroom Plan' },
+  { src: '/images/Living room.webp', title: 'Living Room' },
+  { src: '/images/Dining area.webp', title: 'Dining Area' },
+  { src: '/images/Kitchen.webp', title: 'Kitchen' },
+  { src: '/images/Master bedroom.webp', title: 'Master Bedroom' },
+  { src: '/images/Bedroom detail.webp', title: 'Bedroom Detail' },
+  { src: '/images/bedroom 1.webp', title: 'Bedroom 1' },
+  { src: '/images/bedroom 2.webp', title: 'Bedroom 2' },
 ];
 
 export default function InteriorGallerySection({ onOpenImageModal }: InteriorGallerySectionProps) {
@@ -65,19 +66,21 @@ export default function InteriorGallerySection({ onOpenImageModal }: InteriorGal
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent flex items-end justify-between p-4">
-                  <h4 className="font-display text-sm font-bold text-white leading-snug">
-                    {img.title}
-                  </h4>
-                  <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 ml-2">
-                    <Maximize2 className="w-3.5 h-3.5" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent p-4 flex flex-col justify-end">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className="font-display text-sm font-bold text-white leading-snug">
+                      {img.title}
+                    </h4>
+                    <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0">
+                      <Maximize2 className="w-3 h-3" />
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
           <div className="text-center pt-1">
-            <span className="text-[11px] text-alabaster/60 font-medium">← Swipe to view more interior rooms →</span>
+            <span className="text-[11px] text-alabaster/60 font-medium">← Swipe to view more →</span>
           </div>
         </div>
 
@@ -140,7 +143,7 @@ export default function InteriorGallerySection({ onOpenImageModal }: InteriorGal
               </motion.div>
             </AnimatePresence>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent flex items-end justify-between p-4 sm:p-5">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian/90 via-obsidian/60 to-transparent flex items-end justify-between p-4 sm:p-5">
               <div>
                 <span className="font-sans text-[11px] font-semibold text-bronze uppercase tracking-wider block">
                   Click to Expand High-Res
@@ -156,7 +159,7 @@ export default function InteriorGallerySection({ onOpenImageModal }: InteriorGal
           </div>
 
           {/* Thumbnail Strip */}
-          <div className="grid grid-cols-6 gap-2 sm:gap-3 mt-3">
+          <div className="grid grid-cols-7 gap-2 sm:gap-3 mt-3">
             {INTERIOR_IMAGES.map((img, idx) => (
               <button
                 key={img.src}

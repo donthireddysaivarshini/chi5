@@ -110,13 +110,15 @@ export default function ProgressSection({ onOpenLeadModal }: ProgressSectionProp
           >
             <div className="relative h-[280px] sm:h-[360px] lg:h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-black">
               <video
-                controls
+                autoPlay
+                loop
+                muted
                 playsInline
+                controls
                 poster="/images/Front view.webp"
                 className="w-full h-full object-cover"
               >
                 <source src="/videos/sanarelli_progress.mp4" type="video/mp4" />
-                <source src="/videos/construction-progress.mp4" type="video/mp4" />
               </video>
             </div>
             <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs font-sans text-alabaster/70">

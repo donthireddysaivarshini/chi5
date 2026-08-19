@@ -79,7 +79,7 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
         >
-          {/* Left: Map Container with Click-to-Redirect directly to Speed Sanarelli */}
+          {/* Left: Map Container with Click-to-Redirect directly to Location */}
           <div
             className="lg:col-span-6 bg-white rounded-3xl p-4 sm:p-5 shadow-kura border border-zinc-border flex flex-col justify-between cursor-pointer group hover:shadow-kura-lg transition-all"
             onClick={handleOpenMap}
@@ -93,13 +93,13 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
-                title="Speed Sanarelli Location Map"
+                title="Codename Hi-Five Location Map"
                 className="w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors flex items-center justify-center">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-obsidian/90 group-hover:bg-obsidian text-alabaster font-sans font-bold text-xs shadow-xl backdrop-blur-sm transform group-hover:scale-105 transition-all">
                   <MapPin className="w-3.5 h-3.5 text-bronze" />
-                  <span>Open Speed Sanarelli in Google Maps</span>
+                  <span>Open Codename Hi-Five in Google Maps</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -108,7 +108,7 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 font-sans">
               <div className="flex items-center gap-2 text-xs text-charcoal-mute">
                 <MapPin className="w-4 h-4 text-bronze shrink-0" />
-                <span>Speed Sanarelli, Adjacent to ORR Exit 5, Bowrampet Road</span>
+                <span>Codename Hi-Five, Adjacent to ORR Exit 5, Bowrampet Road</span>
               </div>
               <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-bronze group-hover:text-bronze-dark transition-colors">
                 <span>View Route</span>

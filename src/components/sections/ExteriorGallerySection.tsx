@@ -10,11 +10,12 @@ interface ExteriorGallerySectionProps {
 }
 
 const EXTERIOR_IMAGES = [
-  { src: '/images/Front view.webp', title: 'Grand Gated Entrance & Security Hub' },
-  { src: '/images/Street view.webp', title: 'Landscaped Driveways & Pedestrian Paths' },
-  { src: '/images/community view.webp', title: '5.3 Acre Masterplanned Gated Community' },
-  { src: '/images/water body.webp', title: 'Central Water Body & Zen Plaza' },
-  { src: '/images/Night Aerial.webp', title: 'Illuminated Night Aerial Overview' },
+  { src: '/images/Front view.webp', title: 'Front View' },
+  { src: '/images/Street view.webp', title: 'Street View' },
+  { src: '/images/community view.webp', title: 'Community View' },
+  { src: '/images/Birds level view.webp', title: 'Birds Level View' },
+  { src: '/images/water body.webp', title: 'Water Body' },
+  { src: '/images/Night Aerial.webp', title: 'Night Aerial' },
 ];
 
 export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGallerySectionProps) {
@@ -49,7 +50,7 @@ export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGal
           </p>
         </motion.div>
 
-        {/* 1. Mobile Native Swipe Carousel (w-[85%] sliver peek, scroll-snap, NO counters/arrows on mobile) */}
+        {/* 1. Mobile Native Swipe Carousel (w-[85%] sliver peek, scroll-snap) */}
         <div className="block md:hidden">
           <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-3.5 pb-4 -mx-4 px-4">
             {EXTERIOR_IMAGES.map((img) => (
@@ -64,19 +65,21 @@ export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGal
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent flex items-end justify-between p-4">
-                  <h4 className="font-display text-sm font-bold text-white leading-snug">
-                    {img.title}
-                  </h4>
-                  <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 ml-2">
-                    <Maximize2 className="w-3.5 h-3.5" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent p-4 flex flex-col justify-end">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className="font-display text-sm font-bold text-white leading-snug">
+                      {img.title}
+                    </h4>
+                    <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0">
+                      <Maximize2 className="w-3 h-3" />
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
           <div className="text-center pt-1">
-            <span className="text-[11px] text-charcoal-mute font-medium">← Swipe to view more renders →</span>
+            <span className="text-[11px] text-charcoal-mute font-medium">← Swipe to view more →</span>
           </div>
         </div>
 
@@ -139,7 +142,7 @@ export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGal
               </motion.div>
             </AnimatePresence>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-transparent to-transparent flex items-end justify-between p-4 sm:p-5">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian/90 via-obsidian/60 to-transparent flex items-end justify-between p-4 sm:p-5">
               <div>
                 <span className="font-sans text-[11px] font-semibold text-bronze uppercase tracking-wider block">
                   Click to Expand High-Res
@@ -155,7 +158,7 @@ export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGal
           </div>
 
           {/* Thumbnail Strip */}
-          <div className="grid grid-cols-5 gap-2 sm:gap-3 mt-3">
+          <div className="grid grid-cols-6 gap-2 sm:gap-3 mt-3">
             {EXTERIOR_IMAGES.map((img, idx) => (
               <button
                 key={img.src}
