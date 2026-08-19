@@ -35,13 +35,17 @@ const COMMUTE_DATA = {
     { name: 'Bachupally Commercial Hub', time: '10 Min' },
     { name: 'Kukatpally & JNTU Metro', time: '30 Min' },
     { name: 'Financial District (Signal-free ORR)', time: '35 Min' },
-    { name: 'HITEC City & Cyber Towers', time: '35 Min' },
   ],
 };
 
+const MAP_URL = 'https://maps.app.goo.gl/XWMJEZtLnFB2UPcGA';
+
 export default function LocationSection({ onOpenLeadModal }: LocationSectionProps) {
   const [activeTab, setActiveTab] = useState<'schools' | 'tech' | 'health' | 'transit'>('schools');
-  const [mapInteractive, setMapInteractive] = useState(false);
+
+  const handleOpenMap = () => {
+    window.open(MAP_URL, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section
@@ -63,7 +67,7 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
             1 Min from <span className="italic text-bronze font-normal">ORR Exit No. 5.</span>
           </h2>
           <p className="font-sans text-xs sm:text-sm md:text-base text-charcoal-mute font-normal">
-            Prime connectivity along the Dundigal-Bowrampet growth corridor with signal-free transit to Financial District and HITEC City.
+            Prime connectivity along the Dundigal-Bowrampet growth corridor with signal-free transit to Financial District and Bachupally.
           </p>
         </motion.div>
 
@@ -75,10 +79,10 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
         >
-          {/* Left: Map Container with Click-to-Interact */}
+          {/* Left: Map Container with Click-to-Redirect directly to Speed Sanarelli */}
           <div
-            className="lg:col-span-6 bg-white rounded-3xl p-4 sm:p-5 shadow-kura border border-zinc-border flex flex-col justify-between"
-            onClick={() => setMapInteractive(true)}
+            className="lg:col-span-6 bg-white rounded-3xl p-4 sm:p-5 shadow-kura border border-zinc-border flex flex-col justify-between cursor-pointer group hover:shadow-kura-lg transition-all"
+            onClick={handleOpenMap}
           >
             <div className="relative w-full h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-inner border border-zinc-border">
               <iframe
@@ -90,33 +94,26 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
                 title="Speed Sanarelli Location Map"
-                className={`w-full h-full transition-opacity ${
-                  mapInteractive ? 'pointer-events-auto' : 'pointer-events-none'
-                }`}
+                className="w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700"
               />
-              {!mapInteractive && (
-                <div className="absolute inset-0 bg-black/5 flex items-end justify-center pb-3 cursor-pointer">
-                  <span className="px-3.5 py-1 rounded-full bg-obsidian/90 text-alabaster font-sans font-semibold text-xs shadow-md backdrop-blur-sm">
-                    Click to Interact with Map
-                  </span>
-                </div>
-              )}
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-obsidian/90 group-hover:bg-obsidian text-alabaster font-sans font-bold text-xs shadow-xl backdrop-blur-sm transform group-hover:scale-105 transition-all">
+                  <MapPin className="w-3.5 h-3.5 text-bronze" />
+                  <span>Open Speed Sanarelli in Google Maps</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </span>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 font-sans">
               <div className="flex items-center gap-2 text-xs text-charcoal-mute">
                 <MapPin className="w-4 h-4 text-bronze shrink-0" />
-                <span>Adjacent to ORR Exit 5, Bowrampet Road, Dundigal</span>
+                <span>Speed Sanarelli, Adjacent to ORR Exit 5, Bowrampet Road</span>
               </div>
-              <a
-                href="https://maps.app.goo.gl/XWMJEZtLnFB2UPcGA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-bronze hover:text-bronze-dark transition-colors"
-              >
-                <span>Google Maps</span>
+              <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-bronze group-hover:text-bronze-dark transition-colors">
+                <span>View Route</span>
                 <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              </span>
             </div>
           </div>
 

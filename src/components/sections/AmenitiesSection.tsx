@@ -18,7 +18,7 @@ const AMENITY_CATEGORIES = [
       'Aerobics, Zumba & Yoga Studio',
       'Outdoor Jogging & Reflexology Track',
       'Meditation & Wellness Deck',
-      'Steam & Sauna Rooms',
+      'Steam & Sauna Wellness Rooms',
     ],
   },
   {
@@ -53,7 +53,7 @@ const AMENITY_CATEGORIES = [
   },
   {
     id: 'practical',
-    label: 'Practical Conveniences',
+    label: 'Conveniences',
     icon: ShieldCheck,
     image: '/images/Basket ball court.webp',
     caption: 'Gated Township Conveniences & Security',
@@ -97,14 +97,8 @@ export default function AmenitiesSection() {
           </p>
         </motion.div>
 
-        {/* Category Pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6 sm:mb-8"
-        >
+        {/* Category Tabs: Mobile Horizontally Scrollable Container */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 pb-2 mb-6 sm:mb-8 overflow-x-auto whitespace-nowrap hide-scrollbar">
           {AMENITY_CATEGORIES.map((cat) => {
             const Icon = cat.icon;
             const active = activeTab === cat.id;
@@ -112,7 +106,7 @@ export default function AmenitiesSection() {
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
-                className={`flex items-center gap-2 py-2.5 px-4 sm:px-5 rounded-full font-sans text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+                className={`flex items-center gap-2 py-2.5 px-4 sm:px-5 rounded-full font-sans text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shrink-0 ${
                   active
                     ? 'bg-bronze text-white shadow-lg shadow-bronze/30 scale-105'
                     : 'bg-white/10 text-alabaster/80 hover:bg-white/15 hover:text-white'
@@ -123,31 +117,31 @@ export default function AmenitiesSection() {
               </button>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Tab Content Display */}
+        {/* Desktop 50/50 Split & Mobile Image-Only Display */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center bg-white/5 rounded-3xl p-5 sm:p-8 border border-white/10 shadow-2xl"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center bg-white/5 rounded-3xl p-4 sm:p-8 border border-white/10 shadow-2xl"
         >
-          {/* Left Column: Feature List */}
-          <div className="lg:col-span-6 space-y-4">
+          {/* Left Column: 50% Desktop Width - Feature List (HIDDEN ON MOBILE) */}
+          <div className="hidden lg:block lg:col-span-6 space-y-4">
             <div className="flex items-center gap-2 text-bronze font-sans text-xs font-bold uppercase tracking-widest">
               <Sparkles className="w-4 h-4" />
               <span>{currentCategory.label} Privileges</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 font-sans">
+            <div className="grid grid-cols-2 gap-3 font-sans">
               <AnimatePresence mode="wait">
                 {currentCategory.items.map((item, idx) => (
                   <motion.div
                     key={item}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    transition={{ duration: 0.3, delay: idx * 0.04 }}
                     className="flex items-start gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-bronze/40 transition-colors"
                   >
                     <CheckCircle2 className="w-4 h-4 text-bronze shrink-0 mt-0.5" />
@@ -166,9 +160,9 @@ export default function AmenitiesSection() {
             </div>
           </div>
 
-          {/* Right Column: Animated Crossfade Image */}
-          <div className="lg:col-span-6">
-            <div className="relative h-64 sm:h-80 lg:h-84 w-full rounded-2xl overflow-hidden shadow-2xl border border-white/15">
+          {/* Right Column: Full Width on Mobile (Image Only) / 50% on Desktop */}
+          <div className="w-full lg:col-span-6">
+            <div className="relative h-64 sm:h-80 lg:h-[380px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/15">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentCategory.id}

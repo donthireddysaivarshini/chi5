@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calculator, ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
+import { Calculator, ArrowRight, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface AffordabilityStudioSectionProps {
@@ -13,22 +13,16 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
   const [loanAmount, setLoanAmount] = useState(4720000);
   const [tenureYears, setTenureYears] = useState(20);
   const [interestRate, setInterestRate] = useState(7.95);
-  const [activeScenario, setActiveScenario] = useState<'live' | 'rent'>('live');
 
   const monthlyRate = interestRate / 12 / 100;
   const totalMonths = tenureYears * 12;
-  const grossEmi = Math.round(
+  const emi = Math.round(
     (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
       (Math.pow(1 + monthlyRate, totalMonths) - 1)
   );
 
-  const annualInterestPaid = loanAmount * (interestRate / 100);
-  const monthlyInterest = annualInterestPaid / 12;
-  const actualTaxSaving = Math.min(9500, Math.round(monthlyInterest * 0.312));
-  const estimatedRental = 20000;
-
-  const netOutgoLive = Math.max(0, grossEmi - actualTaxSaving);
-  const netOutgoRent = Math.max(0, grossEmi - actualTaxSaving - estimatedRental);
+  const totalPayment = emi * totalMonths;
+  const totalInterest = Math.max(0, totalPayment - loanAmount);
 
   const formatINR = (val: number) => '₹' + Math.round(val).toLocaleString('en-IN');
 
@@ -57,17 +51,17 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
             The True Cost of <span className="italic text-bronze font-normal">Homeownership.</span>
           </h2>
           <p className="font-sans text-xs sm:text-sm md:text-base text-charcoal-mute font-normal">
-            Adjust the loan parameters to see why owning a home at ORR Exit-5 creates immediate monthly equity instead of lost rent.
+            Adjust the loan parameters to calculate your monthly EMI based on our default 7.95% interest rate.
           </p>
         </motion.div>
 
-        {/* Unified Card */}
+        {/* Financial Studio Calculator Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 bg-slate-50 rounded-3xl p-5 sm:p-8 shadow-kura border border-zinc-border items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 bg-slate-50 rounded-3xl p-5 sm:p-8 shadow-kura border border-zinc-border items-stretch max-w-5xl mx-auto"
         >
           {/* Left Column: Sliders */}
           <div className="lg:col-span-7 space-y-4">
@@ -164,69 +158,48 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
                 />
               </div>
             </div>
-
-            <div className="flex items-center gap-2 pt-2">
-              <button
-                onClick={() => setActiveScenario('live')}
-                className={`py-1.5 px-3 rounded-full text-xs font-sans font-bold transition-all ${
-                  activeScenario === 'live'
-                    ? 'bg-obsidian text-white shadow-md'
-                    : 'bg-white text-obsidian/70 border border-zinc-border hover:bg-slate-100'
-                }`}
-              >
-                Self-Occupied Scenario
-              </button>
-              <button
-                onClick={() => setActiveScenario('rent')}
-                className={`py-1.5 px-3 rounded-full text-xs font-sans font-bold transition-all ${
-                  activeScenario === 'rent'
-                    ? 'bg-obsidian text-white shadow-md'
-                    : 'bg-white text-obsidian/70 border border-zinc-border hover:bg-slate-100'
-                }`}
-              >
-                Investor Rental Scenario
-              </button>
-            </div>
           </div>
 
-          {/* Right Column: Outgo Breakdown in Deep Slate Card */}
+          {/* Right Column: Clean Simplified EMI Summary Card */}
           <div className="lg:col-span-5 bg-obsidian text-alabaster rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-4 border border-white/10 shadow-xl">
             <div>
               <span className="font-sans text-[11px] font-bold uppercase tracking-widest text-bronze block">
-                Net Monthly Outgo Breakdown
+                Estimated Monthly EMI
               </span>
               <div className="mt-1">
                 <span className="font-display text-3xl sm:text-4xl font-bold text-white block">
-                  {formatINR(activeScenario === 'live' ? netOutgoLive : netOutgoRent)}
+                  {formatINR(emi)}
                 </span>
                 <span className="font-sans text-xs text-alabaster/70">
-                  {activeScenario === 'live' ? 'Effective monthly cost of owning' : 'Net investor cashflow requirement'}
+                  Calculated at default 7.95% p.a. interest rate
                 </span>
               </div>
             </div>
 
-            <div className="space-y-2 pt-3 border-t border-white/15 font-sans text-xs">
-              <div className="flex justify-between text-alabaster/80">
-                <span>Gross Monthly EMI:</span>
-                <span className="font-semibold text-alabaster">{formatINR(grossEmi)}</span>
+            <div className="space-y-2 pt-3 border-t border-white/15 font-sans text-xs text-alabaster/80">
+              <div className="flex justify-between">
+                <span>Principal Loan:</span>
+                <span className="font-semibold text-alabaster">{formatINR(loanAmount)}</span>
               </div>
-              <div className="flex justify-between text-emerald-400">
-                <span>Tax Savings (Sec 24b max):</span>
-                <span className="font-semibold">-{formatINR(actualTaxSaving)}</span>
+              <div className="flex justify-between">
+                <span>Loan Tenure:</span>
+                <span className="font-semibold text-alabaster">{tenureYears} Years ({totalMonths} Mos)</span>
               </div>
-              {activeScenario === 'rent' && (
-                <div className="flex justify-between text-amber-300">
-                  <span>Estimated Rental Offset:</span>
-                  <span className="font-semibold">-{formatINR(estimatedRental)}</span>
-                </div>
-              )}
+              <div className="flex justify-between">
+                <span>Default Rate:</span>
+                <span className="font-semibold text-bronze">{interestRate}% p.a.</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Total Interest:</span>
+                <span className="font-semibold text-alabaster">{formatINR(totalInterest)}</span>
+              </div>
             </div>
 
             <button
-              onClick={() => onOpenLeadModal('calculator_cta', 'Get Customized Financial & Tax Breakdown')}
+              onClick={() => onOpenLeadModal('calculator_cta', 'Get Customized Financial & Loan Pre-Approval')}
               className="w-full py-3 bg-bronze hover:bg-bronze-hover text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg hover:shadow-bronze-glow transition-all flex items-center justify-center gap-2"
             >
-              <span>Get Loan Assessment</span>
+              <span>Get Loan Pre-Approval</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
