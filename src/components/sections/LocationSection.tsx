@@ -32,10 +32,10 @@ const COMMUTE_DATA = {
   ],
   transit: [
     { name: 'ORR Exit 5 (Gandimaisamma)', time: '1 Min' },
-    { name: 'Kukatpally Retail Street', time: '20 Min' },
-    { name: 'JNTU Metro Station', time: '25 Min' },
-    { name: 'IKEA & Inorbit Mall (Hitech City)', time: '35 Min' },
-    { name: 'Rajiv Gandhi Int. Airport', time: '50 Min' },
+    { name: 'Bachupally Commercial Hub', time: '10 Min' },
+    { name: 'Kukatpally & JNTU Metro', time: '30 Min' },
+    { name: 'Financial District (Signal-free ORR)', time: '35 Min' },
+    { name: 'HITEC City & Cyber Towers', time: '35 Min' },
   ],
 };
 
@@ -61,7 +61,7 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
             1 Min from <span className="italic text-[#CE793A] font-normal">ORR Exit No. 5.</span>
           </h2>
           <p className="font-figtree text-sm sm:text-base text-noir/70 font-normal">
-            Prime connectivity along the Dundigal-Bowrampet growth corridor with signal-free transit to HITEC City and financial districts.
+            Prime connectivity along the Dundigal-Bowrampet growth corridor with signal-free transit to Financial District and HITEC City.
           </p>
         </div>
 
@@ -74,14 +74,14 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
           >
             <div className="relative w-full h-[320px] sm:h-[400px] rounded-2xl overflow-hidden shadow-inner border border-borderTone">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.9664539121703!2d78.3846663!3d17.5562725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f3cf2559e4b%3A0xe54e3d360ef3a7a!2sKURA%20HOMES!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.393652044088!2d78.398838!3d17.5840323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f09e0058659%3A0xeec976a256a5b678!2sSpeed%20Sanarelli%20-%20Apartment%20of%20Contentment!5e0!3m2!1sen!2sin!4v1787132923208!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Codename Hi-Five Location Map"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Speed Sanarelli Location Map"
                 className={`w-full h-full transition-opacity ${
                   mapInteractive ? 'pointer-events-auto' : 'pointer-events-none'
                 }`}
@@ -101,7 +101,7 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
                 <span>Adjacent to ORR Exit 5, Bowrampet Road, Dundigal</span>
               </div>
               <a
-                href="https://maps.google.com/?q=KURA+HOMES+Bowrampet"
+                href="https://maps.app.goo.gl/XWMJEZtLnFB2UPcGA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-caramel hover:text-caramel-dark transition-colors"

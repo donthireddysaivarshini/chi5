@@ -9,10 +9,10 @@ interface AffordabilityStudioSectionProps {
 }
 
 export default function AffordabilityStudioSection({ onOpenLeadModal }: AffordabilityStudioSectionProps) {
-  const [propertyPrice, setPropertyPrice] = useState(5500000);
-  const [loanAmount, setLoanAmount] = useState(4400000);
+  const [propertyPrice, setPropertyPrice] = useState(5900000);
+  const [loanAmount, setLoanAmount] = useState(4720000);
   const [tenureYears, setTenureYears] = useState(20);
-  const [interestRate, setInterestRate] = useState(8.25);
+  const [interestRate, setInterestRate] = useState(7.95);
   const [activeScenario, setActiveScenario] = useState<'live' | 'rent'>('live');
 
   const monthlyRate = interestRate / 12 / 100;
@@ -77,17 +77,17 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
               <input
                 type="range"
                 className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
-                min={5500000}
+                min={5900000}
                 max={15000000}
                 step={100000}
                 value={propertyPrice}
                 style={{
-                  background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((propertyPrice - 5500000) / (15000000 - 5500000)) * 100}%, #E2D8CA ${((propertyPrice - 5500000) / (15000000 - 5500000)) * 100}%, #E2D8CA 100%)`,
+                  background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((propertyPrice - 5900000) / (15000000 - 5900000)) * 100}%, #E2D8CA ${((propertyPrice - 5900000) / (15000000 - 5900000)) * 100}%, #E2D8CA 100%)`,
                 }}
                 onChange={(e) => handlePropertyChange(Number(e.target.value))}
               />
               <div className="flex justify-between font-sans text-[10px] text-[#5C4D44]/60">
-                <span>₹55 Lakhs</span>
+                <span>₹59 Lakhs</span>
                 <span>₹1.50 Crore</span>
               </div>
             </div>

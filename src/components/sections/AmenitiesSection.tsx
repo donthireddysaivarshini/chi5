@@ -142,7 +142,7 @@ export default function AmenitiesSection() {
 
             <div className="pt-2">
               <span className="font-figtree text-xs text-alabaster/60 block">
-                Exclusive access reserved for Codename Hi-Five residents and approved guests.
+                Exclusive access reserved for residents and approved guests of this project.
               </span>
             </div>
           </div>

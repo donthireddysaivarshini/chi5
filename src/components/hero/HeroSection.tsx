@@ -93,7 +93,7 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-sans text-sm sm:text-base md:text-lg text-[#E0D8CB] font-normal leading-relaxed max-w-2xl text-left"
           >
-            Luxurious 2 BHK & Duplex gated residences starting from <strong className="text-[#F5F3E6] font-semibold">₹55 Lakhs* (₹4,999/sft)</strong> with 70% open spaces adjacent to Bowrampet reserve forests.
+            Luxurious 2 BHK & Duplex gated residences starting from <strong className="text-[#F5F3E6] font-semibold">₹59 Lakhs* (₹4,999/sft)</strong> with 70% open spaces adjacent to Bowrampet reserve forests.
           </motion.p>
 
           {/* Left-Aligned CTA Button Group */}

@@ -51,7 +51,7 @@ export default function PricingSection({ onOpenLeadModal }: PricingSectionProps)
                 </h3>
                 <div className="flex items-baseline gap-2 mt-1">
                   <span className="font-serif text-3xl sm:text-4xl font-bold text-[#CE793A]">
-                    ₹55 Lakhs*
+                    ₹59 Lakhs*
                   </span>
                   <span className="font-sans text-xs text-[#5C4D44]">onwards</span>
                 </div>
@@ -140,7 +140,7 @@ export default function PricingSection({ onOpenLeadModal }: PricingSectionProps)
               <ul className="space-y-2.5 pt-2 border-t border-[#EADECF]/60 font-sans text-xs sm:text-sm text-[#1B1717]/80">
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>1,850 to 2,200 Sq.Ft duplex layouts</span>
+                  <span>2,200 Sq.Ft bespoke duplex layouts</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />

@@ -34,7 +34,7 @@ export default function OverviewSection({ onOpenLeadModal }: OverviewSectionProp
             </div>
 
             <p className="font-sans text-sm sm:text-base text-[#D6CFC4] font-normal leading-relaxed">
-              Codename Hi-Five by Kura Homes is a benchmark residential community crafted with 55 years of architectural excellence. Located directly adjacent to the pristine Bowrampet reserve forests, this gated address offers a cooler microclimate year-round, while placing you just 1 minute from ORR Exit-5.
+              This project by Kura Homes is a benchmark 5.3-acre residential community crafted with 55 years of architectural excellence. Located directly along the Bowrampet growth corridor, this gated address offers a cooler microclimate year-round, while placing you just 1 minute from ORR Exit-5.
             </p>
 
             {/* High-Contrast Stat Cards */}
@@ -71,14 +71,14 @@ export default function OverviewSection({ onOpenLeadModal }: OverviewSectionProp
           <div className="lg:col-span-6">
             <div className="relative h-[340px] sm:h-[420px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15">
               <Image
-                src="/images/community view.webp"
-                alt="Codename Hi-Five 5.3 Acre Gated Community Overview"
+                src="/images/club_vision.webp"
+                alt="25,000 Sq.Ft Grand Clubhouse & Gated Community Vision"
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute bottom-4 left-4 right-4 p-3.5 bg-[#28120C]/85 backdrop-blur-md rounded-2xl border border-white/15 flex items-center justify-between text-xs font-sans">
-                <span className="text-[#F5F3E6] font-semibold">5.3 Acre Masterplanned Township</span>
-                <span className="text-[#CE793A] font-bold uppercase tracking-wider">Bowrampet Reserve</span>
+                <span className="text-[#F5F3E6] font-semibold">25,000 Sq.Ft Grand Clubhouse</span>
+                <span className="text-[#CE793A] font-bold uppercase tracking-wider">Project Vision</span>
               </div>
             </div>
           </div>

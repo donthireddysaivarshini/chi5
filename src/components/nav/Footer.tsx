@@ -29,7 +29,7 @@ export default function Footer() {
               />
             </div>
             <p className="font-figtree text-xs sm:text-sm text-alabaster/75 font-normal leading-relaxed max-w-sm">
-              Codename Hi-Five is a premium 5.3-acre gated residential township by Kura Homes, bringing 55 years of trust, structural excellence, and design legacy to Hyderabad&apos;s ORR Exit 5 growth corridor.
+              This project is a premium 5.3-acre gated residential township by Kura Homes, bringing 55 years of trust, structural excellence, and design legacy to Hyderabad&apos;s ORR Exit 5 growth corridor.
             </p>
           </div>
 
@@ -82,7 +82,7 @@ export default function Footer() {
             Important Disclaimer: Calculated figures (EMI, tax savings, rentals), layout graphics, and location proximity drive-times shown on this page are indicative models only and do not represent a financial contract, investment advice, or guaranteed yield curves. Home loans are subject to approval policies of underwriting banks. All construction timelines are referenced under TG RERA filings P02200002810.
           </p>
           <p className="text-alabaster/70">
-            © 2026 Kura Homes. All rights reserved. Designed & Engineered for Codename Hi-Five.
+            © 2026 Kura Homes. All rights reserved. Masterplanned by Kura Homes.
           </p>
         </div>
       </div>

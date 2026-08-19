@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '@/components/nav/Header';
 import HeroSection from '@/components/hero/HeroSection';
 import OverviewSection from '@/components/sections/OverviewSection';
@@ -36,6 +36,25 @@ export default function HomePage() {
     if (subtitle) setLeadModalSubtitle(subtitle);
     setLeadModalOpen(true);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try {
+        const hasShown = sessionStorage.getItem('lead_popup_triggered');
+        if (!hasShown) {
+          handleOpenLeadModal(
+            'auto_popup_2s',
+            'Download Complete Project Brochure & Cost Sheet',
+            'Enter your contact number below to get immediate access to detailed pricing breakdown, floor plans, and site tour booking.'
+          );
+          sessionStorage.setItem('lead_popup_triggered', 'true');
+        }
+      } catch (e) {
+        // Fallback for private browsing
+      }
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleOpenVideoModal = (src: string) => {
     setVideoModalSrc(src);

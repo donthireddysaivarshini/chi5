@@ -14,13 +14,13 @@ const PERSPECTIVES = [
   {
     title: 'Investment Appreciation Value',
     desc: 'Comparing entry price of ₹4,999/sq.ft with older corridors (₹9K-10K/sq.ft) and historical growth curves.',
-    image: '/images/community view.webp',
+    image: '/images/Night Aerial.webp',
     video: '/videos/investment.mp4',
   },
   {
     title: 'Vaastu & Spaces Philosophy',
     desc: 'Chief architect explains Vaastu flow, cross-ventilated bedroom placements, and zero-corridor layouts.',
-    image: '/images/Living room.webp',
+    image: '/images/club_vision.webp',
     video: '/videos/Design.mp4',
   },
 ];
@@ -122,9 +122,10 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
               <video
                 controls
                 playsInline
-                poster="/images/Side view.webp"
+                poster="/images/Front view.webp"
                 className="w-full h-full object-cover"
               >
+                <source src="/videos/sanarelli_progress.mp4" type="video/mp4" />
                 <source src="/videos/construction-progress.mp4" type="video/mp4" />
               </video>
             </div>
