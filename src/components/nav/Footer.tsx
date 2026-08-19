@@ -2,91 +2,63 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ShieldCheck, FileText, MapPin, Phone, MessageSquare } from 'lucide-react';
-import HiFiveBrandLockup from '@/components/ui/HiFiveBrandLockup';
-import { PROJECT_INFO } from '@/data/content';
 
 export default function Footer() {
   return (
-    <footer className="bg-sienna-dark text-alabaster pt-16 pb-24 md:pb-12 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/10">
-          {/* Col 1: Brand Info */}
-          <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative h-8 w-24">
-                <Image
-                  src="/logos/kura homes logo.png"
-                  alt="Kura Homes"
-                  fill
-                  className="object-contain brightness-0 invert"
-                />
-              </div>
-              <span className="text-white/40">|</span>
-              <HiFiveBrandLockup variant="footer" />
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <div className="logos">
+              <Image src="/logos/kura homes logo.png" alt="Kura Homes Logo" width={110} height={36} />
+              <Image src="/logos/hi-five logo 2.png" alt="Hi-Five Logo" width={120} height={34} />
             </div>
-            <p className="text-xs sm:text-sm text-alabaster/70 leading-relaxed max-w-sm">
-              Codename Hi-Five is a benchmark residential community crafted with 55 years of developer legacy, located adjacent to ORR Exit 5, Bowrampet, Hyderabad.
+            <p className="font-figtree font-normal text-alabaster/80 leading-relaxed">
+              Codename Hi-Five is a premium gated residential development by Kura Homes, bringing 55 years of trust,
+              structural excellence, and design legacy to the high-growth ORR Exit 5 corridor, Hyderabad.
             </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href={`tel:${PROJECT_INFO.phone}`}
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-alabaster hover:border-caramel hover:text-caramel transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-caramel" />
-                <span>{PROJECT_INFO.phoneDisplay}</span>
-              </a>
-              <a
-                href={PROJECT_INFO.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald/10 border border-emerald/20 text-xs font-semibold text-emerald hover:bg-emerald/20 transition-colors"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>WhatsApp Us</span>
-              </a>
-            </div>
           </div>
 
-          {/* Col 2: Navigation Links */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="font-gumani text-base font-bold text-alabaster tracking-wide">Quick Navigation</h4>
-            <ul className="space-y-2 text-xs text-alabaster/70">
-              <li><a href="#overview" className="hover:text-caramel transition-colors">Overview & Concept</a></li>
-              <li><a href="#pricing" className="hover:text-caramel transition-colors">Unit Configurations & Pricing</a></li>
-              <li><a href="#floorplans" className="hover:text-caramel transition-colors">Floor Plan Blueprints</a></li>
-              <li><a href="#amenities" className="hover:text-caramel transition-colors">Clubhouse & Amenities</a></li>
-              <li><a href="#location" className="hover:text-caramel transition-colors">Location & Connectivity Matrix</a></li>
-              <li><a href="#calculator" className="hover:text-caramel transition-colors">EMI & Tax Savings Studio</a></li>
+          <div className="footer-links">
+            <h4 className="font-gumani font-bold text-alabaster text-lg">Navigation</h4>
+            <ul className="font-figtree font-medium">
+              <li><a href="#hero">Overview</a></li>
+              <li><a href="#pricing">Homes & Pricing</a></li>
+              <li><a href="#calculators">Affordability</a></li>
+              <li><a href="#location">Location Hub</a></li>
+              <li><a href="#amenities">Lifestyle Amenities</a></li>
+              <li><a href="#progress">Progress</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Compliance & RERA */}
-          <div className="md:col-span-4 space-y-3">
-            <h4 className="font-gumani text-base font-bold text-alabaster tracking-wide">Approvals & Location</h4>
-            <div className="space-y-2 text-xs text-alabaster/70">
-              <p className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-caramel shrink-0 mt-0.5" />
-                <span>{PROJECT_INFO.location}</span>
-              </p>
-              <p className="flex items-center gap-2 text-emerald">
-                <ShieldCheck className="w-4 h-4 shrink-0" />
-                <span>TG RERA Registration: <strong>{PROJECT_INFO.reraNumber}</strong></span>
-              </p>
-              <p className="flex items-center gap-2">
-                <FileText className="w-4 h-4 text-caramel shrink-0" />
-                <span>HMDA Approval: <strong>{PROJECT_INFO.hmdaNumber}</strong></span>
+          <div className="footer-contact">
+            <h4 className="font-gumani font-bold text-alabaster text-lg">Location Details</h4>
+            <p className="font-figtree font-normal text-alabaster/80">
+              <i className="fa-solid fa-map-location text-accent" style={{ marginRight: '8px' }}></i> Adjacent to ORR Exit No. 5,
+              Bowrampet Road, Dundigal, Gandimaisamma, Hyderabad, Telangana 500043
+            </p>
+            <div className="footer-legal-badges font-figtree">
+              <a href="https://tsrera.telangana.gov.in" target="_blank" rel="noopener noreferrer" className="font-medium text-caramel hover:underline">
+                <i className="fa-solid fa-shield-check"></i> TG RERA Reg: P02200002810
+              </a>
+              <p style={{ margin: 0 }} className="text-alabaster/70">
+                <i className="fa-solid fa-file-invoice" style={{ marginRight: '8px' }}></i> HMDA Approval: G1/DM/2237/BP/2021
               </p>
             </div>
           </div>
         </div>
 
-        {/* Disclaimer & Copyright */}
-        <div className="pt-8 space-y-3 text-[11px] text-alabaster/50 leading-relaxed">
-          <p>
-            <strong>Disclaimer:</strong> The visual representations, layouts, specifications, images, and prices mentioned on this website are indicative and subject to change per regulatory guidelines. All calculations (EMI, tax savings) are illustrative financial estimates. Official approvals are documented under TG RERA No. {PROJECT_INFO.reraNumber}.
+        <div className="footer-bottom font-figtree">
+          <p className="footer-disclaimer font-normal text-alabaster/60 text-xs leading-relaxed">
+            Important Disclaimer: Calculated figures (EMI, tax savings, rentals), layout graphics, and location proximity
+            drive-times shown on this page are indicative models only and do not represent a financial contract, investment
+            advice, or guaranteed yield curves. Home loans are subject to approval policies of underwriting banks. Tax benefits
+            depend on the individual&apos;s choice of old tax regime options and CA advice. All construction timelines are
+            referenced under TG RERA filings P02200002810.
           </p>
-          <p>© {new Date().getFullYear()} Kura Homes. All Rights Reserved. Codename Hi-Five, Hyderabad.</p>
+          <p className="footer-copy font-normal text-alabaster/70 text-xs">
+            © 2026 Kura Homes. All rights reserved. Developed by Antigravity under client approval.
+          </p>
         </div>
       </div>
     </footer>

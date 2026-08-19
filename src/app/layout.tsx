@@ -55,13 +55,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${figtree.variable} ${gloock.variable}`}>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-      </head>
-      <body>{children}</body>
+      <body className="bg-alabaster text-noir font-figtree antialiased selection:bg-caramel selection:text-white">
+        {children}
+      </body>
     </html>
   );
 }

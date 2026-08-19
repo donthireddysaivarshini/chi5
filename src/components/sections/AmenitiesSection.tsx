@@ -2,102 +2,131 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { CheckCircle2, Sparkles } from 'lucide-react';
-import { AMENITY_TABS, AMENITIES } from '@/data/content';
 
-interface AmenitiesSectionProps {
-  onOpenModal: (source: string) => void;
-}
-
-export default function AmenitiesSection({ onOpenModal }: AmenitiesSectionProps) {
-  const [activeTab, setActiveTab] = useState('wellness');
-
-  const currentTab = AMENITY_TABS.find((t) => t.id === activeTab) || AMENITY_TABS[0];
-  const items = AMENITIES[activeTab] || [];
+export default function AmenitiesSection() {
+  const [activeAmenityTab, setActiveAmenityTab] = useState<'fitness' | 'social' | 'kids' | 'practical'>('fitness');
 
   return (
-    <section id="amenities" className="py-20 sm:py-28 bg-sienna text-alabaster">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-caramel">
-            40+ Curated Lifestyle Privileges
-          </span>
-          <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-alabaster leading-tight">
-            25,000 Sq.Ft <span className="italic text-caramel font-normal">Clubhouse Sanctuary.</span>
-          </h2>
-          <p className="text-sm sm:text-base text-alabaster/80 font-light">
-            Crafted for relaxation, wellness, recreation, and meaningful social connections for every generation.
+    <section className="section amenities-section" id="amenities">
+      <div className="container">
+        <div className="section-header text-center">
+          <span className="tag font-figtree font-bold uppercase tracking-widest text-caramel">Lifestyle</span>
+          <h2 className="font-gumani font-bold text-sienna">25,000 Sq.Ft Clubhouse & 40+ Amenities</h2>
+          <p className="font-figtree font-normal text-noir/70" style={{ margin: '0 auto' }}>
+            Enjoy curated zones built for health, recreation, co-working, and family time.
           </p>
         </div>
 
-        {/* Tab Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-12">
-          {AMENITY_TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`py-3 px-5 sm:px-6 rounded-2xl text-xs sm:text-sm font-bold tracking-wider uppercase transition-all ${
-                activeTab === tab.id
-                  ? 'bg-caramel text-white shadow-lg shadow-caramel/30 scale-105'
-                  : 'bg-white/10 text-alabaster/80 hover:bg-white/15 hover:text-white'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        <div className="amenities-tabs-header" id="amenityTabContainer">
+          <button
+            className={`amenity-tab-btn font-figtree font-bold ${activeAmenityTab === 'fitness' ? 'active' : ''}`}
+            onClick={() => setActiveAmenityTab('fitness')}
+          >
+            Fitness & Pool
+          </button>
+          <button
+            className={`amenity-tab-btn font-figtree font-bold ${activeAmenityTab === 'social' ? 'active' : ''}`}
+            onClick={() => setActiveAmenityTab('social')}
+          >
+            Co-Work & Social
+          </button>
+          <button
+            className={`amenity-tab-btn font-figtree font-bold ${activeAmenityTab === 'kids' ? 'active' : ''}`}
+            onClick={() => setActiveAmenityTab('kids')}
+          >
+            Kids & Outdoors
+          </button>
+          <button
+            className={`amenity-tab-btn font-figtree font-bold ${activeAmenityTab === 'practical' ? 'active' : ''}`}
+            onClick={() => setActiveAmenityTab('practical')}
+          >
+            Practical Conveniences
+          </button>
         </div>
 
-        {/* Tab Content Display */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-sienna-dark rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl">
-          {/* Left: Amenities Feature List */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="flex items-center gap-2 text-caramel text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="w-4 h-4" />
-              <span>{currentTab.label} Highlights</span>
+        {/* Tab 1: Fitness */}
+        {activeAmenityTab === 'fitness' && (
+          <div className="amenity-tab-pane active" id="pane-fit">
+            <div className="amenity-grid-content">
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-water-ladder text-caramel"></i> <span>Rooftop Infinity Pool</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-dumbbell text-caramel"></i> <span>AC Gymnasium</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-mattress-pillow text-caramel"></i> <span>Aerobics & Yoga Studio</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-person-running text-caramel"></i> <span>Jogging & Walking Track</span></div>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-              {items.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-caramel/40 transition-colors"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-caramel shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-sm text-alabaster/90 font-medium leading-snug">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-2">
-              <button
-                onClick={() => onOpenModal(`amenities_brochure_${activeTab}`)}
-                className="py-3 px-6 bg-caramel hover:bg-caramel-light text-white font-bold text-xs uppercase tracking-widest rounded-xl shadow-md transition-all"
-              >
-                Download Full 40+ Amenities Brochure
-              </button>
-            </div>
-          </div>
-
-          {/* Right: Render Image */}
-          <div className="lg:col-span-6">
-            <div className="relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden shadow-xl border border-white/10">
+            <div className="amenity-visual">
               <Image
-                src={currentTab.image}
-                alt={currentTab.label}
-                fill
-                className="object-cover"
+                src="/images/swimming pool.webp"
+                alt="Rooftop Swimming Pool Render"
+                width={500}
+                height={350}
+                className="rounded-2xl object-cover"
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-sienna-dark/80 backdrop-blur-sm p-3.5 rounded-xl border border-white/10 flex items-center justify-between">
-                <span className="text-xs font-bold text-alabaster">{currentTab.label}</span>
-                <span className="text-[11px] text-caramel font-semibold uppercase tracking-wider">
-                  Clubhouse Level
-                </span>
-              </div>
             </div>
           </div>
-        </div>
+        )}
+
+        {/* Tab 2: Social */}
+        {activeAmenityTab === 'social' && (
+          <div className="amenity-tab-pane active" id="pane-soc">
+            <div className="amenity-grid-content">
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-laptop-code text-caramel"></i> <span>Luxe Co-working Space</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-glass-cheers text-caramel"></i> <span>Multipurpose Banquet Hall</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-couch text-caramel"></i> <span>Grand Reception Foyer</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-bed text-caramel"></i> <span>Fully-Furnished Guest Rooms</span></div>
+            </div>
+            <div className="amenity-visual">
+              <Image
+                src="/images/club view.webp"
+                alt="25K Sq.Ft Clubhouse Lounge"
+                width={500}
+                height={350}
+                className="rounded-2xl object-cover"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Tab 3: Kids */}
+        {activeAmenityTab === 'kids' && (
+          <div className="amenity-tab-pane active" id="pane-kid">
+            <div className="amenity-grid-content">
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-child-reaching text-caramel"></i> <span>Traffic-Free Children&apos;s Play Area</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-baseball-bat-ball text-caramel"></i> <span>Net Cricket Practice Courts</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-basketball text-caramel"></i> <span>Half Basketball Court</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-bicycle text-caramel"></i> <span>Dedicated Cycling Track</span></div>
+            </div>
+            <div className="amenity-visual">
+              <Image
+                src="/images/Childrens Play area.webp"
+                alt="Kids Adventure Play Zone"
+                width={500}
+                height={350}
+                className="rounded-2xl object-cover"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Tab 4: Practical */}
+        {activeAmenityTab === 'practical' && (
+          <div className="amenity-tab-pane active" id="pane-prac">
+            <div className="amenity-grid-content">
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-charging-station text-caramel"></i> <span>EV Charging Stations</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-vault text-caramel"></i> <span>Safety Locker Facility</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-scissors text-caramel"></i> <span>In-house Salon Room</span></div>
+              <div className="amenity-tile font-figtree font-medium"><i className="fa-solid fa-building-shield text-caramel"></i> <span>24/7 Gated Security & CCTV</span></div>
+            </div>
+            <div className="amenity-visual">
+              <Image
+                src="/images/Basket ball court.webp"
+                alt="Outdoor sports arena"
+                width={500}
+                height={350}
+                className="rounded-2xl object-cover"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

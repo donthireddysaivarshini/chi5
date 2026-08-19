@@ -2,21 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Phone, Menu, X } from 'lucide-react';
-import HiFiveBrandLockup from '@/components/ui/HiFiveBrandLockup';
-import { PROJECT_INFO } from '@/data/content';
 
 interface HeaderProps {
-  onOpenModal: (source: string) => void;
+  onOpenLeadModal: (source: string, title?: string) => void;
 }
 
-export default function Header({ onOpenModal }: HeaderProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
+export default function Header({ onOpenLeadModal }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -26,130 +23,90 @@ export default function Header({ onOpenModal }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Overview', href: '#overview' },
-    { label: 'Homes & Pricing', href: '#pricing' },
-    { label: 'Floor Plans', href: '#floorplans' },
-    { label: 'Lifestyle', href: '#amenities' },
-    { label: 'Location', href: '#location' },
-    { label: 'Progress', href: '#progress' },
-    { label: 'Cost Studio', href: '#calculator' },
-  ];
-
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 h-20 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-alabaster/95 backdrop-blur-md shadow-md border-b border-chocolate-dark'
-            : 'bg-transparent border-b border-white/10'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Left: Brand Identity Lockup */}
-          <a href="#hero" className="flex items-center gap-3 sm:gap-4 group">
-            <div className="relative h-8 sm:h-9 w-24 sm:w-28">
-              <Image
-                src="/logos/kura homes logo.png"
-                alt="Kura Homes"
-                fill
-                className={`object-contain transition-all duration-200 ${
-                  isScrolled ? 'brightness-100' : 'brightness-0 invert'
-                }`}
-                priority
-              />
-            </div>
-            <span className={`text-base font-light transition-colors duration-200 ${
-              isScrolled ? 'text-sienna/40' : 'text-white/40'
-            }`}>
-              |
-            </span>
-            <HiFiveBrandLockup variant="header" isScrolled={isScrolled} />
+      <header className={`header-nav ${isScrolled ? 'scrolled' : ''}`} id="mainHeader">
+        <div className="container header-container">
+          <a href="#hero" className="header-logos">
+            <Image
+              src="/logos/kura homes logo.png"
+              alt="Kura Homes Logo"
+              width={110}
+              height={36}
+              className="dev-logo"
+              priority
+            />
+            <div className="divider"></div>
+            <Image
+              src="/logos/hi-five logo 2.png"
+              alt="Codename Hi-Five Logo"
+              width={130}
+              height={40}
+              className="proj-logo"
+              priority
+            />
           </a>
 
-          {/* Center: Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`text-xs font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-caramel ${
-                  isScrolled ? 'text-sienna/80' : 'text-white/85'
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+          <nav className="nav-links">
+            <a href="#hero" className="nav-link active font-figtree font-medium">Overview</a>
+            <a href="#pricing" className="nav-link font-figtree font-medium">Homes</a>
+            <a href="#amenities" className="nav-link font-figtree font-medium">Lifestyle</a>
+            <a href="#location" className="nav-link font-figtree font-medium">Location</a>
+            <a href="#progress" className="nav-link font-figtree font-medium">Progress</a>
+            <a href="#contact" className="nav-link font-figtree font-medium">Contact</a>
           </nav>
 
-          {/* Right: Actions */}
-          <div className="hidden sm:flex items-center gap-4">
-            <a
-              href={`tel:${PROJECT_INFO.phone}`}
-              className={`flex items-center gap-2 text-xs font-bold tracking-wider transition-colors ${
-                isScrolled ? 'text-sienna' : 'text-white'
-              }`}
-            >
-              <Phone className="w-3.5 h-3.5 text-caramel" />
-              <span>{PROJECT_INFO.phoneDisplay}</span>
+          <div className="header-actions">
+            <a href="tel:8008008946" className="header-phone font-figtree font-semibold">
+              <i className="fa-solid fa-phone text-caramel"></i>
+              <span>800 800 8946</span>
             </a>
             <button
-              onClick={() => onOpenModal('header_cta')}
-              className="py-2.5 px-4 bg-caramel hover:bg-caramel-light text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md hover:shadow-caramel-glow transition-all"
+              className="btn btn-primary font-figtree font-bold uppercase tracking-wider text-xs"
+              onClick={() => onOpenLeadModal('header_cta', 'Book a Private Site Visit')}
             >
               Book Site Visit
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
           <button
+            className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
+            id="hamburgerBtn"
+            aria-label="Toggle Navigation"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? 'text-sienna' : 'text-white'
-            }`}
-            aria-label="Toggle navigation"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-sienna-dark text-alabaster pt-24 px-6 pb-10 flex flex-col justify-between lg:hidden animate-fade-in">
-          <nav className="flex flex-col gap-5 text-center">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-gumani text-2xl font-bold hover:text-caramel transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="space-y-3 pt-6 border-t border-white/10">
-            <a
-              href={`tel:${PROJECT_INFO.phone}`}
-              className="w-full flex items-center justify-center gap-2 py-3 bg-white/10 rounded-xl text-white font-bold text-xs uppercase tracking-wider"
-            >
-              <Phone className="w-4 h-4 text-caramel" />
-              <span>Call: {PROJECT_INFO.phoneDisplay}</span>
-            </a>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenModal('mobile_drawer_cta');
-              }}
-              className="w-full py-3 bg-caramel hover:bg-caramel-light text-white font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg"
-            >
-              Book a Site Visit
-            </button>
-          </div>
+      {/* MOBILE NAV OVERLAY */}
+      <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'active' : ''}`} id="mobileMenu">
+        <nav className="mobile-menu-links">
+          <a href="#hero" className="mobile-nav-link font-gumani font-bold text-2xl" onClick={() => setMobileMenuOpen(false)}>Overview</a>
+          <a href="#pricing" className="mobile-nav-link font-gumani font-bold text-2xl" onClick={() => setMobileMenuOpen(false)}>Homes & Pricing</a>
+          <a href="#amenities" className="mobile-nav-link font-gumani font-bold text-2xl" onClick={() => setMobileMenuOpen(false)}>Lifestyle</a>
+          <a href="#location" className="mobile-nav-link font-gumani font-bold text-2xl" onClick={() => setMobileMenuOpen(false)}>Location</a>
+          <a href="#progress" className="mobile-nav-link font-gumani font-bold text-2xl" onClick={() => setMobileMenuOpen(false)}>Progress</a>
+          <a href="#contact" className="mobile-nav-link font-gumani font-bold text-2xl" onClick={() => setMobileMenuOpen(false)}>Contact Us</a>
+        </nav>
+        <div className="mobile-menu-actions">
+          <a href="tel:8008008946" className="btn btn-secondary font-figtree font-bold">
+            <i className="fa-solid fa-phone" style={{ marginRight: '8px' }}></i> Call Sales Agent
+          </a>
+          <button
+            className="btn btn-primary font-figtree font-bold"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenLeadModal('mobile_menu_cta', 'Schedule a Site Tour');
+            }}
+          >
+            Book Site Visit
+          </button>
         </div>
-      )}
+      </div>
     </>
   );
 }

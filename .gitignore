@@ -1,22 +1,3 @@
-# Dependencies
-node_modules/
-/.pnp
-.pnp.js
-
-# Next.js build output
-.next/
-out/
-
-# Environment files
-.env*.local
-
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
 # Ignore giant raw render source files not used by the website
 public/images/*Copy of*
 public/images/*.tif
