@@ -17,6 +17,7 @@ const config: Config = {
         alabaster: {
           DEFAULT: '#F5F3E6',
           muted: '#EBE8D8',
+          stone: '#E0D8CB',
         },
         caramel: {
           light: '#E59253',
@@ -33,17 +34,20 @@ const config: Config = {
         },
         noir: {
           DEFAULT: '#1B1717',
-          muted: '#3C3636',
+          muted: '#5C4D44',
         },
         emerald: {
           DEFAULT: '#10B981',
+          400: '#34D399',
         },
         whatsapp: {
           DEFAULT: '#25D366',
         },
       },
       fontFamily: {
+        display: ['var(--font-gloock)', 'var(--font-playfair)', 'Gumani', 'Gloock', 'Playfair Display', 'Georgia', 'serif'],
         gumani: ['var(--font-gloock)', 'var(--font-playfair)', 'Gumani', 'Gloock', 'Playfair Display', 'Georgia', 'serif'],
+        sans: ['var(--font-figtree)', 'Figtree', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
         figtree: ['var(--font-figtree)', 'Figtree', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
         gloock: ['var(--font-gloock)', 'Gloock', 'serif'],
       },

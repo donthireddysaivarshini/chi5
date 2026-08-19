@@ -17,49 +17,49 @@ export default function OverviewSection({ onOpenLeadModal }: OverviewSectionProp
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="py-20 sm:py-28 bg-sienna text-alabaster"
+      className="py-20 sm:py-28 bg-[#3A1C11] text-[#F5F3E6]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left: Editorial Story & Social Proof */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Left: Editorial Story & High-Contrast Stat Cards */}
+          <div className="lg:col-span-6 space-y-6 text-left">
             <div className="space-y-2">
-              <span className="font-figtree text-xs font-bold uppercase tracking-[0.15em] text-caramel flex items-center gap-2">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-[#CE793A] flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4" />
                 <span>55 Years of Developer Trust</span>
               </span>
-              <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-                Where Gated Luxury Meets <span className="italic text-caramel font-normal">Untouched Nature.</span>
+              <h2 className="font-display font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F3E6] tracking-tight leading-[1.15]">
+                Where Gated Luxury Meets <span className="italic text-[#CE793A] font-normal">Untouched Nature.</span>
               </h2>
             </div>
 
-            <p className="font-figtree text-sm sm:text-base text-alabaster/85 font-normal leading-relaxed">
+            <p className="font-sans text-sm sm:text-base text-[#D6CFC4] font-normal leading-relaxed">
               Codename Hi-Five by Kura Homes is a benchmark residential community crafted with 55 years of architectural excellence. Located directly adjacent to the pristine Bowrampet reserve forests, this gated address offers a cooler microclimate year-round, while placing you just 1 minute from ORR Exit-5.
             </p>
 
-            {/* Social Proof Badges Strip */}
+            {/* High-Contrast Stat Cards */}
             <div className="grid grid-cols-3 gap-3 pt-2">
-              <div className="p-3.5 rounded-2xl bg-sienna-dark border border-white/10 text-center">
-                <Sparkles className="w-4 h-4 text-caramel mx-auto mb-1" />
-                <span className="font-gumani text-xl sm:text-2xl font-bold text-white block">500+</span>
-                <span className="font-figtree text-[11px] text-alabaster/70 font-medium">Homes Booked</span>
+              <div className="p-3.5 rounded-2xl bg-[#2B140B]/80 border border-[#EADECF]/20 text-center">
+                <Sparkles className="w-4 h-4 text-[#CE793A] mx-auto mb-1" />
+                <span className="font-serif text-xl sm:text-2xl font-bold text-[#F5F3E6] block">500+</span>
+                <span className="font-sans text-[11px] text-[#D6CFC4] font-medium">Homes Booked</span>
               </div>
-              <div className="p-3.5 rounded-2xl bg-sienna-dark border border-white/10 text-center">
-                <ShieldCheck className="w-4 h-4 text-caramel mx-auto mb-1" />
-                <span className="font-gumani text-xl sm:text-2xl font-bold text-white block">40+</span>
-                <span className="font-figtree text-[11px] text-alabaster/70 font-medium">Club Amenities</span>
+              <div className="p-3.5 rounded-2xl bg-[#2B140B]/80 border border-[#EADECF]/20 text-center">
+                <ShieldCheck className="w-4 h-4 text-[#CE793A] mx-auto mb-1" />
+                <span className="font-serif text-xl sm:text-2xl font-bold text-[#F5F3E6] block">40+</span>
+                <span className="font-sans text-[11px] text-[#D6CFC4] font-medium">Club Amenities</span>
               </div>
-              <div className="p-3.5 rounded-2xl bg-sienna-dark border border-white/10 text-center">
-                <Trees className="w-4 h-4 text-caramel mx-auto mb-1" />
-                <span className="font-gumani text-xl sm:text-2xl font-bold text-white block">70%</span>
-                <span className="font-figtree text-[11px] text-alabaster/70 font-medium">Open Spaces</span>
+              <div className="p-3.5 rounded-2xl bg-[#2B140B]/80 border border-[#EADECF]/20 text-center">
+                <Trees className="w-4 h-4 text-[#CE793A] mx-auto mb-1" />
+                <span className="font-serif text-xl sm:text-2xl font-bold text-[#F5F3E6] block">70%</span>
+                <span className="font-sans text-[11px] text-[#D6CFC4] font-medium">Open Spaces</span>
               </div>
             </div>
 
             <div className="pt-3">
               <button
                 onClick={() => onOpenLeadModal('overview_private_visit', 'Schedule a Private Site Visit')}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all"
               >
                 <CalendarCheck className="w-4 h-4" />
                 <span>Schedule a Private Site Visit</span>
@@ -76,9 +76,9 @@ export default function OverviewSection({ onOpenLeadModal }: OverviewSectionProp
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />
-              <div className="absolute bottom-4 left-4 right-4 p-3.5 bg-sienna-dark/85 backdrop-blur-md rounded-2xl border border-white/15 flex items-center justify-between text-xs font-figtree">
-                <span className="text-white font-semibold">5.3 Acre Masterplanned Township</span>
-                <span className="text-caramel font-bold uppercase tracking-wider">Bowrampet Reserve</span>
+              <div className="absolute bottom-4 left-4 right-4 p-3.5 bg-[#28120C]/85 backdrop-blur-md rounded-2xl border border-white/15 flex items-center justify-between text-xs font-sans">
+                <span className="text-[#F5F3E6] font-semibold">5.3 Acre Masterplanned Township</span>
+                <span className="text-[#CE793A] font-bold uppercase tracking-wider">Bowrampet Reserve</span>
               </div>
             </div>
           </div>
