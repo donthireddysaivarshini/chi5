@@ -1,20 +1,21 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface StickyMobileDockProps {
   onOpenLeadModal: (source: string, title?: string) => void;
 }
 
 export default function StickyMobileDock({ onOpenLeadModal }: StickyMobileDockProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setIsScrolled(true);
+      if (window.scrollY > 250) {
+        setVisible(true);
       } else {
-        setIsScrolled(false);
+        setVisible(false);
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -22,33 +23,33 @@ export default function StickyMobileDock({ onOpenLeadModal }: StickyMobileDockPr
   }, []);
 
   return (
-    <div
-      className="mobile-sticky-dock"
-      id="mobileStickyDock"
-      style={{ display: isScrolled ? 'block' : 'none' }}
-    >
-      <div className="mobile-dock-grid">
-        <button
-          className="dock-btn font-figtree font-medium"
-          onClick={() => onOpenLeadModal('mobile_dock_visit', 'Book a Private Site Visit')}
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ y: 80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 80, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed bottom-3 left-3 right-3 z-40 md:hidden"
         >
-          <i className="fa-solid fa-calendar-check text-caramel"></i>
-          <span>Book Visit</span>
-        </button>
-        <a
-          href="https://wa.me/918008008946?text=Hi%2C%20I%20am%20interested%20in%20Codename%20Hi-Five%20by%20Kura%20Homes.%20Please%20send%20brochure%20and%20pricing%20breakdown."
-          className="dock-btn font-figtree font-medium"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i className="fa-brands fa-whatsapp" style={{ color: '#25D366' }}></i>
-          <span>WhatsApp</span>
-        </a>
-        <a href="tel:8008008946" className="dock-btn dock-btn-accent font-figtree font-medium">
-          <i className="fa-solid fa-phone"></i>
-          <span>Call Agent</span>
-        </a>
-      </div>
-    </div>
+          <div className="h-12 bg-sienna-dark/95 backdrop-blur-md border border-white/20 rounded-full px-4 shadow-2xl flex items-center justify-between font-figtree">
+            {/* Left Tag */}
+            <div className="flex items-center gap-1.5 text-xs">
+              <span className="font-gumani font-bold text-white text-sm">₹55 Lakhs*</span>
+              <span className="text-white/40">|</span>
+              <span className="text-caramel font-semibold">ORR Exit 5</span>
+            </div>
+
+            {/* Right Single CTA Button */}
+            <button
+              onClick={() => onOpenLeadModal('mobile_pill_cta', 'Book a Private Site Tour')}
+              className="bg-caramel hover:bg-caramel-light text-white font-bold text-[11px] uppercase tracking-wider px-4 py-2 rounded-full shadow-md transition-all active:scale-95"
+            >
+              Book Site Visit
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

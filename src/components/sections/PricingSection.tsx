@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { CheckCircle2, Lock, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface PricingSectionProps {
   onOpenLeadModal: (source: string, title?: string) => void;
@@ -9,91 +11,185 @@ interface PricingSectionProps {
 
 export default function PricingSection({ onOpenLeadModal }: PricingSectionProps) {
   return (
-    <section className="section pricing-section" id="pricing">
-      <div className="container">
-        <div className="section-header text-center">
-          <span className="tag font-figtree font-bold uppercase tracking-widest text-caramel">Configurations</span>
-          <h2 className="font-gumani font-bold text-sienna">Explore Available Layouts & Sizes</h2>
-          <p className="font-figtree font-normal text-noir/70" style={{ margin: '0 auto' }}>
-            Select from space-optimized 2 BHK configurations or expansive double-height Duplex suites.
+    <motion.section
+      id="pricing"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="py-20 sm:py-28 bg-alabaster text-noir"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16 space-y-3">
+          <span className="font-figtree text-xs font-bold uppercase tracking-[0.15em] text-caramel">
+            Configurations & Pricing
+          </span>
+          <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-sienna tracking-tight leading-[1.15]">
+            Explore Available <span className="italic text-caramel font-normal">Layouts & Sizes.</span>
+          </h2>
+          <p className="font-figtree text-sm sm:text-base text-noir/70 font-normal">
+            Select from space-optimized 2 BHK configurations or expansive double-height Duplex penthouses.
           </p>
         </div>
 
-        <div className="pricing-grid">
-          {/* 2 BHK Card */}
-          <div className="pricing-card">
-            <span className="card-badge font-figtree font-bold">Smart Luxe</span>
-            <h3 className="font-gumani font-bold text-sienna text-2xl">Premium 2 BHK Homes</h3>
-            <span className="price-main font-gumani font-bold text-caramel">₹55 Lakhs*</span>
-            <span className="price-sub font-figtree font-normal text-noir/60">Starting price at ₹4,999/sq.ft onwards</span>
-            <ul className="pricing-specs font-figtree font-normal text-noir/80">
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> 1,100 to 1,285 Sq.Ft configurations</li>
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> 100% Vaastu Compliant Layouts</li>
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> East & West facing entrance choices</li>
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> Cross-ventilated living space with grand balconies</li>
-            </ul>
-
-            {/* Gated Floor Plan Preview */}
-            <div
-              className="floorplan-vault"
-              onClick={() => onOpenLeadModal('floorplan_2bhk', 'Unlock 2 BHK Blueprints & CAD Plans')}
-            >
-              <Image
-                src="/images/bedroom 1.webp"
-                alt="Blurred Floor Plan blueprint"
-                width={400}
-                height={200}
-                className="floorplan-blur object-cover"
-              />
-              <div className="vault-overlay font-figtree font-bold">
-                <i className="fa-solid fa-lock text-caramel"></i>
-                <span>Unlock 2 BHK Blueprints</span>
+        {/* Side-by-Side Dual Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          {/* Card 1: 2 BHK Smart Luxe */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-kura border border-borderTone flex flex-col justify-between transition-all duration-300 hover:shadow-kura-lg hover:-translate-y-1.5">
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <span className="px-3.5 py-1 rounded-full bg-caramel/10 text-caramel font-figtree font-bold text-xs uppercase tracking-wider">
+                  Smart Luxe
+                </span>
+                <span className="font-figtree text-xs text-noir/50">Possession Soon</span>
               </div>
+
+              <div>
+                <h3 className="font-gumani text-2xl sm:text-3xl font-bold text-sienna">
+                  Premium 2 BHK Homes
+                </h3>
+                <div className="flex items-baseline gap-2 mt-1">
+                  <span className="font-gumani text-3xl sm:text-4xl font-bold text-caramel">
+                    ₹55 Lakhs*
+                  </span>
+                  <span className="font-figtree text-xs text-noir/50">onwards</span>
+                </div>
+                <span className="font-figtree text-xs text-noir/60 block mt-0.5">
+                  Starting at ₹4,999/sq.ft onwards
+                </span>
+              </div>
+
+              <ul className="space-y-2.5 pt-2 border-t border-borderTone/60 font-figtree text-xs sm:text-sm text-noir/80">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>1,100 to 1,285 Sq.Ft configurations</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>100% Vaastu Compliant Layouts</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>East & West facing entrance choices</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>Cross-ventilated living space with grand balconies</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Gated Floor Plan Card Preview */}
+            <div className="pt-6 mt-6 border-t border-borderTone/60 space-y-4">
+              <div
+                onClick={() => onOpenLeadModal('floorplan_2bhk', 'Unlock 2 BHK Blueprints (PDF)')}
+                className="relative h-36 w-full rounded-2xl overflow-hidden cursor-pointer group border border-borderTone shadow-inner"
+              >
+                <Image
+                  src="/images/bedroom 1.webp"
+                  alt="2 BHK Floor Plan Blueprint Preview"
+                  fill
+                  className="object-cover blur-sm group-hover:scale-105 transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-sienna-dark/70 group-hover:bg-sienna-dark/60 transition-colors flex flex-col items-center justify-center text-alabaster gap-2">
+                  <div className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Lock className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-figtree font-bold text-xs uppercase tracking-wider">
+                    Unlock 2 BHK Blueprints (PDF)
+                  </span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => onOpenLeadModal('floorplan_2bhk', 'Unlock 2 BHK Blueprints (PDF)')}
+                className="w-full py-3.5 bg-sienna hover:bg-sienna-light text-white font-figtree font-bold text-xs uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2 shadow-md"
+              >
+                <span>Download 2 BHK Blueprint & Cost Sheet</span>
+                <ArrowRight className="w-4 h-4 text-caramel" />
+              </button>
             </div>
           </div>
 
-          {/* Duplex Card */}
-          <div className="pricing-card">
-            <span className="card-badge font-figtree font-bold">Luxury Penthouse</span>
-            <h3 className="font-gumani font-bold text-sienna text-2xl">Bespoke Duplex Suites</h3>
-            <span className="price-main font-gumani font-bold text-caramel">₹95 Lakhs*</span>
-            <span className="price-sub font-figtree font-normal text-noir/60">Starting price at ₹4,999/sq.ft onwards</span>
-            <ul className="pricing-specs font-figtree font-normal text-noir/80">
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> 1,850 to 2,200 Sq.Ft duplex layouts</li>
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> Double-height ceiling architectural living</li>
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> Private terrace deck with green forest views</li>
-              <li><i className="fa-solid fa-circle-check text-emerald"></i> Master bedroom penthouse suites on upper level</li>
-            </ul>
-
-            {/* Gated Floor Plan Preview */}
-            <div
-              className="floorplan-vault"
-              onClick={() => onOpenLeadModal('floorplan_duplex', 'Unlock Duplex Penthouse Blueprints')}
-            >
-              <Image
-                src="/images/Master bedroom.webp"
-                alt="Blurred Floor Plan blueprint"
-                width={400}
-                height={200}
-                className="floorplan-blur object-cover"
-              />
-              <div className="vault-overlay font-figtree font-bold">
-                <i className="fa-solid fa-lock text-caramel"></i>
-                <span>Unlock Duplex Blueprints</span>
+          {/* Card 2: Bespoke Duplex Suites */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-kura border border-borderTone flex flex-col justify-between transition-all duration-300 hover:shadow-kura-lg hover:-translate-y-1.5">
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <span className="px-3.5 py-1 rounded-full bg-caramel/10 text-caramel font-figtree font-bold text-xs uppercase tracking-wider">
+                  Luxury Penthouse
+                </span>
+                <span className="font-figtree text-xs text-noir/50">Exclusive Limited Units</span>
               </div>
+
+              <div>
+                <h3 className="font-gumani text-2xl sm:text-3xl font-bold text-sienna">
+                  Bespoke Duplex Suites
+                </h3>
+                <div className="flex items-baseline gap-2 mt-1">
+                  <span className="font-gumani text-3xl sm:text-4xl font-bold text-caramel">
+                    ₹95 Lakhs*
+                  </span>
+                  <span className="font-figtree text-xs text-noir/50">onwards</span>
+                </div>
+                <span className="font-figtree text-xs text-noir/60 block mt-0.5">
+                  Starting at ₹4,999/sq.ft onwards
+                </span>
+              </div>
+
+              <ul className="space-y-2.5 pt-2 border-t border-borderTone/60 font-figtree text-xs sm:text-sm text-noir/80">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>1,850 to 2,200 Sq.Ft duplex layouts</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>Double-height ceiling architectural living</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>Private terrace deck with green forest views</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
+                  <span>Master bedroom penthouse suites on upper level</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Gated Floor Plan Card Preview */}
+            <div className="pt-6 mt-6 border-t border-borderTone/60 space-y-4">
+              <div
+                onClick={() => onOpenLeadModal('floorplan_duplex', 'Unlock Duplex Blueprints (PDF)')}
+                className="relative h-36 w-full rounded-2xl overflow-hidden cursor-pointer group border border-borderTone shadow-inner"
+              >
+                <Image
+                  src="/images/Master bedroom.webp"
+                  alt="Duplex Floor Plan Blueprint Preview"
+                  fill
+                  className="object-cover blur-sm group-hover:scale-105 transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-sienna-dark/70 group-hover:bg-sienna-dark/60 transition-colors flex flex-col items-center justify-center text-alabaster gap-2">
+                  <div className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Lock className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-figtree font-bold text-xs uppercase tracking-wider">
+                    Unlock Duplex Blueprints (PDF)
+                  </span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => onOpenLeadModal('floorplan_duplex', 'Unlock Duplex Blueprints (PDF)')}
+                className="w-full py-3.5 bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2 shadow-md"
+              >
+                <span>Download Duplex Blueprint & Cost Sheet</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
-        </div>
-
-        <div className="pricing-action-bottom">
-          <button
-            className="btn btn-primary font-figtree font-bold uppercase tracking-wider text-xs"
-            onClick={() => onOpenLeadModal('pricing_summary_cta', 'Get Detailed Pricing & Availability')}
-          >
-            Get Detailed Pricing & Availability
-          </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

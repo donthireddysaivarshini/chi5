@@ -1,82 +1,225 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface GallerySectionProps {
   onOpenImageModal: (imgSrc: string) => void;
 }
 
+const EXTERIOR_IMAGES = [
+  { src: '/images/Front view.webp', title: 'Grand Gated Entrance & Security Hub' },
+  { src: '/images/Side view.webp', title: 'Modern Tower Elevation & Linear Rhythms' },
+  { src: '/images/Street view.webp', title: 'Landscaped Driveways & Pedestrian Paths' },
+  { src: '/images/community view.webp', title: '5.3 Acre Masterplanned Gated Community' },
+  { src: '/images/water body.webp', title: 'Central Water Body & Zen Plaza' },
+  { src: '/images/Night Aerial.webp', title: 'Illuminated Night Aerial Overview' },
+];
+
+const INTERIOR_IMAGES = [
+  { src: '/images/Living room.webp', title: 'Elegant Formal Living Lounge' },
+  { src: '/images/Dining area.webp', title: 'Open-Plan Dining & Entertaining Zone' },
+  { src: '/images/Kitchen.webp', title: 'Modular Kitchen with Premium Fittings' },
+  { src: '/images/Master bedroom.webp', title: 'Master Bedroom Penthouse Suite' },
+  { src: '/images/Bedroom detail.webp', title: 'Bespoke Fitting & Storage Details' },
+  { src: '/images/bedroom 1.webp', title: 'Smart 2nd Bedroom Plan' },
+];
+
 export default function GallerySection({ onOpenImageModal }: GallerySectionProps) {
+  const [exteriorIndex, setExteriorIndex] = useState(0);
+  const [interiorIndex, setInteriorIndex] = useState(0);
+
+  const prevExterior = () => setExteriorIndex((prev) => (prev === 0 ? EXTERIOR_IMAGES.length - 1 : prev - 1));
+  const nextExterior = () => setExteriorIndex((prev) => (prev === EXTERIOR_IMAGES.length - 1 ? 0 : prev + 1));
+
+  const prevInterior = () => setInteriorIndex((prev) => (prev === 0 ? INTERIOR_IMAGES.length - 1 : prev - 1));
+  const nextInterior = () => setInteriorIndex((prev) => (prev === INTERIOR_IMAGES.length - 1 ? 0 : prev + 1));
+
   return (
-    <section className="section gallery-section">
-      <div className="container">
-        <div className="section-header text-center">
-          <span className="tag font-figtree font-bold uppercase tracking-widest text-caramel">Exteriors & Interiors</span>
-          <h2 className="font-gumani font-bold text-sienna">Crafted Architecture, Captured Live</h2>
-          <p className="font-figtree font-normal text-noir/70" style={{ margin: '0 auto' }}>
-            Click or tap to view full high-resolution imagery.
+    <motion.section
+      id="gallery"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="py-20 sm:py-28 bg-alabaster text-noir"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16 space-y-3">
+          <span className="font-figtree text-xs font-bold uppercase tracking-[0.15em] text-caramel">
+            Exteriors & Interiors
+          </span>
+          <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-sienna tracking-tight leading-[1.15]">
+            Crafted Architecture, <span className="italic text-caramel font-normal">Captured Live.</span>
+          </h2>
+          <p className="font-figtree text-sm sm:text-base text-noir/70 font-normal">
+            Swipe or use controls to browse through actual site renders and sample apartment photography.
           </p>
         </div>
 
-        {/* Carousel 1: Exteriors */}
-        <h3 className="gallery-sub-header font-gumani font-bold text-sienna text-xl">Gated Township & Architecture</h3>
-        <div className="gallery-carousel">
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Front view.webp')}>
-            <Image src="/images/Front view.webp" alt="Gated community front entrance facade" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Grand Gated Entrance & Security Hub</div>
+        {/* Gallery 1: Gated Township & Architecture */}
+        <div className="mb-16 bg-white rounded-3xl p-6 sm:p-8 shadow-kura border border-borderTone">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <span className="font-figtree text-xs font-bold uppercase tracking-widest text-caramel block">Gallery 01</span>
+              <h3 className="font-gumani text-2xl font-bold text-sienna">Gated Township & Architecture</h3>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevExterior}
+                aria-label="Previous image"
+                className="w-10 h-10 rounded-full bg-chocolate hover:bg-caramel hover:text-white transition-colors flex items-center justify-center text-sienna"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={nextExterior}
+                aria-label="Next image"
+                className="w-10 h-10 rounded-full bg-chocolate hover:bg-caramel hover:text-white transition-colors flex items-center justify-center text-sienna"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Side view.webp')}>
-            <Image src="/images/Side view.webp" alt="Building elevation from side path" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Modern Tower Elevation & Linear Rhythms</div>
+
+          {/* Active Featured Image with Carousel Controls */}
+          <div
+            onClick={() => onOpenImageModal(EXTERIOR_IMAGES[exteriorIndex].src)}
+            className="relative h-72 sm:h-[420px] w-full rounded-2xl overflow-hidden cursor-pointer group shadow-xl border border-borderTone"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={exteriorIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35 }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={EXTERIOR_IMAGES[exteriorIndex].src}
+                  alt={EXTERIOR_IMAGES[exteriorIndex].title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-sienna-dark/85 via-transparent to-transparent flex items-end justify-between p-6">
+              <div>
+                <span className="font-figtree text-xs font-semibold text-caramel uppercase tracking-wider block">
+                  {exteriorIndex + 1} of {EXTERIOR_IMAGES.length}
+                </span>
+                <h4 className="font-gumani text-lg sm:text-xl font-bold text-white">
+                  {EXTERIOR_IMAGES[exteriorIndex].title}
+                </h4>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                <Maximize2 className="w-4 h-4" />
+              </div>
+            </div>
           </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Street view.webp')}>
-            <Image src="/images/Street view.webp" alt="Street pathway with architectural landscaping" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Landscaped Driveways & Pedestrian Paths</div>
-          </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/community view.webp')}>
-            <Image src="/images/community view.webp" alt="Overhead architectural community layout" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">5.3 Acre Masterplanned Gated Community</div>
-          </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/water body.webp')}>
-            <Image src="/images/water body.webp" alt="Water body plaza feature render" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Central Water Body & Zen Plaza</div>
-          </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Night Aerial.webp')}>
-            <Image src="/images/Night Aerial.webp" alt="Aerial view of community at night" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Illuminated Night Aerial Overview</div>
+
+          {/* Thumbnail Pagination Dots / Previews */}
+          <div className="grid grid-cols-6 gap-2 sm:gap-3 mt-4">
+            {EXTERIOR_IMAGES.map((img, idx) => (
+              <button
+                key={img.src}
+                onClick={() => setExteriorIndex(idx)}
+                className={`relative h-14 sm:h-20 rounded-xl overflow-hidden border-2 transition-all ${
+                  exteriorIndex === idx ? 'border-caramel scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'
+                }`}
+              >
+                <Image src={img.src} alt={img.title} fill className="object-cover" />
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Carousel 2: Interiors */}
-        <h3 className="gallery-sub-header font-gumani font-bold text-sienna text-xl">Model Flat Interiors</h3>
-        <div className="gallery-carousel">
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Living room.webp')}>
-            <Image src="/images/Living room.webp" alt="Spacious interior living room decoration" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Elegant Formal Living Lounge</div>
+        {/* Gallery 2: Model Flat Interiors */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-kura border border-borderTone">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <span className="font-figtree text-xs font-bold uppercase tracking-widest text-caramel block">Gallery 02</span>
+              <h3 className="font-gumani text-2xl font-bold text-sienna">Model Flat Interiors</h3>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevInterior}
+                aria-label="Previous image"
+                className="w-10 h-10 rounded-full bg-chocolate hover:bg-caramel hover:text-white transition-colors flex items-center justify-center text-sienna"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={nextInterior}
+                aria-label="Next image"
+                className="w-10 h-10 rounded-full bg-chocolate hover:bg-caramel hover:text-white transition-colors flex items-center justify-center text-sienna"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Dining area.webp')}>
-            <Image src="/images/Dining area.webp" alt="Dining room table layout model flat" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Open-Plan Dining & Entertaining Zone</div>
+
+          {/* Active Featured Image with Carousel Controls */}
+          <div
+            onClick={() => onOpenImageModal(INTERIOR_IMAGES[interiorIndex].src)}
+            className="relative h-72 sm:h-[420px] w-full rounded-2xl overflow-hidden cursor-pointer group shadow-xl border border-borderTone"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={interiorIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35 }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={INTERIOR_IMAGES[interiorIndex].src}
+                  alt={INTERIOR_IMAGES[interiorIndex].title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-sienna-dark/85 via-transparent to-transparent flex items-end justify-between p-6">
+              <div>
+                <span className="font-figtree text-xs font-semibold text-caramel uppercase tracking-wider block">
+                  {interiorIndex + 1} of {INTERIOR_IMAGES.length}
+                </span>
+                <h4 className="font-gumani text-lg sm:text-xl font-bold text-white">
+                  {INTERIOR_IMAGES[interiorIndex].title}
+                </h4>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                <Maximize2 className="w-4 h-4" />
+              </div>
+            </div>
           </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Kitchen.webp')}>
-            <Image src="/images/Kitchen.webp" alt="Modern modular kitchen setup" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Modular Kitchen with Premium Fittings</div>
-          </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Master bedroom.webp')}>
-            <Image src="/images/Master bedroom.webp" alt="Master bedroom with sliding closet doors" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Master Bedroom Penthouse Suite</div>
-          </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/Bedroom detail.webp')}>
-            <Image src="/images/Bedroom detail.webp" alt="Bedroom detail shot closet and desk" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Bespoke Fitting & Storage Details</div>
-          </div>
-          <div className="gallery-card lightbox-trigger" onClick={() => onOpenImageModal('/images/bedroom 1.webp')}>
-            <Image src="/images/bedroom 1.webp" alt="Secondary guest bedroom setup" width={380} height={260} className="object-cover" />
-            <div className="caption font-figtree font-semibold">Smart 2nd Bedroom Plan</div>
+
+          {/* Thumbnail Pagination Dots / Previews */}
+          <div className="grid grid-cols-6 gap-2 sm:gap-3 mt-4">
+            {INTERIOR_IMAGES.map((img, idx) => (
+              <button
+                key={img.src}
+                onClick={() => setInteriorIndex(idx)}
+                className={`relative h-14 sm:h-20 rounded-xl overflow-hidden border-2 transition-all ${
+                  interiorIndex === idx ? 'border-caramel scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'
+                }`}
+              >
+                <Image src={img.src} alt={img.title} fill className="object-cover" />
+              </button>
+            ))}
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

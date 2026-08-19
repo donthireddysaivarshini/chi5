@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Header from '@/components/nav/Header';
 import HeroSection from '@/components/hero/HeroSection';
-import SnapshotStripSection from '@/components/sections/SnapshotStripSection';
 import OverviewSection from '@/components/sections/OverviewSection';
 import PricingSection from '@/components/sections/PricingSection';
 import AffordabilityStudioSection from '@/components/sections/AffordabilityStudioSection';
@@ -11,14 +10,11 @@ import LocationSection from '@/components/sections/LocationSection';
 import AmenitiesSection from '@/components/sections/AmenitiesSection';
 import GallerySection from '@/components/sections/GallerySection';
 import ProgressSection from '@/components/sections/ProgressSection';
-import PerspectivesSection from '@/components/sections/PerspectivesSection';
-import DeveloperHeritageSection from '@/components/sections/DeveloperHeritageSection';
 import ConversionHubSection from '@/components/sections/ConversionHubSection';
 import Footer from '@/components/nav/Footer';
 import Modals from '@/components/ui/Modals';
 import StickyMobileDock from '@/components/ui/StickyMobileDock';
 import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
-import ScrollAnimationObserver from '@/components/ui/ScrollAnimationObserver';
 
 export default function HomePage() {
   const [leadModalOpen, setLeadModalOpen] = useState(false);
@@ -52,56 +48,46 @@ export default function HomePage() {
   };
 
   return (
-    <>
-      <ScrollAnimationObserver />
+    <div className="min-h-screen flex flex-col bg-alabaster selection:bg-caramel selection:text-white">
       {/* §1 — Fixed Header Navigation */}
       <Header onOpenLeadModal={handleOpenLeadModal} />
 
-      <main>
-        {/* §2 — Cinematic Hero */}
-        <HeroSection
+      <main className="flex-grow">
+        {/* §2 — 100vh Hero with Integrated 6-Fact Snapshot Bar */}
+        <HeroSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §3 — Vision & Social Proof (50/50 Editorial Grid) */}
+        <OverviewSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §4 — Configurations & Floor Plans (Side-by-Side Dual Cards) */}
+        <PricingSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §5 — Financial Studio / EMI Calculator (Unified Card) */}
+        <AffordabilityStudioSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §6 — Location Hub & Commute Matrix */}
+        <LocationSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §7 — Clubhouse & 40+ Amenities */}
+        <AmenitiesSection />
+
+        {/* §8 — Dual Photo Galleries (Swipeable Carousels) */}
+        <GallerySection onOpenImageModal={handleOpenImageModal} />
+
+        {/* §9 — Construction Progress & Video Perspectives */}
+        <ProgressSection
           onOpenLeadModal={handleOpenLeadModal}
           onOpenVideoModal={handleOpenVideoModal}
         />
 
-        {/* §3 — Key Snapshot Strip */}
-        <SnapshotStripSection />
-
-        {/* §4 — Overview / The Vision */}
-        <OverviewSection onOpenLeadModal={handleOpenLeadModal} />
-
-        {/* §5 — Configurations & Pricing */}
-        <PricingSection onOpenLeadModal={handleOpenLeadModal} />
-
-        {/* §6 — Affordability Studio & EMI Calculator */}
-        <AffordabilityStudioSection onOpenLeadModal={handleOpenLeadModal} />
-
-        {/* §7 — Location & Connectivity */}
-        <LocationSection onOpenLeadModal={handleOpenLeadModal} />
-
-        {/* §8 — 25K Sq.Ft Clubhouse & 40+ Amenities */}
-        <AmenitiesSection />
-
-        {/* §9 — Exteriors & Interiors Gallery */}
-        <GallerySection onOpenImageModal={handleOpenImageModal} />
-
-        {/* §10 — Verified Construction Progress */}
-        <ProgressSection onOpenLeadModal={handleOpenLeadModal} />
-
-        {/* §11 — Project Perspectives & Reels */}
-        <PerspectivesSection onOpenVideoModal={handleOpenVideoModal} />
-
-        {/* §12 — 55 Years Developer Heritage */}
-        <DeveloperHeritageSection />
-
-        {/* §13 — Conversion Hub & Form */}
+        {/* §10 — Lead Capture Form with High-Contrast Text */}
         <ConversionHubSection />
       </main>
 
-      {/* §14 — Legal Compliance Footer */}
+      {/* §11 — Minimal Editorial Footer */}
       <Footer />
 
-      {/* Mobile Sticky Dock & WhatsApp */}
+      {/* Conversion Widgets */}
       <StickyMobileDock onOpenLeadModal={handleOpenLeadModal} />
       <FloatingWhatsApp />
 
@@ -125,6 +111,6 @@ export default function HomePage() {
           setImageModalSrc('');
         }}
       />
-    </>
+    </div>
   );
 }

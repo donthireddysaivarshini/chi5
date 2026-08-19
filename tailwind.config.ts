@@ -27,6 +27,10 @@ const config: Config = {
           DEFAULT: '#EEE8DE',
           dark: '#E2D8CA',
         },
+        borderTone: {
+          DEFAULT: '#EADECF',
+          dark: '#D8C7B2',
+        },
         noir: {
           DEFAULT: '#1B1717',
           muted: '#3C3636',
@@ -39,8 +43,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        gumani: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
-        figtree: ['var(--font-figtree)', 'Figtree', 'system-ui', 'sans-serif'],
+        gumani: ['var(--font-playfair)', 'var(--font-gloock)', 'Playfair Display', 'Gloock', 'serif'],
+        figtree: ['var(--font-figtree)', 'Figtree', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
         gloock: ['var(--font-gloock)', 'Gloock', 'serif'],
       },
       boxShadow: {
