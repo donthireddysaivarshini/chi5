@@ -12,12 +12,6 @@ interface ProgressSectionProps {
 
 const PERSPECTIVES = [
   {
-    title: 'Why ORR Exit-5 Corridor?',
-    desc: 'Proximity metrics to international schools, pharmaceutical tech parks, and the ORR signal-free advantage.',
-    image: '/images/Street view.webp',
-    video: '/videos/why-this-location.mp4',
-  },
-  {
     title: 'Investment Appreciation Value',
     desc: 'Comparing entry price of ₹4,999/sq.ft with older corridors (₹9K-10K/sq.ft) and historical growth curves.',
     image: '/images/community view.webp',
@@ -152,7 +146,7 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {PERSPECTIVES.map((p) => (
               <div
                 key={p.title}

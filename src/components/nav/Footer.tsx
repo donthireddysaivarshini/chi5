@@ -11,21 +11,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/10">
           {/* Column 1: Brand Statement */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Image
                 src="/logos/kura homes logo.png"
-                alt="Kura Homes Logo"
-                width={100}
-                height={32}
-                className="h-7 w-auto object-contain brightness-0 invert"
+                alt="Kura Homes (55 Years of Trust)"
+                width={120}
+                height={40}
+                className="h-10 w-auto object-contain brightness-0 invert opacity-95"
               />
-              <div className="h-5 w-[1px] bg-white/30"></div>
+              <div className="h-8 w-[1.5px] bg-[#EADECF]/40"></div>
               <Image
                 src="/logos/hi-five logo 2.png"
                 alt="Codename Hi-Five"
-                width={110}
-                height={34}
-                className="h-8 w-auto object-contain"
+                width={140}
+                height={44}
+                className="h-10 md:h-11 w-auto object-contain brightness-0 invert opacity-95"
               />
             </div>
             <p className="font-figtree text-xs sm:text-sm text-alabaster/75 font-normal leading-relaxed max-w-sm">

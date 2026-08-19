@@ -76,11 +76,14 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
               </div>
               <input
                 type="range"
-                className="w-full h-2 bg-[#E2D8CA] rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
+                className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
                 min={5500000}
                 max={15000000}
                 step={100000}
                 value={propertyPrice}
+                style={{
+                  background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((propertyPrice - 5500000) / (15000000 - 5500000)) * 100}%, #E2D8CA ${((propertyPrice - 5500000) / (15000000 - 5500000)) * 100}%, #E2D8CA 100%)`,
+                }}
                 onChange={(e) => handlePropertyChange(Number(e.target.value))}
               />
               <div className="flex justify-between font-sans text-[10px] text-[#5C4D44]/60">
@@ -97,11 +100,14 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
               </div>
               <input
                 type="range"
-                className="w-full h-2 bg-[#E2D8CA] rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
+                className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
                 min={2000000}
                 max={propertyPrice}
                 step={50000}
                 value={loanAmount}
+                style={{
+                  background: `linear-gradient(to right, #CE793A 0%, #CE793A ${Math.max(0, Math.min(100, ((loanAmount - 2000000) / (propertyPrice - 2000000)) * 100))}%, #E2D8CA ${Math.max(0, Math.min(100, ((loanAmount - 2000000) / (propertyPrice - 2000000)) * 100))}%, #E2D8CA 100%)`,
+                }}
                 onChange={(e) => setLoanAmount(Number(e.target.value))}
               />
               <div className="flex justify-between font-sans text-[10px] text-[#5C4D44]/60">
@@ -119,11 +125,14 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
                 </div>
                 <input
                   type="range"
-                  className="w-full h-2 bg-[#E2D8CA] rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
+                  className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
                   min={5}
                   max={30}
                   step={1}
                   value={tenureYears}
+                  style={{
+                    background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((tenureYears - 5) / (30 - 5)) * 100}%, #E2D8CA ${((tenureYears - 5) / (30 - 5)) * 100}%, #E2D8CA 100%)`,
+                  }}
                   onChange={(e) => setTenureYears(Number(e.target.value))}
                 />
               </div>
@@ -135,11 +144,14 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
                 </div>
                 <input
                   type="range"
-                  className="w-full h-2 bg-[#E2D8CA] rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
+                  className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
                   min={7.5}
                   max={12}
                   step={0.05}
                   value={interestRate}
+                  style={{
+                    background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((interestRate - 7.5) / (12 - 7.5)) * 100}%, #E2D8CA ${((interestRate - 7.5) / (12 - 7.5)) * 100}%, #E2D8CA 100%)`,
+                  }}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
                 />
               </div>
