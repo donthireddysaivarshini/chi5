@@ -38,225 +38,200 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
   };
 
   return (
-    <motion.section
+    <section
       id="calculators"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="py-20 sm:py-28 bg-[#EEE8DE]/40 text-[#1B1717]"
+      className="min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center py-12 lg:py-16 bg-white text-obsidian relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-          <span className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-[#CE793A]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-2"
+        >
+          <span className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-bronze">
             Financial Studio
           </span>
-          <h2 className="font-display font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A1C11] tracking-tight leading-[1.15]">
-            The True Cost of <span className="italic text-[#CE793A] font-normal">Homeownership.</span>
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-obsidian tracking-tight leading-[1.15]">
+            The True Cost of <span className="italic text-bronze font-normal">Homeownership.</span>
           </h2>
-          <p className="font-sans text-sm sm:text-base text-[#5C4D44] font-normal">
+          <p className="font-sans text-xs sm:text-sm md:text-base text-charcoal-mute font-normal">
             Adjust the loan parameters to see why owning a home at ORR Exit-5 creates immediate monthly equity instead of lost rent.
           </p>
-        </div>
+        </motion.div>
 
         {/* Unified Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 bg-white rounded-3xl p-6 sm:p-10 shadow-kura border border-[#EADECF] items-stretch">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 bg-slate-50 rounded-3xl p-5 sm:p-8 shadow-kura border border-zinc-border items-stretch"
+        >
           {/* Left Column: Sliders */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-[#CE793A]">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-bronze">
               <Calculator className="w-4 h-4" />
               <span>Loan & Budget Parameters</span>
             </div>
 
             {/* Slider 1: Property Value */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between font-sans text-xs font-semibold text-[#3A1C11]">
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between font-sans text-xs font-semibold text-obsidian">
                 <span>Property Value</span>
-                <span className="text-sm font-bold text-[#CE793A]">{formatINR(propertyPrice)}</span>
+                <span className="text-sm font-bold text-bronze">{formatINR(propertyPrice)}</span>
               </div>
               <input
                 type="range"
-                className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
+                className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-[#BFA181]"
                 min={5900000}
                 max={15000000}
                 step={100000}
                 value={propertyPrice}
                 style={{
-                  background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((propertyPrice - 5900000) / (15000000 - 5900000)) * 100}%, #E2D8CA ${((propertyPrice - 5900000) / (15000000 - 5900000)) * 100}%, #E2D8CA 100%)`,
+                  background: `linear-gradient(to right, #BFA181 0%, #BFA181 ${((propertyPrice - 5900000) / (15000000 - 5900000)) * 100}%, #DFE3E8 ${((propertyPrice - 5900000) / (15000000 - 5900000)) * 100}%, #DFE3E8 100%)`,
                 }}
                 onChange={(e) => handlePropertyChange(Number(e.target.value))}
               />
-              <div className="flex justify-between font-sans text-[10px] text-[#5C4D44]/60">
+              <div className="flex justify-between font-sans text-[10px] text-charcoal-mute/60">
                 <span>₹59 Lakhs</span>
                 <span>₹1.50 Crore</span>
               </div>
             </div>
 
             {/* Slider 2: Home Loan Amount */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between font-sans text-xs font-semibold text-[#3A1C11]">
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between font-sans text-xs font-semibold text-obsidian">
                 <span>Home Loan Amount ({(loanAmount / propertyPrice * 100).toFixed(0)}%)</span>
-                <span className="text-sm font-bold text-[#CE793A]">{formatINR(loanAmount)}</span>
+                <span className="text-sm font-bold text-bronze">{formatINR(loanAmount)}</span>
               </div>
               <input
                 type="range"
-                className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
+                className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-[#BFA181]"
                 min={2000000}
                 max={propertyPrice}
                 step={50000}
                 value={loanAmount}
                 style={{
-                  background: `linear-gradient(to right, #CE793A 0%, #CE793A ${Math.max(0, Math.min(100, ((loanAmount - 2000000) / (propertyPrice - 2000000)) * 100))}%, #E2D8CA ${Math.max(0, Math.min(100, ((loanAmount - 2000000) / (propertyPrice - 2000000)) * 100))}%, #E2D8CA 100%)`,
+                  background: `linear-gradient(to right, #BFA181 0%, #BFA181 ${Math.max(0, Math.min(100, ((loanAmount - 2000000) / (propertyPrice - 2000000)) * 100))}%, #DFE3E8 ${Math.max(0, Math.min(100, ((loanAmount - 2000000) / (propertyPrice - 2000000)) * 100))}%, #DFE3E8 100%)`,
                 }}
                 onChange={(e) => setLoanAmount(Number(e.target.value))}
               />
-              <div className="flex justify-between font-sans text-[10px] text-[#5C4D44]/60">
+              <div className="flex justify-between font-sans text-[10px] text-charcoal-mute/60">
                 <span>₹20 Lakhs</span>
                 <span>Max: {formatINR(propertyPrice)}</span>
               </div>
             </div>
 
             {/* Slider 3 & 4 Row: Tenure & Rate */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-1">
-              <div className="space-y-2">
-                <div className="flex items-center justify-between font-sans text-xs font-semibold text-[#3A1C11]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between font-sans text-xs font-semibold text-obsidian">
                   <span>Tenure</span>
-                  <span className="text-sm font-bold text-[#CE793A]">{tenureYears} Years</span>
+                  <span className="text-sm font-bold text-bronze">{tenureYears} Years</span>
                 </div>
                 <input
                   type="range"
-                  className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
+                  className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-[#BFA181]"
                   min={5}
                   max={30}
                   step={1}
                   value={tenureYears}
                   style={{
-                    background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((tenureYears - 5) / (30 - 5)) * 100}%, #E2D8CA ${((tenureYears - 5) / (30 - 5)) * 100}%, #E2D8CA 100%)`,
+                    background: `linear-gradient(to right, #BFA181 0%, #BFA181 ${((tenureYears - 5) / (30 - 5)) * 100}%, #DFE3E8 ${((tenureYears - 5) / (30 - 5)) * 100}%, #DFE3E8 100%)`,
                   }}
                   onChange={(e) => setTenureYears(Number(e.target.value))}
                 />
               </div>
 
-              <div className="space-y-2">
-                <div className="flex items-center justify-between font-sans text-xs font-semibold text-[#3A1C11]">
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between font-sans text-xs font-semibold text-obsidian">
                   <span>Interest Rate</span>
-                  <span className="text-sm font-bold text-[#CE793A]">{interestRate}% p.a.</span>
+                  <span className="text-sm font-bold text-bronze">{interestRate}%</span>
                 </div>
                 <input
                   type="range"
-                  className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#CE793A]"
-                  min={7.5}
-                  max={12}
+                  className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-[#BFA181]"
+                  min={6.5}
+                  max={12.0}
                   step={0.05}
                   value={interestRate}
                   style={{
-                    background: `linear-gradient(to right, #CE793A 0%, #CE793A ${((interestRate - 7.5) / (12 - 7.5)) * 100}%, #E2D8CA ${((interestRate - 7.5) / (12 - 7.5)) * 100}%, #E2D8CA 100%)`,
+                    background: `linear-gradient(to right, #BFA181 0%, #BFA181 ${((interestRate - 6.5) / (12 - 6.5)) * 100}%, #DFE3E8 ${((interestRate - 6.5) / (12 - 6.5)) * 100}%, #DFE3E8 100%)`,
                   }}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
                 />
               </div>
             </div>
 
-            {/* Disclaimer Accordion */}
-            <div className="p-4 bg-[#F5F3E6] rounded-2xl border border-[#EADECF] text-xs font-sans text-[#5C4D44] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 text-[#3A1C11] font-semibold">
-                <ShieldCheck className="w-4 h-4 text-[#CE793A]" />
-                <span>Tax Savings Note (Section 24b)</span>
-              </div>
-              <p className="font-normal text-[#5C4D44]">
-                Under the Old Tax Regime, interest payments qualify for tax deductions up to ₹2 Lakhs per annum, saving up to ~₹9,500/month for 30% tax brackets.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column: Dark Summary Box with Shining High-Contrast White Text */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 bg-[#28120C] rounded-2xl text-[#F5F3E6] shadow-xl border border-white/10">
-            <div className="space-y-6">
-              {/* Live vs Rent Scenario Toggle */}
-              <div className="grid grid-cols-2 gap-1.5 p-1 bg-white/10 rounded-xl">
-                <button
-                  onClick={() => setActiveScenario('live')}
-                  className={`py-2 px-3 rounded-lg font-sans font-bold text-xs uppercase tracking-wider transition-all ${
-                    activeScenario === 'live'
-                      ? 'bg-[#CE793A] text-white shadow-md'
-                      : 'text-[#E0D8CB] hover:text-white'
-                  }`}
-                >
-                  Live Here
-                </button>
-                <button
-                  onClick={() => setActiveScenario('rent')}
-                  className={`py-2 px-3 rounded-lg font-sans font-bold text-xs uppercase tracking-wider transition-all ${
-                    activeScenario === 'rent'
-                      ? 'bg-[#CE793A] text-white shadow-md'
-                      : 'text-[#E0D8CB] hover:text-white'
-                  }`}
-                >
-                  Rent Out
-                </button>
-              </div>
-
-              {/* Net Outgo Callout - CRISP WHITE ALABASTER */}
-              <div>
-                <span className="font-sans text-xs font-bold uppercase tracking-widest text-[#CE793A] block">
-                  {activeScenario === 'live' ? 'Net Monthly Cost of Ownership' : 'Net Monthly Cashflow Outflow'}
-                </span>
-                <div className="flex items-baseline gap-2 mt-1">
-                  <span className="font-display font-serif text-4xl sm:text-5xl font-bold text-[#F5F3E6]">
-                    {formatINR(activeScenario === 'live' ? netOutgoLive : netOutgoRent)}
-                  </span>
-                  <span className="font-sans text-xs text-[#E0D8CB]">/month</span>
-                </div>
-              </div>
-
-              {/* Breakdown Rows */}
-              <div className="space-y-2.5 pt-4 border-t border-white/10 font-sans text-xs sm:text-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-[#E0D8CB]">Gross Monthly EMI</span>
-                  <span className="font-semibold text-[#F5F3E6]">{formatINR(grossEmi)}</span>
-                </div>
-                <div className="flex items-center justify-between text-emerald-400">
-                  <span>Less: Section 24(b) Tax Benefit</span>
-                  <span className="font-semibold">- {formatINR(actualTaxSaving)}</span>
-                </div>
-                {activeScenario === 'rent' && (
-                  <div className="flex items-center justify-between text-emerald-400">
-                    <span>Less: Estimated Rental Income</span>
-                    <span className="font-semibold">- {formatINR(estimatedRental)}</span>
-                  </div>
-                )}
-                <div className="flex items-center justify-between pt-2 border-t border-white/10 text-[#CE793A] font-bold">
-                  <span>Net Effective Outflow</span>
-                  <span className="font-serif text-lg text-[#F5F3E6]">
-                    {formatINR(activeScenario === 'live' ? netOutgoLive : netOutgoRent)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Rent vs Buy Callout */}
-              <div className="p-3.5 bg-white/5 rounded-xl border border-white/10 space-y-1 text-xs font-sans">
-                <div className="flex items-center gap-1.5 text-[#CE793A] font-semibold">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Rent vs Buy Reality</span>
-                </div>
-                <p className="text-[#D6CFC4] font-normal">
-                  Average 2 BHK rent in this corridor is <strong className="text-[#F5F3E6]">₹20,000/mo</strong>. For just a small increment, you build permanent property equity.
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-6 mt-6 border-t border-white/10">
+            <div className="flex items-center gap-2 pt-2">
               <button
-                onClick={() => onOpenLeadModal('calculator_emi_cta', 'Check Home Loan Eligibility & Bank Offers')}
-                className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg transition-all"
+                onClick={() => setActiveScenario('live')}
+                className={`py-1.5 px-3 rounded-full text-xs font-sans font-bold transition-all ${
+                  activeScenario === 'live'
+                    ? 'bg-obsidian text-white shadow-md'
+                    : 'bg-white text-obsidian/70 border border-zinc-border hover:bg-slate-100'
+                }`}
               >
-                <span>Check Bank Loan Eligibility</span>
-                <ArrowRight className="w-4 h-4" />
+                Self-Occupied Scenario
+              </button>
+              <button
+                onClick={() => setActiveScenario('rent')}
+                className={`py-1.5 px-3 rounded-full text-xs font-sans font-bold transition-all ${
+                  activeScenario === 'rent'
+                    ? 'bg-obsidian text-white shadow-md'
+                    : 'bg-white text-obsidian/70 border border-zinc-border hover:bg-slate-100'
+                }`}
+              >
+                Investor Rental Scenario
               </button>
             </div>
           </div>
-        </div>
+
+          {/* Right Column: Outgo Breakdown in Deep Slate Card */}
+          <div className="lg:col-span-5 bg-obsidian text-alabaster rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-4 border border-white/10 shadow-xl">
+            <div>
+              <span className="font-sans text-[11px] font-bold uppercase tracking-widest text-bronze block">
+                Net Monthly Outgo Breakdown
+              </span>
+              <div className="mt-1">
+                <span className="font-display text-3xl sm:text-4xl font-bold text-white block">
+                  {formatINR(activeScenario === 'live' ? netOutgoLive : netOutgoRent)}
+                </span>
+                <span className="font-sans text-xs text-alabaster/70">
+                  {activeScenario === 'live' ? 'Effective monthly cost of owning' : 'Net investor cashflow requirement'}
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-3 border-t border-white/15 font-sans text-xs">
+              <div className="flex justify-between text-alabaster/80">
+                <span>Gross Monthly EMI:</span>
+                <span className="font-semibold text-alabaster">{formatINR(grossEmi)}</span>
+              </div>
+              <div className="flex justify-between text-emerald-400">
+                <span>Tax Savings (Sec 24b max):</span>
+                <span className="font-semibold">-{formatINR(actualTaxSaving)}</span>
+              </div>
+              {activeScenario === 'rent' && (
+                <div className="flex justify-between text-amber-300">
+                  <span>Estimated Rental Offset:</span>
+                  <span className="font-semibold">-{formatINR(estimatedRental)}</span>
+                </div>
+              )}
+            </div>
+
+            <button
+              onClick={() => onOpenLeadModal('calculator_cta', 'Get Customized Financial & Tax Breakdown')}
+              className="w-full py-3 bg-bronze hover:bg-bronze-hover text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg hover:shadow-bronze-glow transition-all flex items-center justify-center gap-2"
+            >
+              <span>Get Loan Assessment</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

@@ -8,8 +8,10 @@ import PricingSection from '@/components/sections/PricingSection';
 import AffordabilityStudioSection from '@/components/sections/AffordabilityStudioSection';
 import LocationSection from '@/components/sections/LocationSection';
 import AmenitiesSection from '@/components/sections/AmenitiesSection';
-import GallerySection from '@/components/sections/GallerySection';
+import ExteriorGallerySection from '@/components/sections/ExteriorGallerySection';
+import InteriorGallerySection from '@/components/sections/InteriorGallerySection';
 import ProgressSection from '@/components/sections/ProgressSection';
+import PerspectivesSection from '@/components/sections/PerspectivesSection';
 import ConversionHubSection from '@/components/sections/ConversionHubSection';
 import Footer from '@/components/nav/Footer';
 import Modals from '@/components/ui/Modals';
@@ -72,38 +74,41 @@ export default function HomePage() {
       <Header onOpenLeadModal={handleOpenLeadModal} />
 
       <main className="flex-grow">
-        {/* §2 — 100vh Hero with Integrated 6-Fact Snapshot Bar */}
+        {/* §2 — Hero Section (Dark Slate) */}
         <HeroSection onOpenLeadModal={handleOpenLeadModal} />
 
-        {/* §3 — Vision & Social Proof (50/50 Editorial Grid) */}
+        {/* §3 — Project Vision (Dark Slate) */}
         <OverviewSection onOpenLeadModal={handleOpenLeadModal} />
 
-        {/* §4 — Configurations & Floor Plans (Side-by-Side Dual Cards) */}
+        {/* §4 — Configurations & Layouts (Light Slate) */}
         <PricingSection onOpenLeadModal={handleOpenLeadModal} />
 
-        {/* §5 — Financial Studio / EMI Calculator (Unified Card) */}
-        <AffordabilityStudioSection onOpenLeadModal={handleOpenLeadModal} />
-
-        {/* §6 — Location Hub & Commute Matrix */}
-        <LocationSection onOpenLeadModal={handleOpenLeadModal} />
-
-        {/* §7 — Clubhouse & 40+ Amenities */}
+        {/* §5 — Clubhouse & 40+ Amenities (Dark Slate) */}
         <AmenitiesSection />
 
-        {/* §8 — Dual Photo Galleries (Swipeable Carousels) */}
-        <GallerySection onOpenImageModal={handleOpenImageModal} />
+        {/* §6 — Exterior Architecture Gallery (Light Slate) */}
+        <ExteriorGallerySection onOpenImageModal={handleOpenImageModal} />
 
-        {/* §9 — Construction Progress & Video Perspectives */}
-        <ProgressSection
-          onOpenLeadModal={handleOpenLeadModal}
-          onOpenVideoModal={handleOpenVideoModal}
-        />
+        {/* §7 — Model Flat Interior Gallery (Dark Slate) */}
+        <InteriorGallerySection onOpenImageModal={handleOpenImageModal} />
 
-        {/* §10 — Lead Capture Form with High-Contrast Text */}
+        {/* §8 — Financial Studio / EMI Calculator (Light Slate / Pure White Card) */}
+        <AffordabilityStudioSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §9 — Location Hub & Commute Matrix (Light Slate) */}
+        <LocationSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §10 — Construction Progress (Dark Slate) */}
+        <ProgressSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §11 — Expert Perspectives (Pure White / Light Slate) */}
+        <PerspectivesSection onOpenVideoModal={handleOpenVideoModal} />
+
+        {/* §12 — Lead Capture Form & Developer Contact (Dark Slate with Pure White Form) */}
         <ConversionHubSection />
       </main>
 
-      {/* §11 — Minimal Editorial Footer */}
+      {/* §13 — Minimal Editorial Footer */}
       <Footer />
 
       {/* Conversion Widgets */}

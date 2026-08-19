@@ -1,31 +1,15 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { ShieldCheck, CheckCircle2, Play, Eye } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ProgressSectionProps {
   onOpenLeadModal: (source: string, title?: string) => void;
-  onOpenVideoModal: (videoSrc: string) => void;
+  onOpenVideoModal?: (videoSrc: string) => void;
 }
 
-const PERSPECTIVES = [
-  {
-    title: 'Investment Appreciation Value',
-    desc: 'Comparing entry price of ₹4,999/sq.ft with older corridors (₹9K-10K/sq.ft) and historical growth curves.',
-    image: '/images/thumb_investment.webp',
-    video: '/videos/investment.mp4',
-  },
-  {
-    title: 'Vaastu & Spaces Philosophy',
-    desc: 'Chief architect explains Vaastu flow, cross-ventilated bedroom placements, and zero-corridor layouts.',
-    image: '/images/thumb_design.webp',
-    video: '/videos/Design.mp4',
-  },
-];
-
-export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: ProgressSectionProps) {
+export default function ProgressSection({ onOpenLeadModal }: ProgressSectionProps) {
   const milestones = [
     { label: 'Foundation & RCC Superstructure', status: '100% Completed', done: true, progress: 100 },
     { label: 'Internal Plastering & Electrical Works', status: '95% Completed', done: true, progress: 95 },
@@ -33,40 +17,42 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
   ];
 
   return (
-    <motion.section
+    <section
       id="progress"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="py-20 sm:py-28 bg-sienna-dark text-alabaster"
+      className="min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center py-12 lg:py-16 bg-obsidian text-alabaster relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Top Split: Progress & Video Player */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Progress Bars & Status */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-2">
-              <span className="font-figtree text-xs font-bold uppercase tracking-[0.15em] text-emerald flex items-center gap-2">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-5"
+          >
+            <div className="space-y-1.5">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-emerald flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4" />
                 <span>RERA Verified Execution</span>
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F3E6] tracking-tight leading-[1.15]">
-                90% Built. <span className="italic text-[#CE793A] font-normal">Possession Soon.</span>
+              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-alabaster tracking-tight leading-[1.15]">
+                90% Built. <span className="italic text-bronze font-normal">Possession Soon.</span>
               </h2>
             </div>
 
-            <p className="font-figtree text-sm sm:text-base text-alabaster/80 font-normal leading-relaxed">
+            <p className="font-sans text-sm sm:text-base text-alabaster/80 font-normal leading-relaxed">
               Experience the peace of mind of investing in a near-completion gated community. Eliminating multi-year construction risks while locking in pre-handover appreciation benefits.
             </p>
 
             {/* Progress Percentage Meter */}
-            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 space-y-3 shadow-inner">
-              <div className="flex items-center justify-between font-figtree">
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/10 space-y-3 shadow-inner">
+              <div className="flex items-center justify-between font-sans">
                 <span className="text-xs font-bold uppercase tracking-wider text-alabaster/80">
                   Overall Construction Progress
                 </span>
-                <span className="font-gumani text-3xl font-bold text-emerald">
+                <span className="font-display text-2xl sm:text-3xl font-bold text-emerald">
                   90%
                 </span>
               </div>
@@ -79,28 +65,26 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
                   className="h-full bg-emerald rounded-full shadow-lg shadow-emerald/40"
                 />
               </div>
-              <div className="flex items-center justify-between font-figtree text-[11px] text-alabaster/60 pt-1">
+              <div className="flex items-center justify-between font-sans text-[11px] text-alabaster/60 pt-0.5">
                 <span>RERA Target: On Schedule</span>
                 <span>TG RERA: P02200002810</span>
               </div>
             </div>
 
-            {/* Milestones Checklist with Individual Bars */}
-            <div className="space-y-3 font-figtree">
+            {/* Milestones Checklist */}
+            <div className="space-y-2.5 font-sans">
               {milestones.map((m) => (
                 <div
                   key={m.label}
-                  className="p-3.5 bg-white/5 rounded-xl border border-white/10 text-xs sm:text-sm space-y-1.5"
+                  className="p-3 bg-white/5 rounded-xl border border-white/10 text-xs sm:text-sm flex items-center justify-between"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className={`w-4 h-4 ${m.done ? 'text-emerald' : 'text-caramel'}`} />
-                      <span className="text-alabaster/90 font-medium">{m.label}</span>
-                    </div>
-                    <span className={`text-xs font-bold ${m.done ? 'text-emerald' : 'text-caramel'}`}>
-                      {m.status}
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className={`w-4 h-4 ${m.done ? 'text-emerald' : 'text-bronze'}`} />
+                    <span className="text-alabaster/90 font-medium">{m.label}</span>
                   </div>
+                  <span className={`text-xs font-bold ${m.done ? 'text-emerald' : 'text-bronze'}`}>
+                    {m.status}
+                  </span>
                 </div>
               ))}
             </div>
@@ -108,17 +92,23 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
             <div className="pt-2">
               <button
                 onClick={() => onOpenLeadModal('progress_visit', 'Book a Visit')}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-bronze hover:bg-bronze-hover text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5"
               >
                 <Eye className="w-4 h-4" />
                 <span>Book a Visit</span>
               </button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Embedded Walkthrough Video Player */}
-          <div className="lg:col-span-6 space-y-4">
-            <div className="relative h-[320px] sm:h-[420px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-black">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="lg:col-span-6 space-y-3"
+          >
+            <div className="relative h-[280px] sm:h-[360px] lg:h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-black">
               <video
                 controls
                 playsInline
@@ -129,59 +119,16 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
                 <source src="/videos/construction-progress.mp4" type="video/mp4" />
               </video>
             </div>
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs font-figtree text-alabaster/70">
+            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs font-sans text-alabaster/70">
               <span>On-Site Raw Footage & Structural Progress</span>
-              <span className="text-emerald font-semibold">Live Site Status</span>
+              <span className="text-emerald font-semibold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Live Site Status
+              </span>
             </div>
-          </div>
-        </div>
-
-        {/* Bottom Strip: 3-Column Video Perspectives */}
-        <div className="pt-10 border-t border-white/10">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-            <span className="font-figtree text-xs font-bold uppercase tracking-widest text-caramel">
-              Expert Perspectives
-            </span>
-            <h3 className="font-gumani text-2xl sm:text-3xl font-bold text-white">
-              Watch & Understand the Project Vision
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {PERSPECTIVES.map((p) => (
-              <div
-                key={p.title}
-                className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 shadow-xl flex flex-col group transition-all hover:border-caramel/40"
-              >
-                <div
-                  onClick={() => onOpenVideoModal(p.video)}
-                  className="relative h-48 w-full cursor-pointer overflow-hidden"
-                >
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-caramel/90 group-hover:bg-caramel text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                      <Play className="w-5 h-5 fill-current ml-0.5" />
-                    </div>
-                  </div>
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-2">
-                  <h4 className="font-gumani text-lg font-bold text-white">
-                    {p.title}
-                  </h4>
-                  <p className="font-figtree text-xs text-alabaster/70 font-normal leading-relaxed">
-                    {p.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

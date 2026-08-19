@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Phone, CheckCircle2, ShieldCheck, Sparkles, Send } from 'lucide-react';
+import { Phone, CheckCircle2, Sparkles, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function ConversionHubSection() {
@@ -36,101 +36,109 @@ export default function ConversionHubSection() {
   };
 
   return (
-    <motion.section
+    <section
       id="contact"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="py-20 sm:py-28 bg-sienna text-alabaster"
+      className="min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-center py-12 lg:py-16 bg-obsidian text-alabaster relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Direct Connect & Promises */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-2">
-              <span className="font-figtree text-xs font-bold uppercase tracking-[0.15em] text-caramel flex items-center gap-2">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-4 sm:space-y-5"
+          >
+            <div className="space-y-1.5">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-bronze flex items-center gap-2">
                 <Sparkles className="w-4 h-4" />
                 <span>Direct Developer Invitation</span>
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F3E6] tracking-tight leading-[1.15]">
-                Ready to Choose Your <span className="italic text-[#CE793A] font-normal">Next Address?</span>
+              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-alabaster tracking-tight leading-[1.15]">
+                Ready to Choose Your <span className="italic text-bronze font-normal">Next Address?</span>
               </h2>
             </div>
 
-            <p className="font-figtree text-sm sm:text-base text-alabaster/85 font-normal leading-relaxed">
+            <p className="font-sans text-xs sm:text-sm md:text-base text-alabaster/85 font-normal leading-relaxed">
               Connect with a senior Kura Homes project advisor today. Get complete transparent pricing breakdowns, structural blueprints, and schedule an exclusive site visit.
             </p>
 
             {/* Trust Promises */}
-            <div className="space-y-3 pt-2 font-figtree text-xs sm:text-sm text-alabaster/90">
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald shrink-0" />
+            <div className="space-y-2.5 pt-1 font-sans text-xs sm:text-sm text-alabaster/90">
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Guaranteed advisor callback within 2 hours</span>
               </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald shrink-0" />
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Complimentary private vehicle site visit & pickup</span>
               </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald shrink-0" />
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Complete transparent legal title & RERA documentation</span>
               </div>
             </div>
 
             {/* Direct Call Box */}
-            <div className="pt-4 p-5 rounded-2xl bg-sienna-dark border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="pt-2 p-4 rounded-2xl bg-white/5 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <span className="font-figtree text-xs text-alabaster/60 block">Speak to Sales Advisor Direct</span>
+                <span className="font-sans text-[11px] text-alabaster/60 block">Speak to Sales Advisor Direct</span>
                 <a
                   href="tel:8008008946"
-                  className="font-gumani text-2xl font-bold text-caramel hover:text-caramel-light transition-colors inline-flex items-center gap-2"
+                  className="font-display text-xl sm:text-2xl font-bold text-bronze hover:text-bronze-light transition-colors inline-flex items-center gap-2"
                 >
-                  <Phone className="w-5 h-5 text-caramel" />
+                  <Phone className="w-4 h-4 text-bronze" />
                   <span>800 800 8946</span>
                 </a>
               </div>
-              <span className="font-figtree text-xs px-3 py-1.5 rounded-full bg-emerald/10 text-emerald border border-emerald/20 font-semibold self-start sm:self-center">
+              <span className="font-sans text-xs px-3 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 font-semibold self-start sm:self-center">
                 Available 9 AM - 8 PM
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Lead Form Card with High-Contrast Text */}
-          <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-borderTone">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-zinc-border text-obsidian"
+          >
             {submitted ? (
-              <div className="text-center py-10 space-y-4">
-                <CheckCircle2 className="w-16 h-16 text-emerald mx-auto" />
-                <h3 className="font-gumani text-2xl font-bold text-sienna">
+              <div className="text-center py-8 space-y-3">
+                <CheckCircle2 className="w-14 h-14 text-emerald-500 mx-auto" />
+                <h3 className="font-display text-2xl font-bold text-obsidian">
                   Enquiry Received!
                 </h3>
-                <p className="font-figtree text-sm text-noir/70 max-w-sm mx-auto">
+                <p className="font-sans text-xs sm:text-sm text-charcoal-mute max-w-sm mx-auto">
                   Thank you, <strong>{name}</strong>. Our project coordinator will send the brochure and floor plans to your WhatsApp and phone shortly.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="py-2.5 px-6 bg-chocolate text-sienna font-figtree font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-chocolate-dark transition-colors"
+                  className="py-2.5 px-6 bg-slate-100 text-obsidian font-sans font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-slate-200 transition-colors"
                 >
                   Submit Another Enquiry
                 </button>
               </div>
             ) : (
               <div>
-                <div className="mb-6 space-y-1">
-                  <span className="font-figtree text-xs font-bold uppercase tracking-widest text-caramel block">
+                <div className="mb-4 space-y-1">
+                  <span className="font-sans text-xs font-bold uppercase tracking-widest text-bronze block">
                     Instant Access
                   </span>
-                  <h3 className="font-gumani text-2xl sm:text-3xl font-bold text-sienna">
-                    Request Instant Project Details
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-obsidian">
+                    Request Pricing & Project Details
                   </h3>
-                  <p className="font-figtree text-xs sm:text-sm text-noir/65">
+                  <p className="font-sans text-xs text-charcoal-mute">
                     Provide your details below to receive the brochure & floor plans via WhatsApp.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4 font-figtree">
+                <form onSubmit={handleSubmit} className="space-y-3 font-sans">
                   <div>
-                    <label className="block text-xs font-semibold text-sienna mb-1">
+                    <label className="block text-xs font-semibold text-obsidian mb-1">
                       Full Name *
                     </label>
                     <input
@@ -139,12 +147,12 @@ export default function ConversionHubSection() {
                       placeholder="e.g. Rajesh Sharma"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 bg-white border border-borderTone rounded-xl text-sm text-noir focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-obsidian placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-bronze focus:ring-1 focus:ring-bronze transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-sienna mb-1">
+                    <label className="block text-xs font-semibold text-obsidian mb-1">
                       Mobile Number *
                     </label>
                     <input
@@ -154,18 +162,18 @@ export default function ConversionHubSection() {
                       placeholder="10-digit mobile number"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-4 py-3 bg-white border border-borderTone rounded-xl text-sm text-noir focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-obsidian placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-bronze focus:ring-1 focus:ring-bronze transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-sienna mb-1">
+                    <label className="block text-xs font-semibold text-obsidian mb-1">
                       Configuration (Optional)
                     </label>
                     <select
                       value={req}
                       onChange={(e) => setReq(e.target.value)}
-                      className="w-full px-4 py-3 bg-white border border-borderTone rounded-xl text-sm text-noir focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-obsidian focus:bg-white focus:outline-none focus:border-bronze focus:ring-1 focus:ring-bronze transition-all"
                     >
                       <option value="">Preferred Layout (Optional)</option>
                       <option value="2 BHK">Smart 2 BHK Apartment</option>
@@ -177,21 +185,21 @@ export default function ConversionHubSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 sm:py-4 bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg hover:shadow-caramel-glow transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-2"
+                    className="w-full py-3.5 bg-bronze hover:bg-bronze-hover text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg hover:shadow-bronze-glow transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-2"
                   >
                     <span>{loading ? 'Submitting Enquiry...' : 'Submit Enquiry'}</span>
-                    <Send className="w-4 h-4" />
+                    <Send className="w-3.5 h-3.5" />
                   </button>
 
-                  <p className="text-[11px] text-center text-noir/50 pt-1 font-normal leading-relaxed">
+                  <p className="text-[11px] text-center text-charcoal-mute pt-0.5 font-normal leading-relaxed">
                     By submitting, our team will share the project details and pricing with you via call / WhatsApp.
                   </p>
                 </form>
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

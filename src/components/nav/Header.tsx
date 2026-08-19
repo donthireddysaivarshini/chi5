@@ -30,8 +30,8 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-alabaster/95 backdrop-blur-md shadow-kura py-3 border-b border-borderTone/50'
-            : 'bg-gradient-to-b from-sienna-dark/90 to-transparent py-4'
+            ? 'bg-alabaster/95 backdrop-blur-md shadow-kura py-3 border-b border-zinc-border/60'
+            : 'bg-gradient-to-b from-obsidian/90 to-transparent py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -47,7 +47,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
               }`}
               priority
             />
-            <div className={`h-6 w-[1px] ${isScrolled ? 'bg-borderTone' : 'bg-white/30'}`}></div>
+            <div className={`h-6 w-[1px] ${isScrolled ? 'bg-zinc-border' : 'bg-white/30'}`}></div>
             <Image
               src="/logos/hi-five logo 2.png"
               alt="Codename Hi-Five"
@@ -74,8 +74,8 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
               <a
                 key={link.label}
                 href={link.href}
-                className={`font-sans text-sm font-medium transition-colors hover:text-[#CE793A] ${
-                  isScrolled ? 'text-[#3A1C11]' : 'text-[#F5F3E6]'
+                className={`font-sans text-sm font-medium transition-colors hover:text-bronze ${
+                  isScrolled ? 'text-obsidian' : 'text-alabaster'
                 }`}
               >
                 {link.label}
@@ -88,15 +88,15 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
             <a
               href="tel:8008008946"
               className={`flex items-center gap-2 font-sans text-sm font-semibold transition-colors ${
-                isScrolled ? 'text-[#3A1C11] hover:text-[#CE793A]' : 'text-[#F5F3E6] hover:text-[#E59253]'
+                isScrolled ? 'text-obsidian hover:text-bronze' : 'text-alabaster hover:text-bronze-light'
               }`}
             >
-              <Phone className="w-4 h-4 text-[#CE793A]" />
+              <Phone className="w-4 h-4 text-bronze" />
               <span>800 800 8946</span>
             </a>
             <button
               onClick={() => onOpenLeadModal('header_cta', 'Book a Visit')}
-              className="bg-[#CE793A] hover:bg-[#E59253] text-white font-sans font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md transition-all transform hover:scale-105 active:scale-95"
+              className="bg-bronze hover:bg-bronze-hover text-white font-sans font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md transition-all transform hover:scale-105 active:scale-95"
             >
               Book a Visit
             </button>
@@ -105,7 +105,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
           {/* Mobile Hamburger Toggle */}
           <button
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? 'text-[#3A1C11]' : 'text-[#F5F3E6]'
+              isScrolled ? 'text-obsidian' : 'text-alabaster'
             }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation"
@@ -123,7 +123,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-[#28120C] text-[#F5F3E6] pt-24 px-6 pb-10 flex flex-col justify-between lg:hidden"
+            className="fixed inset-0 z-40 bg-obsidian text-alabaster pt-24 px-6 pb-10 flex flex-col justify-between lg:hidden"
           >
             <nav className="flex flex-col gap-5">
               {[
@@ -139,7 +139,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-2xl font-bold text-[#F5F3E6] hover:text-[#CE793A] transition-colors"
+                  className="font-display text-2xl font-bold text-alabaster hover:text-bronze transition-colors"
                 >
                   {link.label}
                 </a>
@@ -149,17 +149,17 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
             <div className="space-y-3 pt-6 border-t border-white/10">
               <a
                 href="tel:8008008946"
-                className="w-full flex items-center justify-center gap-2 py-3 bg-white/10 rounded-xl font-sans font-bold text-sm text-[#F5F3E6]"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-white/10 text-alabaster font-sans font-semibold text-sm rounded-xl"
               >
-                <Phone className="w-4 h-4 text-[#CE793A]" />
-                <span>Call Sales: 800 800 8946</span>
+                <Phone className="w-4 h-4 text-bronze" />
+                <span>Call 800 800 8946</span>
               </a>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenLeadModal('mobile_drawer_cta', 'Book a Visit');
+                  onOpenLeadModal('mobile_nav_cta', 'Book a Visit');
                 }}
-                className="w-full py-3.5 bg-[#CE793A] hover:bg-[#E59253] text-white font-sans font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg"
+                className="w-full py-3.5 bg-bronze hover:bg-bronze-hover text-white font-sans font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg"
               >
                 Book a Visit
               </button>
