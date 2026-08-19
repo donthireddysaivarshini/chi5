@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { ShieldCheck, FileCheck2, ArrowRight, Layers, Home, IndianRupee, Move, MapPin, Building2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -35,19 +36,15 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
 
   return (
     <section id="hero" className="min-h-screen relative flex flex-col justify-between pt-28 pb-8 overflow-hidden bg-[#28120C]">
-      {/* Background Video & Scrim Overlay */}
+      {/* Background Front View Image & Scrim Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/images/Front view.webp"
-          className="w-full h-full object-cover"
-        >
-          <source src="/videos/Static_camera_locked_in_place_hero.mp4" type="video/mp4" />
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+        <Image
+          src="/images/Front view.webp"
+          alt="Codename Hi-Five Front Elevation View"
+          fill
+          priority
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#28120C] via-[#28120C]/80 to-[#28120C]/50" />
       </div>
 
