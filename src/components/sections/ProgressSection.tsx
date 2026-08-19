@@ -107,11 +107,11 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
 
             <div className="pt-2">
               <button
-                onClick={() => onOpenLeadModal('progress_site_visit', 'Book a Physical Progress Tour')}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg transition-all"
+                onClick={() => onOpenLeadModal('progress_visit', 'Book a Visit')}
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg transition-all"
               >
                 <Eye className="w-4 h-4" />
-                <span>Book a Physical Progress Tour</span>
+                <span>Book a Visit</span>
               </button>
             </div>
           </div>

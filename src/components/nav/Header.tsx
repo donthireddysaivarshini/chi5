@@ -53,7 +53,9 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
               alt="Codename Hi-Five"
               width={110}
               height={34}
-              className="h-8 md:h-9 w-auto object-contain"
+              className={`h-8 md:h-9 w-auto object-contain transition-all ${
+                isScrolled ? '' : 'brightness-0 invert'
+              }`}
               priority
             />
           </a>
@@ -72,8 +74,8 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
               <a
                 key={link.label}
                 href={link.href}
-                className={`font-figtree text-sm font-medium transition-colors hover:text-caramel ${
-                  isScrolled ? 'text-sienna' : 'text-alabaster'
+                className={`font-sans text-sm font-medium transition-colors hover:text-[#CE793A] ${
+                  isScrolled ? 'text-[#3A1C11]' : 'text-[#F5F3E6]'
                 }`}
               >
                 {link.label}
@@ -85,25 +87,25 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
           <div className="hidden sm:flex items-center gap-4">
             <a
               href="tel:8008008946"
-              className={`flex items-center gap-2 font-figtree text-sm font-semibold transition-colors ${
-                isScrolled ? 'text-sienna hover:text-caramel' : 'text-alabaster hover:text-caramel-light'
+              className={`flex items-center gap-2 font-sans text-sm font-semibold transition-colors ${
+                isScrolled ? 'text-[#3A1C11] hover:text-[#CE793A]' : 'text-[#F5F3E6] hover:text-[#E59253]'
               }`}
             >
-              <Phone className="w-4 h-4 text-caramel" />
+              <Phone className="w-4 h-4 text-[#CE793A]" />
               <span>800 800 8946</span>
             </a>
             <button
-              onClick={() => onOpenLeadModal('header_cta', 'Book a Private Site Visit')}
-              className="bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md transition-all transform hover:scale-105 active:scale-95"
+              onClick={() => onOpenLeadModal('header_cta', 'Book a Visit')}
+              className="bg-[#CE793A] hover:bg-[#E59253] text-white font-sans font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md transition-all transform hover:scale-105 active:scale-95"
             >
-              Book Site Visit
+              Book a Visit
             </button>
           </div>
 
           {/* Mobile Hamburger Toggle */}
           <button
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? 'text-sienna' : 'text-alabaster'
+              isScrolled ? 'text-[#3A1C11]' : 'text-[#F5F3E6]'
             }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation"
@@ -121,7 +123,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-sienna-dark text-alabaster pt-24 px-6 pb-10 flex flex-col justify-between lg:hidden"
+            className="fixed inset-0 z-40 bg-[#28120C] text-[#F5F3E6] pt-24 px-6 pb-10 flex flex-col justify-between lg:hidden"
           >
             <nav className="flex flex-col gap-5">
               {[
@@ -137,7 +139,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-gumani text-2xl font-bold text-alabaster hover:text-caramel transition-colors"
+                  className="font-display text-2xl font-bold text-[#F5F3E6] hover:text-[#CE793A] transition-colors"
                 >
                   {link.label}
                 </a>
@@ -147,19 +149,19 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
             <div className="space-y-3 pt-6 border-t border-white/10">
               <a
                 href="tel:8008008946"
-                className="w-full flex items-center justify-center gap-2 py-3 bg-white/10 rounded-xl font-figtree font-bold text-sm text-alabaster"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-white/10 rounded-xl font-sans font-bold text-sm text-[#F5F3E6]"
               >
-                <Phone className="w-4 h-4 text-caramel" />
+                <Phone className="w-4 h-4 text-[#CE793A]" />
                 <span>Call Sales: 800 800 8946</span>
               </a>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenLeadModal('mobile_drawer_cta', 'Schedule a Site Tour');
+                  onOpenLeadModal('mobile_drawer_cta', 'Book a Visit');
                 }}
-                className="w-full py-3.5 bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg"
+                className="w-full py-3.5 bg-[#CE793A] hover:bg-[#E59253] text-white font-sans font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg"
               >
-                Book Site Visit
+                Book a Visit
               </button>
             </div>
           </motion.div>

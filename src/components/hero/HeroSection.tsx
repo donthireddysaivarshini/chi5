@@ -107,10 +107,10 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
             className="pt-2 flex flex-wrap items-center gap-4"
           >
             <button
-              onClick={() => onOpenLeadModal('hero_main_cta', 'Book a Private Site Tour')}
+              onClick={() => onOpenLeadModal('hero_main_cta', 'Book a Visit')}
               className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-medium text-xs sm:text-sm uppercase tracking-widest rounded-full shadow-lg hover:shadow-caramel-glow transition-all transform hover:scale-105 active:scale-95"
             >
-              <span>Book a Private Site Tour</span>
+              <span>Book a Visit</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button

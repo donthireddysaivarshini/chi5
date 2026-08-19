@@ -58,11 +58,11 @@ export default function OverviewSection({ onOpenLeadModal }: OverviewSectionProp
 
             <div className="pt-3">
               <button
-                onClick={() => onOpenLeadModal('overview_private_visit', 'Schedule a Private Site Visit')}
+                onClick={() => onOpenLeadModal('overview_visit', 'Book a Visit')}
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all"
               >
                 <CalendarCheck className="w-4 h-4" />
-                <span>Schedule a Private Site Visit</span>
+                <span>Book a Visit</span>
               </button>
             </div>
           </div>
