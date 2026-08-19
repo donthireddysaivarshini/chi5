@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Phone, MessageCircle, CalendarCheck } from 'lucide-react';
+import { Phone, CalendarCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import WhatsAppIcon from './WhatsAppIcon';
 
 interface StickyMobileDockProps {
   onOpenLeadModal: (source: string, title?: string) => void;
@@ -50,13 +51,13 @@ export default function StickyMobileDock({ onOpenLeadModal }: StickyMobileDockPr
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#25D366]/20 border border-[#25D366]/30 hover:bg-[#25D366]/30 text-[#F5F3E6] transition-all active:scale-95 text-center"
             >
-              <MessageCircle className="w-4 h-4 text-[#25D366] mb-0.5" />
+              <WhatsAppIcon className="w-4 h-4 text-[#25D366] mb-0.5" />
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#25D366]">WhatsApp</span>
             </a>
 
             {/* 3. Book Visit (Opens Form Modal) */}
             <button
-              onClick={() => onOpenLeadModal('mobile_bottom_dock', 'Book a Private Site Tour')}
+              onClick={() => onOpenLeadModal('mobile_bottom_dock', 'Book a Visit')}
               className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#CE793A] hover:bg-[#E59253] text-white transition-all active:scale-95 shadow-md text-center"
             >
               <CalendarCheck className="w-4 h-4 text-white mb-0.5" />
