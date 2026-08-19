@@ -41,10 +41,17 @@
   <!-- §1 — FIXED HEADER NAVIGATION -->
   <header class="header-nav" id="mainHeader">
     <div class="container header-container">
-      <a href="#hero" class="header-logos">
-        <img src="public/logos/kura homes logo.png" alt="Kura Homes Logo" class="dev-logo">
-        <div class="divider"></div>
-        <img src="public/logos/hi-five logo 2.png" alt="Codename Hi-Five Logo" class="proj-logo">
+      <a href="#hero" class="header-logo-wrapper">
+        <img src="public/logos/kura homes logo.png" alt="Kura Homes" class="dev-logo">
+        <span class="divider-pipe">|</span>
+        <div class="hifive-brand-lockup variant-header">
+          <div class="lockup-top">
+            <span class="lockup-line"></span>
+            <span class="lockup-text-codename">CODENAME</span>
+            <span class="lockup-line"></span>
+          </div>
+          <span class="lockup-text-hifive">HI FIVE</span>
+        </div>
       </a>
 
       <nav class="nav-links">
@@ -101,13 +108,23 @@
         </picture>
       </div>
       <div class="hero-container">
-        <div class="hero-content">
+        <div class="hero-content centered">
           <div class="hero-badges-top">
             <span class="hero-badge-item"><i class="fa-solid fa-file-signature text-accent" style="margin-right: 4px;"></i> HMDA Approved</span>
             <span class="hero-badge-item"><i class="fa-solid fa-shield-check text-accent" style="margin-right: 4px;"></i> TG RERA: P02200002810</span>
           </div>
-          <h1>Your Home at Hyderabad's ORR Exit-5</h1>
-          <p>Luxurious 2 BHK & Duplex gated community homes starting from ₹55 Lakhs. Experience premium living with 70% open spaces, adjacent to Bowrampet forests.</p>
+          
+          <!-- Hero Main Identity Lockup -->
+          <div class="hifive-brand-lockup variant-hero animate-on-scroll">
+            <div class="lockup-top">
+              <span class="lockup-line"></span>
+              <span class="lockup-text-codename">CODENAME</span>
+              <span class="lockup-line"></span>
+            </div>
+            <h1 class="lockup-title">HI FIVE</h1>
+          </div>
+
+          <p class="hero-lead">Luxurious 2 BHK & Duplex gated community homes starting from ₹55 Lakhs. Experience premium living with 70% open spaces, adjacent to Bowrampet forests.</p>
           <div class="hero-actions">
             <button class="btn btn-primary trigger-modal-btn" data-source="hero_main_cta">Book a Private Site Tour</button>
             <button class="btn-play-tour" id="heroPlayBtn" aria-label="Watch Project Tour video">

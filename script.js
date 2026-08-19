@@ -34,13 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileStickyDock = document.getElementById('mobileStickyDock');
 
   window.addEventListener('scroll', () => {
-    // Header shadow on scroll
+    // Toggle scrolled class for CSS styling transitions
     if (window.scrollY > 50) {
-      mainHeader.style.boxShadow = 'var(--shadow-md)';
-      mainHeader.style.backgroundColor = 'rgba(245, 243, 230, 0.98)';
+      mainHeader.classList.add('scrolled');
     } else {
-      mainHeader.style.boxShadow = 'none';
-      mainHeader.style.backgroundColor = 'rgba(245, 243, 230, 0.88)';
+      mainHeader.classList.remove('scrolled');
     }
 
     // Mobile sticky dock visibility threshold (appear past hero)
