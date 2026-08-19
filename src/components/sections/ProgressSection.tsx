@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { ShieldCheck, CheckCircle2, Eye } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ShieldCheck, CheckCircle2, Eye, Play, Pause } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ProgressSectionProps {
@@ -10,6 +10,31 @@ interface ProgressSectionProps {
 }
 
 export default function ProgressSection({ onOpenLeadModal }: ProgressSectionProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlayPause = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.muted = false;
+      video
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          video.muted = true;
+          video
+            .play()
+            .then(() => setIsPlaying(true))
+            .catch(() => {});
+        });
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
   const milestones = [
     { label: 'Foundation & RCC Superstructure', status: '100% Completed', done: true, progress: 100 },
     { label: 'Internal Plastering & Electrical Works', status: '95% Completed', done: true, progress: 95 },
@@ -100,7 +125,7 @@ export default function ProgressSection({ onOpenLeadModal }: ProgressSectionProp
             </div>
           </motion.div>
 
-          {/* Right Column: Embedded Walkthrough Video Player */}
+          {/* Right Column: Clean Video Player with Dedicated Play/Pause Controls */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -108,21 +133,56 @@ export default function ProgressSection({ onOpenLeadModal }: ProgressSectionProp
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className="lg:col-span-6 space-y-3"
           >
-            <div className="relative h-[280px] sm:h-[360px] lg:h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-black">
+            <div className="relative h-[280px] sm:h-[360px] lg:h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-black group select-none">
               <video
-                autoPlay
+                ref={videoRef}
                 loop
-                muted
                 playsInline
                 controls
+                preload="auto"
                 poster="/images/Front view.webp"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
                 className="w-full h-full object-cover"
               >
                 <source src="/videos/sanarelli_progress.mp4" type="video/mp4" />
+                <source src="/videos/construction-progress.mp4" type="video/mp4" />
               </video>
+
+              {/* Center Play Button Overlay when Paused */}
+              {!isPlaying && (
+                <button
+                  onClick={togglePlayPause}
+                  aria-label="Play Video"
+                  className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center transition-all group-hover:bg-black/30 w-full h-full"
+                >
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-bronze hover:bg-bronze-hover text-white flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
+                    <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-white ml-1" />
+                  </div>
+                </button>
+              )}
             </div>
+
             <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs font-sans text-alabaster/70">
-              <span>On-Site Raw Footage & Structural Progress</span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={togglePlayPause}
+                  className="px-3.5 py-1.5 rounded-lg bg-bronze hover:bg-bronze-hover text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-md active:scale-95"
+                >
+                  {isPlaying ? (
+                    <>
+                      <Pause className="w-3.5 h-3.5" />
+                      <span>Pause Video</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-3.5 h-3.5 fill-current" />
+                      <span>Play Video</span>
+                    </>
+                  )}
+                </button>
+                <span className="hidden sm:inline">On-Site Raw Footage & Structural Progress</span>
+              </div>
               <span className="text-emerald font-semibold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 Live Site Status

@@ -171,7 +171,7 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
                   {formatINR(emi)}
                 </span>
                 <span className="font-sans text-xs text-alabaster/70">
-                  Calculated at default 7.95% p.a. interest rate
+                  Calculated at {interestRate}% p.a. interest rate
                 </span>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function AffordabilityStudioSection({ onOpenLeadModal }: Affordab
                 <span className="font-semibold text-alabaster">{tenureYears} Years ({totalMonths} Mos)</span>
               </div>
               <div className="flex justify-between">
-                <span>Default Rate:</span>
+                <span>Selected Rate:</span>
                 <span className="font-semibold text-bronze">{interestRate}% p.a.</span>
               </div>
               <div className="flex justify-between">
