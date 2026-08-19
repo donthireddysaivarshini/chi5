@@ -3,28 +3,53 @@
   Style System & Architectural Layout Specification
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..700;1,300..700&family=Gloock&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap');
 
 :root {
+  /* ═══════════════════════════════════════════
+     KURA HOMES — COMPLETE DESIGN SYSTEM TOKENS
+     ═══════════════════════════════════════════ */
+
   /* Brand Color Palette */
-  --color-primary: #3A1C11;
+  --sienna: #3A1C11;               /* Primary Dark — headings, dark backgrounds */
+  --sienna-dark: #28120C;          /* Deep contrast bands, hero overlays */
+  --sienna-light: #5E2B1B;         /* Hover states on dark buttons */
+  --alabaster: #F5F3E6;            /* Primary light background, text on dark */
+  --alabaster-muted: #EBE8D8;
+  --chocolate: #EEE8DE;            /* Light alternating cards, pill containers */
+  --chocolate-dark: #E2D8CA;       /* Inner pill backgrounds, slider tracks */
+  --caramel: #CE793A;              /* Accent — CTAs, highlight words, stat numbers */
+  --caramel-light: #E59253;        /* Hover state for CTAs */
+  --caramel-dark: #B06126;
+  --noir: #1B1717;                 /* High-contrast body text on light backgrounds */
+  --noir-muted: #3C3636;
+  --emerald: #10B981;              /* 90% Ready / Construction status */
+  --whatsapp: #25D366;             /* WhatsApp CTA */
+
+  /* Legacy aliases (backwards-compatible) */
+  --color-primary: var(--sienna);
   --color-primary-rgb: 58, 28, 17;
-  --color-primary-dark: #24110A;
-  --color-secondary: #F5F3E6;
+  --color-primary-dark: var(--sienna-dark);
+  --color-secondary: var(--alabaster);
   --color-secondary-rgb: 245, 243, 230;
-  --color-accent: #CE793A;
-  --color-accent-hover: #B5672E;
+  --color-accent: var(--caramel);
+  --color-accent-hover: var(--caramel-light);
   --color-accent-light: rgba(206, 121, 58, 0.08);
   --color-white: #FFFFFF;
-  --color-text: #2A1508;
+  --color-text: var(--noir);
   --color-text-muted: #6B5A4F;
-  --color-border: #E8E2D2;
+  --color-border: var(--chocolate-dark);
   --color-trust: #2E7D32;
   --color-trust-light: rgba(46, 125, 50, 0.08);
 
-  /* Typography */
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Figtree', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography — 3 font families */
+  --font-gumani: 'Playfair Display', Georgia, serif;           /* Headlines, hero titles, big numerals */
+  --font-figtree: 'Figtree', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;  /* Body, UI, buttons, labels */
+  --font-gloock: 'Gloock', serif;                              /* Editorial accent serif (subtitles) */
+
+  /* Legacy aliases */
+  --font-heading: var(--font-gumani);
+  --font-body: var(--font-figtree);
 
   /* Layout Spacing */
   --section-pad: clamp(60px, 10vw, 110px);
@@ -41,11 +66,33 @@
   --shadow-md: 0 10px 30px rgba(58, 28, 17, 0.06);
   --shadow-lg: 0 20px 50px rgba(58, 28, 17, 0.1);
   --shadow-glow: 0 0 20px rgba(206, 121, 58, 0.15);
+  --shadow-kura: 0 10px 30px -5px rgba(58, 28, 17, 0.08);
+  --shadow-kura-lg: 0 20px 40px -10px rgba(58, 28, 17, 0.15);
+  --shadow-caramel-glow: 0 0 25px rgba(206, 121, 58, 0.35);
 
   /* Transition speeds */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES — Font & Color Helpers
+   ═══════════════════════════════════════════ */
+.font-gumani, .font-serif { font-family: var(--font-gumani); }
+.font-figtree, .font-sans { font-family: var(--font-figtree); }
+.font-gloock               { font-family: var(--font-gloock); }
+
+.text-sienna    { color: var(--sienna); }
+.text-alabaster { color: var(--alabaster); }
+.text-caramel   { color: var(--caramel); }
+.text-noir      { color: var(--noir); }
+.text-accent    { color: var(--caramel); }
+
+.bg-sienna      { background-color: var(--sienna); }
+.bg-sienna-dark { background-color: var(--sienna-dark); }
+.bg-alabaster   { background-color: var(--alabaster); }
+.bg-chocolate   { background-color: var(--chocolate); }
+.bg-caramel     { background-color: var(--caramel); }
 
 /* CSS RESET & GENERAL STYLES */
 *, *::before, *::after {
