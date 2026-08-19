@@ -18,6 +18,7 @@ import Footer from '@/components/nav/Footer';
 import Modals from '@/components/ui/Modals';
 import StickyMobileDock from '@/components/ui/StickyMobileDock';
 import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
+import ScrollAnimationObserver from '@/components/ui/ScrollAnimationObserver';
 
 export default function HomePage() {
   const [leadModalOpen, setLeadModalOpen] = useState(false);
@@ -52,6 +53,7 @@ export default function HomePage() {
 
   return (
     <>
+      <ScrollAnimationObserver />
       {/* §1 — Fixed Header Navigation */}
       <Header onOpenLeadModal={handleOpenLeadModal} />
 

@@ -203,41 +203,111 @@ ol {
   list-style: none;
 }
 
-/* TYPOGRAPHY */
+/* TYPOGRAPHY — BOLD, CRISP, ULTRA-PREMIUM HIERARCHY */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  line-height: 1.25;
+h6,
+.font-gumani,
+.font-heading,
+.font-editorial {
+  font-family: var(--font-gumani), 'Playfair Display', Georgia, serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
   color: var(--color-primary);
 }
 
+h1 {
+  font-size: clamp(2.35rem, 5.2vw, 3.85rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.75rem) !important;
+  font-weight: 700 !important;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem) !important;
+  font-weight: 700 !important;
+}
+
 .font-editorial {
-  font-family: var(--font-heading);
+  font-family: var(--font-gumani), 'Playfair Display', serif !important;
+  font-weight: 700 !important;
 }
 
-.text-center {
-  text-align: center;
+.tag {
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--caramel);
+  font-size: 0.78rem;
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
-.text-right {
-  text-align: right;
+/* APPLE-GRADE SMOOTH SCROLL REVEALS & CARD HOVER TRANSITIONS */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.text-muted {
-  color: var(--color-text-muted);
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.text-white {
-  color: var(--color-white);
+/* Smooth Card Hover Transforms */
+.snapshot-card,
+.pricing-card,
+.loc-badge-card,
+.amenity-tile,
+.gallery-card,
+.perspective-card,
+.heritage-stat-card,
+.studio-card,
+.mini-stat-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
 }
 
-.text-accent {
-  color: var(--color-accent);
+.snapshot-card:hover,
+.pricing-card:hover,
+.loc-badge-card:hover,
+.amenity-tile:hover,
+.perspective-card:hover,
+.heritage-stat-card:hover,
+.mini-stat-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 20px 40px -10px rgba(58, 28, 17, 0.16);
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Button hover effects */
+.btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(206, 121, 58, 0.45);
+}
+
+.btn-play-tour:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--caramel);
 }
 
 /* LAYOUT UTILITIES */
