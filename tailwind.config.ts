@@ -43,7 +43,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        gumani: ['var(--font-playfair)', 'var(--font-gloock)', 'Playfair Display', 'Gloock', 'serif'],
+        gumani: ['var(--font-gloock)', 'var(--font-playfair)', 'Gumani', 'Gloock', 'Playfair Display', 'Georgia', 'serif'],
         figtree: ['var(--font-figtree)', 'Figtree', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
         gloock: ['var(--font-gloock)', 'Gloock', 'serif'],
       },
