@@ -52,7 +52,7 @@ export default function GallerySection({ onOpenImageModal }: GallerySectionProps
             Exteriors & Interiors
           </span>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A1C11] tracking-tight leading-[1.15]">
-            Crafted Architecture, <span className="italic text-[#CE793A] font-normal">Rendered in 3D.</span>
+            Crafted Architecture, <span className="italic text-[#CE793A] font-normal">Brought to Life.</span>
           </h2>
           <p className="font-figtree text-sm sm:text-base text-noir/70 font-normal">
             Swipe or use controls to browse through authentic 3D masterplan renders and interior design concepts.

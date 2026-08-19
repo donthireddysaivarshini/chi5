@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 export default function ConversionHubSection() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
   const [req, setReq] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -23,8 +22,7 @@ export default function ConversionHubSection() {
         body: JSON.stringify({
           name,
           phone,
-          email,
-          requirement: req || 'Not Specified',
+          requirement: req || '',
           source: 'footer_main_form',
           timestamp: new Date().toISOString(),
         }),
@@ -160,47 +158,33 @@ export default function ConversionHubSection() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-sienna mb-1">
-                        Email Address (Optional)
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="rajesh@example.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border border-borderTone rounded-xl text-sm text-noir focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-sienna mb-1">
-                        Configuration
-                      </label>
-                      <select
-                        value={req}
-                        onChange={(e) => setReq(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border border-borderTone rounded-xl text-sm text-noir focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel"
-                      >
-                        <option value="">Preferred Layout (Optional)</option>
-                        <option value="2 BHK">Smart 2 BHK Apartment</option>
-                        <option value="Duplex">Bespoke Duplex Suite</option>
-                        <option value="Both">Interested in Both</option>
-                      </select>
-                    </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-sienna mb-1">
+                      Configuration (Optional)
+                    </label>
+                    <select
+                      value={req}
+                      onChange={(e) => setReq(e.target.value)}
+                      className="w-full px-4 py-3 bg-white border border-borderTone rounded-xl text-sm text-noir focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel"
+                    >
+                      <option value="">Preferred Layout (Optional)</option>
+                      <option value="2 BHK">Smart 2 BHK Apartment</option>
+                      <option value="Duplex">Bespoke Duplex Suite</option>
+                      <option value="Both">Interested in Both</option>
+                    </select>
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg hover:shadow-caramel-glow transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-2"
+                    className="w-full py-3.5 sm:py-4 bg-caramel hover:bg-caramel-light text-white font-figtree font-bold text-xs uppercase tracking-widest rounded-xl shadow-lg hover:shadow-caramel-glow transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-2"
                   >
-                    <span>{loading ? 'Submitting Details...' : 'Submit Enquiry & Get Details'}</span>
+                    <span>{loading ? 'Submitting Enquiry...' : 'Submit Enquiry'}</span>
                     <Send className="w-4 h-4" />
                   </button>
 
-                  <p className="text-[11px] text-center text-noir/50 pt-1 font-normal">
-                    By submitting, you consent to Kura Homes calling or sending project details on SMS/WhatsApp.
+                  <p className="text-[11px] text-center text-noir/50 pt-1 font-normal leading-relaxed">
+                    By submitting, our team will share the project details and pricing with you via call / WhatsApp.
                   </p>
                 </form>
               </div>

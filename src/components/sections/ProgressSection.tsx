@@ -14,13 +14,13 @@ const PERSPECTIVES = [
   {
     title: 'Investment Appreciation Value',
     desc: 'Comparing entry price of ₹4,999/sq.ft with older corridors (₹9K-10K/sq.ft) and historical growth curves.',
-    image: '/images/Night Aerial.webp',
+    image: '/images/thumb_investment.webp',
     video: '/videos/investment.mp4',
   },
   {
     title: 'Vaastu & Spaces Philosophy',
     desc: 'Chief architect explains Vaastu flow, cross-ventilated bedroom placements, and zero-corridor layouts.',
-    image: '/images/club_vision.webp',
+    image: '/images/thumb_design.webp',
     video: '/videos/Design.mp4',
   },
 ];

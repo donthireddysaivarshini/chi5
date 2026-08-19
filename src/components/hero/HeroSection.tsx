@@ -101,18 +101,18 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="pt-2 flex flex-wrap items-center gap-4"
+            className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
           >
             <button
               onClick={() => onOpenLeadModal('hero_main_cta', 'Book a Visit')}
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-medium text-xs sm:text-sm uppercase tracking-widest rounded-full shadow-lg hover:shadow-caramel-glow transition-all transform hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#CE793A] hover:brightness-110 text-white font-sans font-medium text-xs sm:text-sm uppercase tracking-widest rounded-full shadow-lg hover:shadow-caramel-glow transition-all transform hover:scale-105 active:scale-95"
             >
               <span>Book a Visit</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
-              onClick={() => onOpenLeadModal('hero_pricing_cta', 'Get Detailed Pricing & Floor Plans')}
-              className="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-[#F5F3E6] border border-white/30 font-sans font-medium text-xs sm:text-sm uppercase tracking-widest rounded-full backdrop-blur-sm transition-all"
+              onClick={() => onOpenLeadModal('hero_pricing_cta', 'Request Pricing & Project Details')}
+              className="inline-flex items-center justify-center px-7 py-3.5 bg-white/10 hover:bg-white/20 text-[#F5F3E6] border border-white/30 font-sans font-medium text-xs sm:text-sm uppercase tracking-widest rounded-full backdrop-blur-sm transition-all"
             >
               Get Pricing & Floor Plans
             </button>

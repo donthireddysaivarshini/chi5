@@ -18,9 +18,9 @@ import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
 
 export default function HomePage() {
   const [leadModalOpen, setLeadModalOpen] = useState(false);
-  const [leadModalTitle, setLeadModalTitle] = useState('Unlock Project Details');
+  const [leadModalTitle, setLeadModalTitle] = useState('Request Pricing & Project Details');
   const [leadModalSubtitle, setLeadModalSubtitle] = useState(
-    'Provide your name and mobile number to receive instant access to blueprints & pricing breakdown.'
+    'Enter your contact details below to receive the complete pricing breakdown, floor plans, and project brochure.'
   );
   const [leadModalSource, setLeadModalSource] = useState('modal_popup');
 
@@ -44,8 +44,8 @@ export default function HomePage() {
         if (!hasShown) {
           handleOpenLeadModal(
             'auto_popup_2s',
-            'Download Complete Project Brochure & Cost Sheet',
-            'Enter your contact number below to get immediate access to detailed pricing breakdown, floor plans, and site tour booking.'
+            'Request Pricing & Project Details',
+            'Enter your contact details below to receive the complete pricing breakdown, floor plans, and project brochure.'
           );
           sessionStorage.setItem('lead_popup_triggered', 'true');
         }

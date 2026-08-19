@@ -35,9 +35,11 @@ export default function Modals({
   const [modalName, setModalName] = useState('');
   const [modalPhone, setModalPhone] = useState('');
   const [modalSubmitted, setModalSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleModalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       await fetch('/api/lead', {
         method: 'POST',
@@ -45,6 +47,7 @@ export default function Modals({
         body: JSON.stringify({
           name: modalName,
           phone: modalPhone,
+          requirement: '',
           source: leadModalSource,
           timestamp: new Date().toISOString(),
         }),
@@ -52,13 +55,14 @@ export default function Modals({
     } catch {
       // Fallback
     }
+    setIsSubmitting(false);
     setModalSubmitted(true);
     setTimeout(() => {
       onCloseLeadModal();
       setModalSubmitted(false);
       setModalName('');
       setModalPhone('');
-    }, 2500);
+    }, 3000);
   };
 
   return (
@@ -76,15 +80,21 @@ export default function Modals({
             </button>
             <div className="modal-body">
               {modalSubmitted ? (
-                <div className="text-center py-6">
-                  <i className="fa-solid fa-circle-check text-emerald" style={{ fontSize: '3rem', marginBottom: '12px' }}></i>
-                  <h3 className="font-gumani font-bold text-sienna text-2xl">Thank You!</h3>
-                  <p className="font-figtree text-noir/70 mt-2">Your request has been received. Our sales advisor will share the details with you via WhatsApp.</p>
+                <div className="text-center py-6 space-y-2">
+                  <i className="fa-solid fa-circle-check text-emerald" style={{ fontSize: '3rem', marginBottom: '8px' }}></i>
+                  <h3 className="font-gumani font-bold text-sienna text-2xl">Enquiry Received!</h3>
+                  <p className="font-figtree text-noir/70 text-sm max-w-xs mx-auto leading-relaxed">
+                    Thank you, <strong>{modalName}</strong>. Our team will connect with you shortly with the complete pricing breakdown and project brochure.
+                  </p>
                 </div>
               ) : (
                 <>
-                  <h3 className="font-gumani font-bold text-sienna text-2xl" id="modalHeading">{leadModalTitle}</h3>
-                  <p className="font-figtree font-normal text-noir/60 text-sm mt-1" id="modalSubheading">{leadModalSubtitle}</p>
+                  <h3 className="font-gumani font-bold text-sienna text-2xl" id="modalHeading">
+                    {leadModalTitle || 'Request Pricing & Project Details'}
+                  </h3>
+                  <p className="font-figtree font-normal text-noir/60 text-sm mt-1" id="modalSubheading">
+                    {leadModalSubtitle || 'Enter your contact details below to receive the complete pricing breakdown, floor plans, and project brochure.'}
+                  </p>
 
                   <form id="modalEnquiryForm" className="lead-generation-form font-figtree" style={{ marginTop: '20px' }} onSubmit={handleModalSubmit}>
                     <div className="form-group">
@@ -114,12 +124,17 @@ export default function Modals({
                       />
                     </div>
 
-                    <button type="submit" className="btn btn-primary font-figtree font-bold uppercase tracking-wider text-xs" style={{ width: '100%', marginTop: '8px' }}>
-                      Get Instant Details
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn btn-primary font-figtree font-bold uppercase tracking-wider text-xs"
+                      style={{ width: '100%', marginTop: '8px' }}
+                    >
+                      {isSubmitting ? 'Submitting Enquiry...' : 'Submit Enquiry'}
                     </button>
 
-                    <p className="consent-txt font-figtree font-normal text-noir/50 text-[11px]">
-                      By submitting, you consent to Kura Homes sharing details with you via call / WhatsApp.
+                    <p className="consent-txt font-figtree font-normal text-noir/50 text-[11px] text-center mt-2">
+                      By submitting, our team will share the project details and pricing with you via call / WhatsApp.
                     </p>
                   </form>
                 </>

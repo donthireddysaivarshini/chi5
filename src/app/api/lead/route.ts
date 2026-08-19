@@ -6,11 +6,11 @@ export async function POST(request: Request) {
     const { name, phone, requirement, date, source, timestamp } = body;
 
     const payload = {
-      name: name || 'Not Provided',
-      phone: phone || '',
-      requirement: requirement || '2 BHK / General Enquiry',
-      date: date || new Date().toLocaleDateString('en-IN'),
-      source: source || 'Website Modal',
+      name: name ? String(name).trim() : '',
+      phone: phone ? String(phone).trim() : '',
+      requirement: requirement ? String(requirement).trim() : '',
+      source: source ? String(source).trim() : 'Website Enquiry',
+      date: date ? String(date).trim() : '',
       timestamp: timestamp || new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
     };
 
@@ -21,12 +21,15 @@ export async function POST(request: Request) {
 
     if (googleSheetWebhook) {
       try {
-        await fetch(googleSheetWebhook, {
+        const sheetRes = await fetch(googleSheetWebhook, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
+          redirect: 'follow',
         });
-        console.log('[GOOGLE SHEETS]: Lead successfully synced to Google Sheets.');
+
+        const resText = await sheetRes.text();
+        console.log(`[GOOGLE SHEETS STATUS]: HTTP ${sheetRes.status} | Response:`, resText);
       } catch (sheetError) {
         console.error('[GOOGLE SHEETS SYNC ERROR]:', sheetError);
       }
@@ -34,7 +37,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: 'Thank you! Our sales advisor will connect with you shortly.',
+      message: 'Thank you! Our team will connect with you shortly with complete details.',
     });
   } catch (error) {
     console.error('[LEAD SUBMISSION ERROR]:', error);
