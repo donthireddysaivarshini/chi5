@@ -34,11 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileStickyDock = document.getElementById('mobileStickyDock');
 
   window.addEventListener('scroll', () => {
-    // Toggle scrolled class for CSS styling transitions
+    // Header shadow on scroll
     if (window.scrollY > 50) {
-      mainHeader.classList.add('scrolled');
+      mainHeader.style.boxShadow = 'var(--shadow-md)';
+      mainHeader.style.backgroundColor = 'rgba(245, 243, 230, 0.98)';
     } else {
-      mainHeader.classList.remove('scrolled');
+      mainHeader.style.boxShadow = 'none';
+      mainHeader.style.backgroundColor = 'rgba(245, 243, 230, 0.88)';
     }
 
     // Mobile sticky dock visibility threshold (appear past hero)
@@ -140,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalSourceInput.value = source;
     leadCaptureModal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    
+
     // Focus traps
     leadCaptureModal.querySelector('input').focus();
   }
@@ -153,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalVideoPlayer = document.getElementById('modalVideoPlayer');
     modalVideoPlayer.pause();
     modalVideoPlayer.src = '';
-    
+
     document.body.style.overflow = '';
   }
 
@@ -188,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- VIDEO LIGHTBOX MODAL ---
   const videoModal = document.getElementById('videoModal');
   const modalVideoPlayer = document.getElementById('modalVideoPlayer');
-  
+
   // Hero Project Film Modal trigger
   const heroPlayBtn = document.getElementById('heroPlayBtn');
   if (heroPlayBtn) {
@@ -286,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const outgoVal = document.getElementById('outgoVal');
   const scenarioLabel = document.getElementById('scenarioLabel');
-  
+
   const calcEmi = document.getElementById('calcEmi');
   const calcTaxRow = document.getElementById('calcTaxRow');
   const calcRentRow = document.getElementById('calcRentRow');
@@ -330,21 +332,21 @@ document.addEventListener('DOMContentLoaded', () => {
     textRateVal.textContent = `${rateSlider.value}%`;
 
     calcEmi.textContent = formatRupees(emi);
-    
+
     if (currentScenario === 'live') {
       scenarioLabel.textContent = 'Net Monthly Cost of Ownership';
       const net = Math.max(0, emi - actualTaxSaving);
-      
+
       outgoVal.textContent = formatRupees(net);
       calcNetOutgo.textContent = formatRupees(net);
-      
+
       calcTaxRow.querySelector('span:last-child').textContent = `- ${formatRupees(actualTaxSaving)}`;
       calcTaxRow.style.display = 'flex';
       calcRentRow.style.display = 'none';
     } else {
       scenarioLabel.textContent = 'Net Effective Outgo (Investment)';
       const net = Math.max(0, emi - estimatedRental - actualTaxSaving);
-      
+
       outgoVal.textContent = formatRupees(net);
       calcNetOutgo.textContent = formatRupees(net);
 
@@ -392,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- ANIMATIONS & INTERSECTION OBSERVER ---
   const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-stagger-child');
-  
+
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -402,12 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animated');
-        
+
         // Custom hooks for counters and progress bars
         if (entry.target.id === 'progress') {
           document.getElementById('progressBar').style.width = '90%';
         }
-        
+
         if (entry.target.classList.contains('heritage-container') || entry.target.querySelector('.heritage-stats')) {
           animateNumbers();
         }
@@ -444,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function updateNumber(currentTime) {
         const elapsedTime = currentTime - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
-        
+
         // Easing out quadratic
         const easeProgress = progress * (2 - progress);
         const currentValue = startValue + easeProgress * (stat.end - startValue);
@@ -477,7 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
   forms.forEach(form => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn.textContent;
       submitBtn.disabled = true;
@@ -518,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         // Post asynchronously to App Script Webhook (Replace URL when sheets webhook is active)
         const webHookUrl = 'https://script.google.com/macros/s/AKfycbz_MOCK_ENDPOINT_URL/exec';
-        
+
         await fetch(webHookUrl, {
           method: 'POST',
           mode: 'no-cors',
@@ -530,10 +532,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Graceful confirmation state
         closeAllModals();
-        
+
         // Open success modal overlay
         openSuccessModal(name);
-        
+
         form.reset();
       } catch (err) {
         console.error('Lead submit error:', err);
@@ -553,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const successOverlay = document.createElement('div');
     successOverlay.className = 'modal-overlay active';
     successOverlay.id = 'successModal';
-    
+
     successOverlay.innerHTML = `
       <div class="modal-wrapper">
         <button class="modal-close-btn" id="successCloseBtn">&times;</button>

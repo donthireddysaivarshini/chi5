@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*
   CODENAME HI-FIVE BY KURA HOMES
   Style System & Architectural Layout Specification
