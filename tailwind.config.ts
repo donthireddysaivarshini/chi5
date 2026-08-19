@@ -45,11 +45,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['var(--font-gloock)', 'var(--font-playfair)', 'Gumani', 'Gloock', 'Playfair Display', 'Georgia', 'serif'],
-        gumani: ['var(--font-gloock)', 'var(--font-playfair)', 'Gumani', 'Gloock', 'Playfair Display', 'Georgia', 'serif'],
-        sans: ['var(--font-figtree)', 'Figtree', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-        figtree: ['var(--font-figtree)', 'Figtree', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-        gloock: ['var(--font-gloock)', 'Gloock', 'serif'],
+        display: ['"Playfair Display"', '"Cormorant Garamond"', '"Gloock"', '"Cinzel"', 'serif'],
+        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'serif'],
+        sans: ['"Figtree"', 'system-ui', 'sans-serif'],
+        gumani: ['"Playfair Display"', '"Cormorant Garamond"', '"Gloock"', '"Cinzel"', 'serif'],
+        figtree: ['"Figtree"', 'system-ui', 'sans-serif'],
+        gloock: ['"Gloock"', 'serif'],
       },
       boxShadow: {
         kura: '0 10px 30px -5px rgba(58, 28, 17, 0.08)',

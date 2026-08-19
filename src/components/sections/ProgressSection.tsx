@@ -57,8 +57,8 @@ export default function ProgressSection({ onOpenLeadModal, onOpenVideoModal }: P
                 <ShieldCheck className="w-4 h-4" />
                 <span>RERA Verified Execution</span>
               </span>
-              <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-                90% Built. <span className="italic text-caramel font-normal">Possession Soon.</span>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F3E6] tracking-tight leading-[1.15]">
+                90% Built. <span className="italic text-[#CE793A] font-normal">Possession Soon.</span>
               </h2>
             </div>
 

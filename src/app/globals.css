@@ -211,23 +211,15 @@ ol {
   list-style: none;
 }
 
-/* TYPOGRAPHY — BOLD, CRISP, ULTRA-PREMIUM HIERARCHY */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.font-gumani,
-.font-heading,
-.font-editorial {
-  font-family: var(--font-gumani), 'Playfair Display', Georgia, serif !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.025em;
-  line-height: 1.18;
-  color: var(--color-primary);
+@layer base {
+  h1, h2, h3, h4, h5, h6, .font-display, .font-heading, .font-gumani, .font-serif, .font-editorial {
+    font-family: "Playfair Display", "Cormorant Garamond", "Gloock", serif !important;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
 }
 
+/* TYPOGRAPHY — BOLD, CRISP, ULTRA-PREMIUM HIERARCHY */
 h1 {
   font-size: clamp(2.35rem, 5.2vw, 3.85rem) !important;
   font-weight: 800 !important;
@@ -241,11 +233,6 @@ h2 {
 
 h3 {
   font-size: clamp(1.25rem, 2.2vw, 1.75rem) !important;
-  font-weight: 700 !important;
-}
-
-.font-editorial {
-  font-family: var(--font-gumani), 'Playfair Display', serif !important;
   font-weight: 700 !important;
 }
 

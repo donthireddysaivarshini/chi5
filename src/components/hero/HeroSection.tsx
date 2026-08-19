@@ -82,7 +82,7 @@ export default function HeroSection({ onOpenLeadModal }: HeroSectionProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-[#F5F3E6] tracking-tight leading-[1.12]"
+                className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#F5F3E6] leading-[1.15]"
               >
                 {HEADLINES[headlineIndex]}
               </motion.h1>

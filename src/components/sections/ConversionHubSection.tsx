@@ -55,8 +55,8 @@ export default function ConversionHubSection() {
                 <Sparkles className="w-4 h-4" />
                 <span>Direct Developer Invitation</span>
               </span>
-              <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-                Ready to Choose Your <span className="italic text-caramel font-normal">Next Address?</span>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F3E6] tracking-tight leading-[1.15]">
+                Ready to Choose Your <span className="italic text-[#CE793A] font-normal">Next Address?</span>
               </h2>
             </div>
 

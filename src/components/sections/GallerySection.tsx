@@ -52,8 +52,8 @@ export default function GallerySection({ onOpenImageModal }: GallerySectionProps
           <span className="font-figtree text-xs font-bold uppercase tracking-[0.15em] text-caramel">
             Exteriors & Interiors
           </span>
-          <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-sienna tracking-tight leading-[1.15]">
-            Crafted Architecture, <span className="italic text-caramel font-normal">Captured Live.</span>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A1C11] tracking-tight leading-[1.15]">
+            Crafted Architecture, <span className="italic text-[#CE793A] font-normal">Captured Live.</span>
           </h2>
           <p className="font-figtree text-sm sm:text-base text-noir/70 font-normal">
             Swipe or use controls to browse through actual site renders and sample apartment photography.

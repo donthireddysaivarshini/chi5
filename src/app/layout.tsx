@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Figtree, Gloock } from 'next/font/google';
+import { Playfair_Display, Figtree, Gloock, Cormorant_Garamond, Cinzel } from 'next/font/google';
 import './globals.css';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-playfair',
   display: 'swap',
 });
 
 const figtree = Figtree({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-figtree',
   display: 'swap',
 });
@@ -18,6 +20,20 @@ const gloock = Gloock({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-gloock',
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-cinzel',
   display: 'swap',
 });
 
@@ -54,8 +70,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${figtree.variable} ${gloock.variable}`}>
-      <body className="bg-alabaster text-noir font-figtree antialiased selection:bg-caramel selection:text-white">
+    <html
+      lang="en"
+      className={`${playfair.variable} ${figtree.variable} ${gloock.variable} ${cormorant.variable} ${cinzel.variable}`}
+    >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700&family=Gloock&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-alabaster text-noir font-sans antialiased selection:bg-caramel selection:text-white">
         {children}
       </body>
     </html>

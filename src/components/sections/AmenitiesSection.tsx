@@ -87,8 +87,8 @@ export default function AmenitiesSection() {
           <span className="font-figtree text-xs font-bold uppercase tracking-[0.15em] text-caramel">
             40+ Curated Privileges
           </span>
-          <h2 className="font-gumani text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-            25,000 Sq.Ft <span className="italic text-caramel font-normal">Clubhouse Sanctuary.</span>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+            25,000 Sq.Ft <span className="italic text-[#CE793A] font-normal">Clubhouse Sanctuary.</span>
           </h2>
           <p className="font-figtree text-sm sm:text-base text-alabaster/80 font-normal">
             A self-contained lifestyle ecosystem crafted for wellness, family recreation, and community celebrations.
