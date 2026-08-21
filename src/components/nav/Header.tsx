@@ -30,30 +30,30 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-alabaster/95 backdrop-blur-md shadow-kura py-3.5 border-b border-zinc-border/60'
+            ? 'bg-alabaster/95 backdrop-blur-md shadow-kura py-3 border-b border-zinc-border/60'
             : 'bg-gradient-to-b from-obsidian/90 to-transparent py-4 sm:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Left Brand Lockup (Logos made prominently larger) */}
+          {/* Left Brand Lockup (Logos made significantly larger & more prominent) */}
           <a href="#hero" className="flex items-center gap-3 sm:gap-4 group">
             <Image
               src="/logos/kura homes logo.png"
               alt="Kura Homes (55 Years of Trust)"
-              width={140}
-              height={44}
-              className={`h-10 sm:h-11 md:h-12 w-auto object-contain transition-all duration-300 ${
+              width={200}
+              height={60}
+              className={`h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain transition-all duration-300 ${
                 isScrolled ? '' : 'brightness-0 invert'
               }`}
               priority
             />
-            <div className={`h-8 sm:h-9 w-[1px] ${isScrolled ? 'bg-zinc-border' : 'bg-white/30'}`}></div>
+            <div className={`h-10 sm:h-12 w-[1.5px] ${isScrolled ? 'bg-zinc-border' : 'bg-white/30'}`}></div>
             <Image
               src="/logos/hi-five logo 2.png"
               alt="Codename Hi-Five"
-              width={150}
-              height={46}
-              className={`h-10 sm:h-11 md:h-12 w-auto object-contain transition-all duration-300 ${
+              width={210}
+              height={62}
+              className={`h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain transition-all duration-300 ${
                 isScrolled ? '' : 'brightness-0 invert'
               }`}
               priority
@@ -123,7 +123,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-[72px] left-0 right-0 z-40 bg-obsidian text-alabaster border-b border-white/15 shadow-2xl lg:hidden overflow-hidden"
+            className="fixed top-[76px] left-0 right-0 z-40 bg-obsidian text-alabaster border-b border-white/15 shadow-2xl lg:hidden overflow-hidden"
           >
             <div className="px-6 py-6 space-y-4 font-sans text-center">
               {[
