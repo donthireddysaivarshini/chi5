@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Navigation, Clock, ExternalLink, GraduationCap, Briefcase, HeartPulse, Train } from 'lucide-react';
+import { MapPin, Navigation, GraduationCap, Briefcase, HeartPulse, Train, Send, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface LocationSectionProps {
@@ -38,13 +38,11 @@ const COMMUTE_DATA = {
   ],
 };
 
-const MAP_URL = 'https://maps.app.goo.gl/XWMJEZtLnFB2UPcGA';
-
 export default function LocationSection({ onOpenLeadModal }: LocationSectionProps) {
   const [activeTab, setActiveTab] = useState<'schools' | 'tech' | 'health' | 'transit'>('schools');
 
-  const handleOpenMap = () => {
-    window.open(MAP_URL, '_blank', 'noopener,noreferrer');
+  const handleRequestExactLocation = () => {
+    onOpenLeadModal('location_map_request', 'Request Exact Location Pin & Site Directions');
   };
 
   return (
@@ -79,40 +77,59 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
         >
-          {/* Left: Map Container with Click-to-Redirect directly to Location */}
+          {/* Left: Approximate Corridor Map Card (Lead Generation Focus) */}
           <div
             className="lg:col-span-6 bg-white rounded-3xl p-4 sm:p-5 shadow-kura border border-zinc-border flex flex-col justify-between cursor-pointer group hover:shadow-kura-lg transition-all"
-            onClick={handleOpenMap}
+            onClick={handleRequestExactLocation}
           >
             <div className="relative w-full h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-inner border border-zinc-border">
+              {/* Approximate Corridor Google Map embed centered on ORR Exit 5, Bowrampet Area */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.393652044088!2d78.398838!3d17.5840323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f09e0058659%3A0xeec976a256a5b678!2sSpeed%20Sanarelli%20-%20Apartment%20of%20Contentment!5e0!3m2!1sen!2sin!4v1787132923208!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15215.184852033475!2d78.385000!3d17.580000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f0000000000%3A0x0!2sORR%20Exit%205%2C%20Bowrampet%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1787132923208!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
-                title="Codename Hi-Five Location Map"
-                className="w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700"
+                title="ORR Exit 5 Bowrampet Corridor Approximate Area Map"
+                className="w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
               />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors flex items-center justify-center">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-obsidian/90 group-hover:bg-obsidian text-alabaster font-sans font-bold text-xs shadow-xl backdrop-blur-sm transform group-hover:scale-105 transition-all">
-                  <MapPin className="w-3.5 h-3.5 text-bronze" />
-                  <span>Open Codename Hi-Five in Google Maps</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </span>
+
+              {/* Lead Generation Overlay on Map */}
+              <div className="absolute inset-0 bg-obsidian/40 group-hover:bg-obsidian/55 transition-colors flex flex-col items-center justify-center p-6 text-center space-y-3">
+                <div className="w-12 h-12 rounded-full bg-bronze text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <span className="font-sans text-xs font-bold uppercase tracking-widest text-bronze-light block">
+                    Approximate Location Map
+                  </span>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
+                    Adjacent to ORR Exit 5, Bowrampet Road
+                  </h3>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRequestExactLocation();
+                  }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-bronze hover:bg-bronze-hover text-white font-sans font-bold text-xs uppercase tracking-wider shadow-2xl backdrop-blur-sm transform group-hover:scale-105 transition-all"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Request Exact Location Pin on WhatsApp</span>
+                </button>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 font-sans">
               <div className="flex items-center gap-2 text-xs text-charcoal-mute">
-                <MapPin className="w-4 h-4 text-bronze shrink-0" />
-                <span>Codename Hi-Five, Adjacent to ORR Exit 5, Bowrampet Road</span>
+                <ShieldCheck className="w-4 h-4 text-bronze shrink-0" />
+                <span>ORR Exit 5 Corridor · Dundigal-Bowrampet Road</span>
               </div>
               <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-bronze group-hover:text-bronze-dark transition-colors">
-                <span>View Route</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <span>Get Directions Pin</span>
+                <Send className="w-3.5 h-3.5" />
               </span>
             </div>
           </div>
@@ -158,17 +175,14 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
                   {COMMUTE_DATA[activeTab].map((item, idx) => (
                     <motion.div
                       key={item.name}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.25, delay: idx * 0.04 }}
-                      className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-zinc-border/80 hover:border-bronze/40 transition-colors"
+                      className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-zinc-border/60 hover:border-bronze/40 transition-colors"
                     >
-                      <span className="text-xs sm:text-sm text-obsidian font-medium">
-                        {item.name}
-                      </span>
-                      <span className="inline-flex items-center gap-1 text-xs font-bold text-bronze px-2 py-0.5 rounded-md bg-bronze/10">
-                        <Clock className="w-3 h-3" />
-                        <span>{item.time}</span>
+                      <span className="text-xs sm:text-sm font-semibold text-obsidian">{item.name}</span>
+                      <span className="text-xs font-bold text-bronze px-2.5 py-1 rounded-md bg-bronze/10">
+                        {item.time}
                       </span>
                     </motion.div>
                   ))}
@@ -176,12 +190,15 @@ export default function LocationSection({ onOpenLeadModal }: LocationSectionProp
               </div>
             </div>
 
-            <div className="pt-3">
+            <div className="pt-4 mt-4 border-t border-zinc-border flex flex-col sm:flex-row items-center justify-between gap-3 font-sans">
+              <span className="text-xs text-charcoal-mute text-center sm:text-left">
+                Signal-free commute to Financial District via Nehru Outer Ring Road.
+              </span>
               <button
-                onClick={() => onOpenLeadModal('location_visit', 'Schedule Site Visit & Location Tour')}
-                className="w-full py-3 bg-obsidian hover:bg-obsidian/90 text-alabaster font-sans font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+                onClick={handleRequestExactLocation}
+                className="w-full sm:w-auto px-4 py-2 bg-obsidian text-alabaster hover:bg-bronze font-sans font-bold text-xs uppercase tracking-wider rounded-xl transition-colors shrink-0"
               >
-                <span>Schedule Location Tour</span>
+                Request Location Details
               </button>
             </div>
           </div>
