@@ -47,29 +47,43 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Left Brand Lockup */}
-          <Link href="/" className="flex items-center gap-3 sm:gap-4 group">
-            <Image
-              src="/logos/kura homes logo.png"
-              alt="Kura Homes (55 Years of Trust)"
-              width={200}
-              height={60}
-              className={`h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain transition-all duration-300 ${
-                isScrolled ? '' : 'brightness-0 invert'
-              }`}
-              priority
-            />
+          <div className="flex items-center gap-3 sm:gap-4">
+            <a
+              href="https://kurahomes.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Visit Kura Homes Official Website (kurahomes.in)"
+              className="inline-block transition-transform hover:scale-105"
+            >
+              <Image
+                src="/logos/kura homes logo.png"
+                alt="Kura Homes (55 Years of Trust)"
+                width={200}
+                height={60}
+                className={`h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain transition-all duration-300 ${
+                  isScrolled ? '' : 'brightness-0 invert'
+                }`}
+                priority
+              />
+            </a>
             <div className={`h-10 sm:h-12 w-[1.5px] ${isScrolled ? 'bg-zinc-border' : 'bg-white/30'}`}></div>
-            <Image
-              src="/logos/hi-five logo 2.png"
-              alt="Codename Hi-Five"
-              width={210}
-              height={62}
-              className={`h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain transition-all duration-300 ${
-                isScrolled ? '' : 'brightness-0 invert'
-              }`}
-              priority
-            />
-          </Link>
+            <Link
+              href="/"
+              title="Codename Hi-Five Home"
+              className="inline-block transition-transform hover:scale-105"
+            >
+              <Image
+                src="/logos/hi-five logo 2.png"
+                alt="Codename Hi-Five"
+                width={210}
+                height={62}
+                className={`h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain transition-all duration-300 ${
+                  isScrolled ? '' : 'brightness-0 invert'
+                }`}
+                priority
+              />
+            </Link>
+          </div>
 
           {/* Center Nav Links */}
           <nav className="hidden lg:flex items-center gap-7 xl:gap-8">

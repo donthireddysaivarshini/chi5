@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://kurahomes.com';
+  const baseUrl = 'https://kurahomes.in';
   const lastModified = new Date();
 
   return [

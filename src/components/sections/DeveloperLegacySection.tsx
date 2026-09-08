@@ -17,14 +17,20 @@ export default function DeveloperLegacySection() {
     <section className="py-20 sm:py-28 bg-sienna text-alabaster">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="relative h-10 w-32 mx-auto mb-4">
+          <a
+            href="https://kurahomes.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit Kura Homes Official Website (kurahomes.in)"
+            className="relative h-10 w-32 mx-auto mb-4 block transition-transform hover:scale-105"
+          >
             <Image
               src="/logos/kura homes logo.png"
               alt="Kura Homes Developer"
               fill
               className="object-contain brightness-0 invert"
             />
-          </div>
+          </a>
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-caramel">
             55 Years of Crafted Trust
           </span>

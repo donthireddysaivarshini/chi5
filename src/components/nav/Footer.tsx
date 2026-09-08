@@ -13,24 +13,43 @@ export default function Footer() {
           {/* Column 1: Brand Statement */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-4">
-              <Image
-                src="/logos/kura homes logo.png"
-                alt="Kura Homes (55 Years of Trust)"
-                width={120}
-                height={40}
-                className="h-10 w-auto object-contain brightness-0 invert opacity-95"
-              />
+              <a
+                href="https://kurahomes.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Visit Kura Homes Official Website (kurahomes.in)"
+                className="inline-block transition-transform hover:scale-105"
+              >
+                <Image
+                  src="/logos/kura homes logo.png"
+                  alt="Kura Homes (55 Years of Trust)"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto object-contain brightness-0 invert opacity-95"
+                />
+              </a>
               <div className="h-8 w-[1.5px] bg-white/20"></div>
-              <Image
-                src="/logos/hi-five logo 2.png"
-                alt="Codename Hi-Five"
-                width={140}
-                height={44}
-                className="h-10 md:h-11 w-auto object-contain brightness-0 invert opacity-95"
-              />
+              <Link href="/" title="Codename Hi-Five Home" className="inline-block transition-transform hover:scale-105">
+                <Image
+                  src="/logos/hi-five logo 2.png"
+                  alt="Codename Hi-Five"
+                  width={140}
+                  height={44}
+                  className="h-10 md:h-11 w-auto object-contain brightness-0 invert opacity-95"
+                />
+              </Link>
             </div>
             <p className="font-sans text-xs sm:text-sm text-alabaster/75 font-normal leading-relaxed max-w-sm">
-              This project is a premium 5.3-acre gated residential township by Kura Homes, bringing 55 years of trust, structural excellence, and design legacy to Hyderabad&apos;s ORR Exit 5 growth corridor.
+              This project is a premium 5.3-acre gated residential township by{' '}
+              <a
+                href="https://kurahomes.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-bronze font-semibold hover:underline"
+              >
+                Kura Homes
+              </a>
+              , bringing 55 years of trust, structural excellence, and design legacy to Hyderabad&apos;s ORR Exit 5 growth corridor.
             </p>
           </div>
 
@@ -91,10 +110,11 @@ export default function Footer() {
 
             <div className="pt-2 space-y-1.5 text-xs text-alabaster/80">
               <a
-                href="https://tsrera.telangana.gov.in"
+                href="https://rera.telangana.gov.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-bronze hover:underline font-semibold"
+                title="Verify TG RERA Registration on Official Portal"
               >
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>TG RERA Reg: P02200002810</span>
@@ -109,7 +129,18 @@ export default function Footer() {
 
         {/* Bottom Strip: Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-xs text-alabaster/60 text-center sm:text-left">
-          <p>© {new Date().getFullYear()} Kura Homes. All rights reserved. Codename Hi-Five is a registered project name.</p>
+          <p>
+            © {new Date().getFullYear()}{' '}
+            <a
+              href="https://kurahomes.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-bronze font-semibold hover:underline"
+            >
+              Kura Homes
+            </a>
+            . All rights reserved. Codename Hi-Five is a registered project name.
+          </p>
           <p className="text-[11px] text-alabaster/40">
             Marketed & Handled by Authorized Project Sales Partner
           </p>
