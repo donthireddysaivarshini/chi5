@@ -44,6 +44,35 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateListing',
+  'name': 'Codename Hi-Five by Kura Homes',
+  'description': 'Premium 5.3-acre gated community featuring 2 BHK & Duplex homes starting from ₹59 Lakhs at ORR Exit-5, Bowrampet, Hyderabad.',
+  'url': 'https://kurahomes.com',
+  'telephone': '+918008008946',
+  'priceRange': '₹59 Lakhs - ₹98 Lakhs',
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': 'Adjacent to ORR Exit No. 5, Bowrampet Road, Dundigal, Gandimaisamma',
+    'addressLocality': 'Hyderabad',
+    'addressRegion': 'Telangana',
+    'postalCode': '500043',
+    'addressCountry': 'IN',
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': 17.5684,
+    'longitude': 78.3756,
+  },
+  'offeredBy': {
+    '@type': 'RealEstateAgent',
+    'name': 'Kura Homes',
+    'url': 'https://kurahomes.com',
+    'telephone': '+918008008946',
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -69,6 +98,11 @@ export default function RootLayout({
             gtag('config', 'AW-17602634500');
           `}
         </Script>
+        {/* Schema.org JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
