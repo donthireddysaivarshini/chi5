@@ -59,14 +59,14 @@ export default function FaqSection({
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10 space-y-2.5">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-bronze/10 text-bronze text-xs font-semibold uppercase tracking-wider border border-bronze/20">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-bronze/10 text-bronze text-xs font-semibold uppercase tracking-wider border border-bronze/20 !font-sans">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Frequently Asked Questions</span>
           </span>
-          <h2 className="font-sans text-2xl sm:text-3xl font-bold text-obsidian tracking-tight">
-            Got Questions? <span className="font-medium text-bronze">We Have Answers.</span>
+          <h2 className="!font-sans text-2xl sm:text-3xl !font-bold text-obsidian tracking-tight">
+            Got Questions? <span className="!font-medium text-bronze">We Have Answers.</span>
           </h2>
-          <p className="font-sans text-xs sm:text-sm text-charcoal-mute leading-relaxed font-normal">
+          <p className="!font-sans text-xs sm:text-sm text-charcoal-mute leading-relaxed !font-normal">
             Everything you need to know about pricing, location, TG RERA approvals, and home loan eligibility for Codename Hi-Five.
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function FaqSection({
                   onClick={() => toggleFaq(idx)}
                   className="w-full text-left py-5 px-5 sm:py-5.5 sm:px-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                 >
-                  <h3 className="font-sans text-sm sm:text-base font-medium text-obsidian/90 leading-relaxed pr-2">
+                  <h3 className="!font-sans text-sm sm:text-base !font-medium text-obsidian/90 leading-relaxed pr-2">
                     {faq.question}
                   </h3>
                   <div
