@@ -127,10 +127,10 @@ export default function FaqSection({
               Speak directly with our senior sales advisor or schedule a private site visit.
             </p>
           </div>
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 shrink-0">
             <a
               href={`tel:${BRAND.phone}`}
-              className="px-4 py-2.5 rounded-lg bg-slate-100 text-obsidian text-xs font-semibold hover:bg-slate-200 transition-colors flex items-center gap-1.5 font-sans"
+              className="px-5 py-2.5 rounded-lg bg-slate-100 text-obsidian text-xs font-semibold hover:bg-slate-200 transition-colors flex items-center gap-2 font-sans whitespace-nowrap shrink-0"
             >
               <Phone className="w-3.5 h-3.5 text-bronze" />
               <span>{BRAND.phone}</span>
@@ -138,7 +138,7 @@ export default function FaqSection({
             {onOpenLeadModal && (
               <button
                 onClick={() => onOpenLeadModal('FAQ Section CTA', 'Schedule Site Visit')}
-                className="px-4.5 py-2.5 rounded-lg bg-bronze hover:bg-bronze-hover text-white text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm font-sans"
+                className="px-5 sm:px-6 py-2.5 rounded-lg bg-bronze hover:bg-bronze-hover text-white text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer shadow-sm font-sans whitespace-nowrap shrink-0"
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>Book Site Visit</span>
