@@ -20,8 +20,31 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://kurahomes.in'),
   title: 'Codename Hi-Five by Kura Homes | 2 BHK & Duplex Homes from ₹59L at ORR Exit-5, Hyderabad',
-  description: 'Explore Codename Hi-Five by Kura Homes - a premium 5.3-acre gated community adjacent to ORR Exit-5, Hyderabad. Offering luxury 2 BHK & Duplex homes starting from ₹59 Lakhs. 90% constructed, possession soon. HMDA & TG RERA Approved.',
-  keywords: 'Codename Hi-Five, Kura Homes, Gated Community Bowrampet, Flats near ORR Exit 5, 2 BHK Hyderabad, Duplex Bowrampet Dundigal, Gandimaisamma real estate, Kura Homes Hyderabad',
+  description: 'Explore Codename Hi-Five by Kura Homes - a premium 5.3-acre gated community adjacent to ORR Exit-5, Hyderabad. Offering luxury 2 BHK & Duplex homes starting from ₹59 Lakhs. 90% constructed, possession soon. HMDA & TG RERA Approved (P02200002810).',
+  keywords: [
+    'Codename Hi-Five',
+    'Codename Hi Five',
+    'Kura Homes',
+    'Kura Homes Hyderabad',
+    'Kura Homes Bowrampet',
+    'flats in Bowrampet',
+    '2 BHK flats in Bowrampet',
+    'duplex homes in Bowrampet',
+    'gated community near ORR Exit 5',
+    'flats near ORR Exit 5 Hyderabad',
+    'apartments near Dundigal',
+    'flats near Gandimaisamma',
+    'property in Bowrampet Road',
+    '2 BHK starting from 59 lakhs Hyderabad',
+    'luxury apartments Bowrampet',
+    'HMDA approved flats Bowrampet',
+    'TG RERA registered project Bowrampet',
+    'P02200002810',
+    'apartments near Bachupally',
+    'flats near Miyapur',
+    'luxury township ORR Exit 5',
+    'Kura Homes 55 years legacy',
+  ].join(', '),
   openGraph: {
     title: 'Codename Hi-Five by Kura Homes | Premium Gated Homes from ₹59L',
     description: 'Discover premium 2 BHK & Duplex homes near ORR Exit-5, Hyderabad. 90% built, 40+ lifestyle amenities, 25K sq.ft clubhouse. By Kura Homes - 55 years of trust.',
@@ -32,7 +55,7 @@ export const metadata: Metadata = {
         url: '/images/Front view.webp',
         width: 1200,
         height: 630,
-        alt: 'Codename Hi-Five Architectural Render',
+        alt: 'Codename Hi-Five Architectural Render by Kura Homes',
       },
     ],
     locale: 'en_IN',
@@ -44,7 +67,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+const listingJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateListing',
   'name': 'Codename Hi-Five by Kura Homes',
@@ -73,6 +96,70 @@ const jsonLd = {
   },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'What is the starting price for 2 BHK & Duplex homes at Codename Hi-Five?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Prices at Codename Hi-Five by Kura Homes start from ₹59 Lakhs for premium 2 BHK Smart Luxe residences and range up to ₹98 Lakhs for spacious Duplex suites.',
+      },
+    },
+    {
+      '@type': 'Question',
+      'name': 'Where is Codename Hi-Five located in Hyderabad?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Codename Hi-Five is strategically situated adjacent to ORR Exit No. 5, Bowrampet Road, Dundigal, Gandimaisamma, Hyderabad, Telangana 500043.',
+      },
+    },
+    {
+      '@type': 'Question',
+      'name': 'Is Codename Hi-Five HMDA and TG RERA approved?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes, Codename Hi-Five is fully approved by HMDA (Permit No: G1/DM/2237/BP/2021) and registered under TG RERA (Registration No: P02200002810).',
+      },
+    },
+    {
+      '@type': 'Question',
+      'name': 'What is the construction progress of Codename Hi-Five?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Codename Hi-Five is 90% constructed with structural work complete and handover expected soon.',
+      },
+    },
+  ],
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://kurahomes.in',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Bowrampet Projects',
+      'item': 'https://kurahomes.in/#location',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Codename Hi-Five',
+      'item': 'https://kurahomes.in',
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -98,10 +185,20 @@ export default function RootLayout({
             gtag('config', 'AW-17602634500');
           `}
         </Script>
-        {/* Schema.org JSON-LD Structured Data */}
+        {/* Schema.org JSON-LD Structured Data: RealEstateListing */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(listingJsonLd) }}
+        />
+        {/* Schema.org JSON-LD Structured Data: FAQPage */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        {/* Schema.org JSON-LD Structured Data: BreadcrumbList */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
