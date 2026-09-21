@@ -12,6 +12,7 @@ import ExteriorGallerySection from '@/components/sections/ExteriorGallerySection
 import InteriorGallerySection from '@/components/sections/InteriorGallerySection';
 import ProgressSection from '@/components/sections/ProgressSection';
 import PerspectivesSection from '@/components/sections/PerspectivesSection';
+import FaqSection from '@/components/sections/FaqSection';
 import ConversionHubSection from '@/components/sections/ConversionHubSection';
 import Footer from '@/components/nav/Footer';
 import Modals from '@/components/ui/Modals';
@@ -104,7 +105,10 @@ export default function HomePage() {
         {/* §11 — Expert Perspectives (Pure White / Light Slate) */}
         <PerspectivesSection onOpenVideoModal={handleOpenVideoModal} />
 
-        {/* §12 — Lead Capture Form & Developer Contact (Dark Slate with Pure White Form) */}
+        {/* §12 — Frequently Asked Questions (Light Slate) */}
+        <FaqSection onOpenLeadModal={handleOpenLeadModal} />
+
+        {/* §13 — Lead Capture Form & Developer Contact (Dark Slate with Pure White Form) */}
         <ConversionHubSection />
       </main>
 

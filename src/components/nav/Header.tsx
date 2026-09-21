@@ -33,6 +33,7 @@ export default function Header({ onOpenLeadModal }: HeaderProps) {
     { label: 'Lifestyle', href: '/#amenities' },
     { label: 'Location', href: '/#location' },
     { label: 'Progress', href: '/#progress' },
+    { label: 'FAQs', href: '/#faq' },
     { label: 'Contact', href: '/#contact' },
   ];
 

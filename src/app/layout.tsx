@@ -61,6 +61,12 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Codename Hi-Five by Kura Homes | Premium Gated Homes from ₹59L',
+    description: 'Discover premium 2 BHK & Duplex homes near ORR Exit-5, Hyderabad. 90% built, 40+ lifestyle amenities, 25K sq.ft clubhouse. TG RERA: P02200002810.',
+    images: ['/images/Front view.webp'],
+  },
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
@@ -171,6 +177,12 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable}`}
     >
       <head>
+        {/* Local Geo-Targeting Metadata for Hyderabad Local SEO */}
+        <meta name="geo.region" content="IN-TG" />
+        <meta name="geo.placename" content="Hyderabad, Bowrampet" />
+        <meta name="geo.position" content="17.5684;78.3756" />
+        <meta name="ICBM" content="17.5684, 78.3756" />
+
         {/* Google Tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17602634500"
