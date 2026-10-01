@@ -61,8 +61,9 @@ export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGal
               >
                 <Image
                   src={img.src}
-                  alt={img.title}
+                  alt={`Codename Hi-Five ${img.title} Render by Kura Homes Bowrampet`}
                   fill
+                  sizes="(max-width: 768px) 85vw, 400px"
                   className="object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent p-4 flex flex-col justify-end">
@@ -135,8 +136,9 @@ export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGal
               >
                 <Image
                   src={EXTERIOR_IMAGES[currentIndex].src}
-                  alt={EXTERIOR_IMAGES[currentIndex].title}
+                  alt={`Codename Hi-Five ${EXTERIOR_IMAGES[currentIndex].title} - Premium Gated Township by Kura Homes`}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 1000px"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </motion.div>
@@ -167,7 +169,13 @@ export default function ExteriorGallerySection({ onOpenImageModal }: ExteriorGal
                   currentIndex === idx ? 'border-bronze scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
-                <Image src={img.src} alt={img.title} fill className="object-cover" />
+                <Image
+                  src={img.src}
+                  alt={img.title}
+                  fill
+                  sizes="160px"
+                  className="object-cover"
+                />
               </button>
             ))}
           </div>
