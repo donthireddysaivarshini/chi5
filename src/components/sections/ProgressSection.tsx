@@ -132,7 +132,14 @@ export default function ProgressSection({ onOpenLeadModal }: ProgressSectionProp
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className="lg:col-span-6 space-y-3"
+            itemScope
+            itemType="https://schema.org/VideoObject"
           >
+            <meta itemProp="name" content="Codename Hi-Five Construction Progress Update by Kura Homes" />
+            <meta itemProp="description" content="Raw site drone footage and structural progress update for Codename Hi-Five 2 BHK & Duplex gated township at ORR Exit 5 Bowrampet." />
+            <meta itemProp="thumbnailUrl" content="https://kurahomes.in/images/Front%20view.webp" />
+            <meta itemProp="uploadDate" content="2026-09-20T08:00:00+05:30" />
+
             <div className="relative h-[280px] sm:h-[360px] lg:h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-black group select-none">
               <video
                 ref={videoRef}
@@ -144,6 +151,7 @@ export default function ProgressSection({ onOpenLeadModal }: ProgressSectionProp
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 className="w-full h-full object-cover"
+                itemProp="contentUrl"
               >
                 <source src="/videos/sanarelli_progress.mp4" type="video/mp4" />
                 <source src="/videos/construction-progress.mp4" type="video/mp4" />
