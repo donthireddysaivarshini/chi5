@@ -78,6 +78,22 @@ export const metadata: Metadata = {
     'luxury high rise apartments Bowrampet',
     'best real estate projects in North Hyderabad',
   ].join(', '),
+  alternates: {
+    canonical: 'https://kurahomes.in',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: 'Codename Hi-Five by Kura Homes | Premium Gated Homes from ₹59L',
     description: 'Discover premium 2 BHK & Duplex homes near ORR Exit-5, Hyderabad. 90% built, 40+ lifestyle amenities, 25K sq.ft clubhouse. By Kura Homes - 55 years of trust.',
@@ -103,6 +119,24 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
+  },
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  'name': 'Kura Homes',
+  'url': 'https://kurahomes.in',
+  'logo': 'https://kurahomes.in/images/KuraLogo.webp',
+  'sameAs': [
+    'https://rera.telangana.gov.in/',
+  ],
+  'contactPoint': {
+    '@type': 'ContactPoint',
+    'telephone': '+918008008946',
+    'contactType': 'sales',
+    'areaServed': 'IN',
+    'availableLanguage': ['en', 'te', 'hi'],
   },
 };
 
@@ -234,6 +268,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(listingJsonLd) }}
+        />
+        {/* Schema.org JSON-LD Structured Data: Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {/* Schema.org JSON-LD Structured Data: FAQPage */}
         <script
